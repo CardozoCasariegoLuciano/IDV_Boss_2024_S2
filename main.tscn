@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1touvs3ht15k"]
+
+[ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
+[ext_resource type="PackedScene" uid="uid://djaky7olesetp" path="res://entities/players/player.tscn" id="1_isdmp"]
+[ext_resource type="Script" path="res://field_drop_detector.gd" id="1_kwt4r"]
+[ext_resource type="PackedScene" uid="uid://dwfu2jhpxxr5d" path="res://entities/cart/cart.tscn" id="2_r3yq7"]
+
+[node name="Node" type="Node"]
+
+[node name="cancha" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="cancha"]
+offset_left = 30.0
+offset_top = 33.0
+offset_right = 1122.0
+offset_bottom = 553.0
+color = Color(0.24246, 0.54, 0.2268, 1)
+
+[node name="fieldDropDetector" type="Panel" parent="cancha"]
+modulate = Color(1, 0.24, 0.24, 0)
+offset_right = 1150.0
+offset_bottom = 651.0
+script = ExtResource("1_kwt4r")
+
+[node name="Jugadores" type="Node" parent="."]
+
+[node name="Player2" parent="Jugadores" instance=ExtResource("1_isdmp")]
+position = Vector2(193, 352)
+
+[node name="Player1" parent="Jugadores" instance=ExtResource("1_isdmp")]
+position = Vector2(189, 217)
+
+[node name="cartas" type="Node" parent="."]
+
+[node name="ColorRect5" parent="cartas" instance=ExtResource("2_r3yq7")]
+offset_left = 677.0
+offset_top = 547.0
+offset_right = 769.0
+offset_bottom = 723.0
+
+[node name="ColorRect3" parent="cartas" instance=ExtResource("2_r3yq7")]
+offset_left = 464.0
+offset_top = 547.0
+offset_right = 556.0
+offset_bottom = 723.0
+
+[node name="ColorRect4" parent="cartas" instance=ExtResource("2_r3yq7")]
+offset_left = 572.0
+offset_top = 547.0
+offset_right = 664.0
+offset_bottom = 723.0
+
+[node name="ColorRect6" parent="cartas" instance=ExtResource("2_r3yq7")]
+offset_left = 356.0
+offset_top = 545.0
+offset_right = 448.0
+offset_bottom = 721.0
+
+[node name="Pelota" parent="." instance=ExtResource("1_4ipka")]
+position = Vector2(774, 255)

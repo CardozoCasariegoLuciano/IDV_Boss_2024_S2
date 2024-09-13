@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwfu2jhpxxr5d"]
+
+[ext_resource type="Script" path="res://entities/cart/cart.gd" id="1_6euu6"]
+[ext_resource type="Script" path="res://entities/cart/panel.gd" id="1_ghhbe"]
+
+[node name="Cart" type="ColorRect"]
+offset_left = -47.0
+offset_top = -90.0
+offset_right = 45.0
+offset_bottom = 86.0
+color = Color(0.561813, 0.235023, 0.352519, 1)
+script = ExtResource("1_6euu6")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_right = 91.0
+offset_bottom = 179.0
+script = ExtResource("1_ghhbe")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://djaky7olesetp"]
+
+[ext_resource type="Script" path="res://entities/players/player.gd" id="1_6beys"]
+[ext_resource type="Texture2D" uid="uid://cvfaw4d486hss" path="res://icon.svg" id="1_33umy"]
+[ext_resource type="Script" path="res://entities/players/panel.gd" id="3_20nvj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uad6i"]
+size = Vector2(123, 122)
+
+[node name="Player" type="RigidBody2D"]
+position = Vector2(-4, -6)
+script = ExtResource("1_6beys")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_33umy")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -26.0
+offset_top = -24.0
+offset_right = 22.0
+offset_bottom = 23.0
+script = ExtResource("3_20nvj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_uad6i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="on_cart_used" from="Panel" to="." method="_on_panel_on_cart_used"]
