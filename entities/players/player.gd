@@ -1,15 +1,17 @@
 extends RigidBody2D
 
 #TODOs
+#Que no salgan de la cancha
 #Poder ver el radio del mover al jugador
 #Crear la clase padre para los jugadores
 #Crear la carta padre para que las demas la hereden
-#Que no se jueguen al momento, sino que espere a que le de a un boton
-
+#Dibujar bien la cancha y definir los arcos
+#Mostrar toda la UI
 
 var enable_click := false
-var power
+var used_cart: Cart
 var target
+var action_saved
 
 func _ready() -> void:
 	contact_monitor = true
@@ -20,11 +22,16 @@ func _ready() -> void:
 	
 func _physics_process(delta):
 	set_friction()
+	execute_move()
 
-func _on_panel_on_cart_used(data) -> void:
-	print("data usada ", data.valu)
+func execute_move():
+	if !action_saved or !Global.can_execute: return
+	apply_central_impulse(action_saved)
+	action_saved = null
+		
+func _on_panel_on_cart_used(data: Cart) -> void:
 	enable_click = true
-	power = data.valu
+	used_cart = data
 
 func _input(event):
 	if(!enable_click): return
@@ -34,8 +41,9 @@ func _input(event):
 			#Ver como mejorar eso, si el player esta inclinado al momento de aplicar un
 			#impulso se va para cualquier lado y no donde se hizo click
 			rotation = 0 
-			apply_central_impulse(get_local_mouse_position().normalized() * power)
+			action_saved = (get_local_mouse_position().normalized() * used_cart.valu)
 			enable_click = false
+			used_cart.queue_free()
 
 func set_friction():
 	if target != null:

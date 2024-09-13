@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1touvs3ht15k"]
+[gd_scene load_steps=7 format=3 uid="uid://c1touvs3ht15k"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
+[ext_resource type="Script" path="res://main.gd" id="1_hn30x"]
 [ext_resource type="PackedScene" uid="uid://djaky7olesetp" path="res://entities/players/player.tscn" id="1_isdmp"]
 [ext_resource type="Script" path="res://field_drop_detector.gd" id="1_kwt4r"]
 [ext_resource type="PackedScene" uid="uid://dwfu2jhpxxr5d" path="res://entities/cart/cart.tscn" id="2_r3yq7"]
 
+[sub_resource type="Curve2D" id="Curve2D_nkn7e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 270, 642, 0, 0, 0, 0, 398, 650, 0, 0, 0, 0, 492, 637, -32.8434, -1.05946, 32.8434, 1.05946, 630, 646, 0, 0, 0, 0, 741, 654, 0, 0, 0, 0, 779, 656)
+}
+point_count = 6
+
 [node name="Node" type="Node"]
+script = ExtResource("1_hn30x")
+cart_scene = ExtResource("2_r3yq7")
 
 [node name="cancha" type="Node" parent="."]
 
@@ -24,10 +33,18 @@ script = ExtResource("1_kwt4r")
 
 [node name="Jugadores" type="Node" parent="."]
 
-[node name="Player2" parent="Jugadores" instance=ExtResource("1_isdmp")]
+[node name="PlayerA_1" parent="Jugadores" instance=ExtResource("1_isdmp")]
+modulate = Color(0.91, 0.4732, 0.4732, 1)
+position = Vector2(921, 406)
+
+[node name="PlayerA_2" parent="Jugadores" instance=ExtResource("1_isdmp")]
+modulate = Color(0.91, 0.4732, 0.4732, 1)
+position = Vector2(907, 225)
+
+[node name="PlayerB_1" parent="Jugadores" instance=ExtResource("1_isdmp")]
 position = Vector2(193, 352)
 
-[node name="Player1" parent="Jugadores" instance=ExtResource("1_isdmp")]
+[node name="PlayerB_2" parent="Jugadores" instance=ExtResource("1_isdmp")]
 position = Vector2(189, 217)
 
 [node name="cartas" type="Node" parent="."]
@@ -39,16 +56,16 @@ offset_right = 769.0
 offset_bottom = 723.0
 
 [node name="ColorRect3" parent="cartas" instance=ExtResource("2_r3yq7")]
-offset_left = 464.0
-offset_top = 547.0
-offset_right = 556.0
-offset_bottom = 723.0
+offset_left = 468.0
+offset_top = 544.0
+offset_right = 560.0
+offset_bottom = 720.0
 
 [node name="ColorRect4" parent="cartas" instance=ExtResource("2_r3yq7")]
-offset_left = 572.0
-offset_top = 547.0
-offset_right = 664.0
-offset_bottom = 723.0
+offset_left = 576.0
+offset_top = 545.0
+offset_right = 668.0
+offset_bottom = 721.0
 
 [node name="ColorRect6" parent="cartas" instance=ExtResource("2_r3yq7")]
 offset_left = 356.0
@@ -57,4 +74,20 @@ offset_right = 448.0
 offset_bottom = 721.0
 
 [node name="Pelota" parent="." instance=ExtResource("1_4ipka")]
-position = Vector2(774, 255)
+position = Vector2(581, 273)
+
+[node name="CartsConfig" type="Node" parent="."]
+
+[node name="CreationDelay" type="Timer" parent="CartsConfig"]
+one_shot = true
+
+[node name="CreationCartPath" type="Path2D" parent="CartsConfig"]
+position = Vector2(40, -99)
+curve = SubResource("Curve2D_nkn7e")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="CartsConfig/CreationCartPath"]
+position = Vector2(270, 642)
+rotation = 0.0624188
+
+[connection signal="child_exiting_tree" from="cartas" to="." method="_on_remove_cart"]
+[connection signal="timeout" from="CartsConfig/CreationDelay" to="." method="_on_creation_delay"]
