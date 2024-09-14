@@ -7,7 +7,7 @@
 friction = 1e+12
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gt1jc"]
-size = Vector2(116, 116)
+size = Vector2(128, 133)
 
 [node name="Pelota" type="RigidBody2D"]
 position = Vector2(-3, -2)
@@ -16,12 +16,12 @@ gravity_scale = 0.0
 script = ExtResource("1_piii8")
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2)
-scale = Vector2(0.2, 0.2)
-shape = SubResource("RectangleShape2D_gt1jc")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 1, 1)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_bgohv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.199999, -0.300001)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_gt1jc")

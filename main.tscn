@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1touvs3ht15k"]
+[gd_scene load_steps=6 format=3 uid="uid://c1touvs3ht15k"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main.gd" id="1_hn30x"]
 [ext_resource type="PackedScene" uid="uid://djaky7olesetp" path="res://entities/players/player.tscn" id="1_isdmp"]
 [ext_resource type="Script" path="res://field_drop_detector.gd" id="1_kwt4r"]
-[ext_resource type="PackedScene" uid="uid://dwfu2jhpxxr5d" path="res://entities/cart/cart.tscn" id="2_r3yq7"]
 
 [sub_resource type="Curve2D" id="Curve2D_nkn7e"]
 _data = {
@@ -14,7 +13,6 @@ point_count = 6
 
 [node name="Node" type="Node"]
 script = ExtResource("1_hn30x")
-cart_scene = ExtResource("2_r3yq7")
 
 [node name="cancha" type="Node" parent="."]
 
@@ -49,37 +47,10 @@ position = Vector2(189, 217)
 
 [node name="cartas" type="Node" parent="."]
 
-[node name="ColorRect5" parent="cartas" instance=ExtResource("2_r3yq7")]
-offset_left = 677.0
-offset_top = 547.0
-offset_right = 769.0
-offset_bottom = 723.0
-
-[node name="ColorRect3" parent="cartas" instance=ExtResource("2_r3yq7")]
-offset_left = 468.0
-offset_top = 544.0
-offset_right = 560.0
-offset_bottom = 720.0
-
-[node name="ColorRect4" parent="cartas" instance=ExtResource("2_r3yq7")]
-offset_left = 576.0
-offset_top = 545.0
-offset_right = 668.0
-offset_bottom = 721.0
-
-[node name="ColorRect6" parent="cartas" instance=ExtResource("2_r3yq7")]
-offset_left = 356.0
-offset_top = 545.0
-offset_right = 448.0
-offset_bottom = 721.0
-
 [node name="Pelota" parent="." instance=ExtResource("1_4ipka")]
 position = Vector2(581, 273)
 
 [node name="CartsConfig" type="Node" parent="."]
-
-[node name="CreationDelay" type="Timer" parent="CartsConfig"]
-one_shot = true
 
 [node name="CreationCartPath" type="Path2D" parent="CartsConfig"]
 position = Vector2(40, -99)
@@ -89,5 +60,35 @@ curve = SubResource("Curve2D_nkn7e")
 position = Vector2(270, 642)
 rotation = 0.0624188
 
-[connection signal="child_exiting_tree" from="cartas" to="." method="_on_remove_cart"]
-[connection signal="timeout" from="CartsConfig/CreationDelay" to="." method="_on_creation_delay"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 919.0
+offset_top = 605.0
+offset_right = 1106.0
+offset_bottom = 636.0
+text = "confirmar planificacion"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -75.0
+offset_right = -98.0
+offset_bottom = -52.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "jugador"
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "1
+"
+
+[connection signal="button_up" from="CanvasLayer/Button" to="." method="_on_end_turn"]

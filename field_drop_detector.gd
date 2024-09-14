@@ -4,4 +4,4 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	return true
 	
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	data.color.a = 1
+	data.change_card_visibility(1)

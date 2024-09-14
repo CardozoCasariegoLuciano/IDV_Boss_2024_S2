@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://caw0pdl6xb3ht"]
+
+[ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_cc4bb"]
+[ext_resource type="Script" path="res://entities/carts/movements/move_card/move_card.gd" id="2_v3gpk"]
+
+[node name="Card_Template" instance=ExtResource("1_cc4bb")]
+script = ExtResource("2_v3gpk")
+
+[node name="ColorRect" parent="." index="0"]
+color = Color(1, 0.34902, 1, 1)
