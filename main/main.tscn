@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c1touvs3ht15k"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
-[ext_resource type="Script" path="res://main.gd" id="1_hn30x"]
+[ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
 [ext_resource type="PackedScene" uid="uid://djaky7olesetp" path="res://entities/players/player.tscn" id="1_isdmp"]
-[ext_resource type="Script" path="res://field_drop_detector.gd" id="1_kwt4r"]
+[ext_resource type="Script" path="res://main/field_drop_detector.gd" id="1_kwt4r"]
 
 [sub_resource type="Curve2D" id="Curve2D_nkn7e"]
 _data = {

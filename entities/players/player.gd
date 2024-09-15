@@ -1,21 +1,24 @@
 extends RigidBody2D
 class_name Player
 
-#TODO que al mover el jugador o al patear la pelota, el jugador mire en esa direccion (jugar con la rotacion)
-
 #TODOs Backlog
+#Agregar mas cartas, tratando de generalizar las modificaciones que tengamos que hacer
 #Que no salgan de la cancha
-#Poder ver el radio de las distintas acciones (para que no tengan alcance infinito)
-#agregar todo el sistema de mana
+#Que no se pueda usar las cartas propias en los jugadores rivales
+#Poder ver en pantalla el radio de las distintas acciones (para que no tengan alcance infinito)
+#Poder ver en pantalla las acciones ya jugadas en mi turno
+#Agregar todo el sistema de mana
+#Agregar la pantalla de blokeo entre turnos y la de "espera" para ejecutar las acciones
 #Crear la clase padre para los jugadores y que sea facil agregar los nuevos tipos
 #Agregar los DTs (creando clase padre para que sean escalable)
 #Agregar los feedbacks al usuario (por ejemplo cuando quiere patear pero no tiene la pelota)
 #Permitir concatenar jugadas, para eso pense que cuando se mueve (por ejemplo) si bien no se ejecuta la accion, le podemos mostrar la silueta para que aplique otra jugada ahi mismo
 #Dibujar bien la cancha y definir los arcos
+#Diseñar lo visual de los jugadores
+#Diseñar lo visual de las cartas
 #Mostrar la UI completa, con el turno actual, duracion de la partida, Mana actual, etc
 #Crear el Menu principal (nombre del juego, boton Jugar, boton salir, etc)
 #Crear la pantalla de creacion de mazos, seleccion de DT y de capitan
-
 
 var enable_click := false
 var used_cart: Card_template
@@ -47,7 +50,11 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			target = get_global_mouse_position()
-			used_cart.set_data(self, (event.position - global_position).normalized())
+			
+			var angle = (target - global_position).angle()
+			set_deferred("rotation", angle)
+			
+			used_cart.set_data(self, event.position)
 			used_cart.use_card()
 			enable_click = false
 

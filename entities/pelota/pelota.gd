@@ -11,11 +11,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if(player_owner):
-		#Muy WTF esto, si saco esta variable (que no se usa)
-		#se buguea la pelota
-		var ball_global_position = global_position 
+	#print("tiene player ", player_owner)
 
+	if(player_owner):
+		#Muy WTF esto, si saco esta variable (que no se usa) se buguea la pelota
+		var ball_global_position = global_position 
+		
 		var direction = (player_owner.global_transform.x).normalized()
 		var target_position = player_owner.global_position + direction * distance_ahead
 		global_position = target_position

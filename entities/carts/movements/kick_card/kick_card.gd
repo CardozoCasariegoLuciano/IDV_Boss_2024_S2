@@ -7,10 +7,10 @@ func _ready() -> void:
 func apply_action():
 	var ball = player.ball
 	if(ball):
-		ball.set_physics_process(false)
-		ball.apply_central_impulse(point * power)
-		
+		var impuse = (click_point - player.global_position).normalized() * power
+		ball.apply_central_impulse(impuse)
 		ball.player_owner = null
 		player.ball = null
+		ball.set_physics_process(false)
 	else:
 		print("El jugador no tiene la pelota para patearla")

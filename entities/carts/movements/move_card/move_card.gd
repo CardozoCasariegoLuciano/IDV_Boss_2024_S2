@@ -6,4 +6,5 @@ func _ready() -> void:
 
 
 func apply_action():
-	player.apply_central_impulse(point * power)
+	var impuse = (click_point - player.global_position).normalized() * power
+	player.apply_central_impulse(impuse)
