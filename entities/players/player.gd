@@ -1,34 +1,22 @@
 extends RigidBody2D
 class_name Player
 
-#TODOs Backlog
-#Agregar mas cartas, tratando de generalizar las modificaciones que tengamos que hacer
-#Que no salgan de la cancha
-#Que no se pueda usar las cartas propias en los jugadores rivales
-#Poder ver en pantalla el radio de las distintas acciones (para que no tengan alcance infinito)
-#Poder ver en pantalla las acciones ya jugadas en mi turno
-#Agregar todo el sistema de mana
-#Agregar la pantalla de blokeo entre turnos y la de "espera" para ejecutar las acciones
-#Crear la clase padre para los jugadores y que sea facil agregar los nuevos tipos
-#Agregar los DTs (creando clase padre para que sean escalable)
-#Agregar los feedbacks al usuario (por ejemplo cuando quiere patear pero no tiene la pelota)
-#Permitir concatenar jugadas, para eso pense que cuando se mueve (por ejemplo) si bien no se ejecuta la accion, le podemos mostrar la silueta para que aplique otra jugada ahi mismo
-#Dibujar bien la cancha y definir los arcos
-#Diseñar lo visual de los jugadores
-#Diseñar lo visual de las cartas
-#Mostrar la UI completa, con el turno actual, duracion de la partida, Mana actual, etc
-#Crear el Menu principal (nombre del juego, boton Jugar, boton salir, etc)
-#Crear la pantalla de creacion de mazos, seleccion de DT y de capitan
-
 var enable_click := false
 var used_cart: Card_template
 var target
 var ball: Ball
 
+var userOwner
+
+func initialize(marker: Marker2D, userOwner: int):
+	self.userOwner = userOwner
+	global_position = marker.global_position
+	if userOwner == 2:
+		modulate = "ff41ff"
+
 func _ready() -> void:
 	initial_properties()
 	Global.can_execute.connect(execute_move)
-
 
 func _physics_process(delta):
 	set_friction()
