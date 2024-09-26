@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://entities/players/panel.gd" id="3_20nvj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uad6i"]
-size = Vector2(123, 122)
+size = Vector2(129, 122)
 
 [node name="Player" type="RigidBody2D"]
 position = Vector2(-4, -6)
@@ -13,10 +13,11 @@ script = ExtResource("1_6beys")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_33umy")
 
 [node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
 offset_left = -26.0
 offset_top = -24.0
 offset_right = 22.0
@@ -24,8 +25,8 @@ offset_bottom = 23.0
 script = ExtResource("3_20nvj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 0)
-scale = Vector2(0.4, 0.4)
+position = Vector2(-0.900001, 0)
+scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_uad6i")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

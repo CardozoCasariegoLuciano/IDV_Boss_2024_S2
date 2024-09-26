@@ -2,7 +2,7 @@ extends RigidBody2D
 class_name Ball
 
 var player_owner: Player
-@export var distance_ahead: float = 50 # Distancia por delante
+@export var distance_ahead: float = 25 # Distancia por delante
 
 func _ready() -> void:
 	linear_damp = 1.0
@@ -11,8 +11,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	#print("tiene player ", player_owner)
-
 	if(player_owner):
 		#Muy WTF esto, si saco esta variable (que no se usa) se buguea la pelota
 		var ball_global_position = global_position 

@@ -13,6 +13,7 @@ point_count = 6
 
 [node name="Node" type="Node"]
 script = ExtResource("1_hn30x")
+players = ExtResource("1_isdmp")
 
 [node name="cancha" type="Node" parent="."]
 
@@ -31,19 +32,41 @@ script = ExtResource("1_kwt4r")
 
 [node name="Jugadores" type="Node" parent="."]
 
-[node name="PlayerA_1" parent="Jugadores" instance=ExtResource("1_isdmp")]
-modulate = Color(0.91, 0.4732, 0.4732, 1)
-position = Vector2(921, 406)
+[node name="initial_positions" type="Node" parent="."]
 
-[node name="PlayerA_2" parent="Jugadores" instance=ExtResource("1_isdmp")]
-modulate = Color(0.91, 0.4732, 0.4732, 1)
-position = Vector2(907, 225)
+[node name="Player 1" type="Node" parent="initial_positions"]
 
-[node name="PlayerB_1" parent="Jugadores" instance=ExtResource("1_isdmp")]
-position = Vector2(193, 352)
+[node name="Marker2D" type="Marker2D" parent="initial_positions/Player 1"]
+position = Vector2(364, 194)
 
-[node name="PlayerB_2" parent="Jugadores" instance=ExtResource("1_isdmp")]
-position = Vector2(189, 217)
+[node name="Marker2D2" type="Marker2D" parent="initial_positions/Player 1"]
+position = Vector2(359, 286)
+
+[node name="Marker2D3" type="Marker2D" parent="initial_positions/Player 1"]
+position = Vector2(355, 377)
+
+[node name="Marker2D4" type="Marker2D" parent="initial_positions/Player 1"]
+position = Vector2(230, 282)
+
+[node name="Marker2D5" type="Marker2D" parent="initial_positions/Player 1"]
+position = Vector2(73, 280)
+
+[node name="Player 2" type="Node" parent="initial_positions"]
+
+[node name="Marker2D" type="Marker2D" parent="initial_positions/Player 2"]
+position = Vector2(772, 475)
+
+[node name="Marker2D2" type="Marker2D" parent="initial_positions/Player 2"]
+position = Vector2(785, 126)
+
+[node name="Marker2D3" type="Marker2D" parent="initial_positions/Player 2"]
+position = Vector2(931, 402)
+
+[node name="Marker2D4" type="Marker2D" parent="initial_positions/Player 2"]
+position = Vector2(941, 203)
+
+[node name="Marker2D5" type="Marker2D" parent="initial_positions/Player 2"]
+position = Vector2(1062, 295)
 
 [node name="cartas" type="Node" parent="."]
 
