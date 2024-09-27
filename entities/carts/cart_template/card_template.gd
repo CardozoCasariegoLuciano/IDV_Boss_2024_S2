@@ -5,6 +5,7 @@ signal on_cart_used
 @onready var color_rect: ColorRect = $ColorRect
 
 var require_click = true
+var use_in_rival = false
 var power
 var max_distance
 
