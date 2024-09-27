@@ -1,22 +1,24 @@
 extends Panel
-@onready var color_rect: ColorRect = $"../ColorRect"
 @onready var card: Node2D = $".."
+@onready var card_sprite: Sprite2D = $"../Sprite2D"
+@onready var card_fullscreen: CanvasLayer = $"../CanvasLayer"
 
+var is_hover = false
 
 func _get_drag_data(at_position: Vector2) -> Variant:
-	if color_rect.color.a == 0:
+	if !card_sprite.visible:
 		return
-	var preview_color = ColorRect.new()
-	preview_color.color.r = color_rect.color.r - 0.1
-	preview_color.color.g = color_rect.color.g - 0.1
-	preview_color.color.b = color_rect.color.b - 0.1
-	preview_color.set_size(color_rect.size * 0.7)
-	
+		
+	var preview_cart = Sprite2D.new()
+	preview_cart.texture = card_sprite.texture
+	preview_cart.scale = card_sprite.scale * 0.4
+	preview_cart.z_index=1
+
 	var preview = Control.new()
-	preview.add_child(preview_color)
+	preview.add_child(preview_cart)
 	
 	set_drag_preview(preview)
-	color_rect.color.a = 0
+	card.change_card_visibility(false)
 	return card
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
@@ -24,4 +26,24 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 
 #Emitir una señal al padre para que realice una accion
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	data.change_card_visibility(1)
+	data.change_card_visibility(true)
+
+func _on_mouse_entered() -> void:
+	if(!is_hover):
+		hover(1)
+
+func _on_mouse_exited() -> void:
+	if(is_hover):
+		hover(-1)
+
+func _on_gui_input(event: InputEvent) -> void:
+	if(event is InputEventMouseButton and event.button_index == 1 and !event.pressed):
+		card_fullscreen.visible = true
+		hover(-1)
+
+# 1 para aplicar el hover
+#-1 para no aplicarlo
+func hover(direction: int):
+	card.position.y = card.position.y - 100 * direction
+	card.z_index = 0 if (direction!=1) else 1
+	is_hover = !is_hover

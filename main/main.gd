@@ -9,7 +9,7 @@ extends Node
 @onready var initial_positions: Node = $initial_positions
 
 
-const CANT_CARTS = 4
+const CANT_CARTS = 7
 
 func _ready() -> void:
 	generate_players()
@@ -40,7 +40,7 @@ func create_cart(index: int):
 		cartas.add_child.call_deferred(newCart)
 		
 		var path_follow_2d: PathFollow2D = $CartsConfig/CreationCartPath/PathFollow2D
-		path_follow_2d.progress = 120 * index
+		path_follow_2d.progress = 80 * index
 		newCart.global_position = path_follow_2d.global_position
 
 

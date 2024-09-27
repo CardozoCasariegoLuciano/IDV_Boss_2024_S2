@@ -7,9 +7,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_nkn7e"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 270, 642, 0, 0, 0, 0, 398, 650, 0, 0, 0, 0, 492, 637, -32.8434, -1.05946, 32.8434, 1.05946, 630, 646, 0, 0, 0, 0, 741, 654, 0, 0, 0, 0, 779, 656)
+"points": PackedVector2Array(0, 0, 0, 0, 270, 642, 0, 0, 0, 0, 312.073, 635.971, 0, 0, 0, 0, 418.493, 639.138, 0, 0, 0, 0, 492, 637, 0, 0, 0, 0, 546, 646, -32.8434, -1.05946, 32.8434, 1.05946, 634.632, 638.082, 0, 0, 0, 0, 735.277, 645.471, 0, 0, 0, 0, 783.125, 644.416)
 }
-point_count = 6
+point_count = 8
 
 [node name="Node" type="Node"]
 script = ExtResource("1_hn30x")
@@ -26,7 +26,8 @@ color = Color(0.24246, 0.54, 0.2268, 1)
 
 [node name="fieldDropDetector" type="Panel" parent="cancha"]
 modulate = Color(1, 0.24, 0.24, 0)
-offset_right = 1150.0
+offset_left = 1.0
+offset_right = 1151.0
 offset_bottom = 651.0
 script = ExtResource("1_kwt4r")
 
@@ -76,12 +77,13 @@ position = Vector2(581, 273)
 [node name="CartsConfig" type="Node" parent="."]
 
 [node name="CreationCartPath" type="Path2D" parent="CartsConfig"]
-position = Vector2(40, -99)
+position = Vector2(-63.2889, -571)
+scale = Vector2(1.21218, 1.89474)
 curve = SubResource("Curve2D_nkn7e")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CartsConfig/CreationCartPath"]
 position = Vector2(270, 642)
-rotation = 0.0624188
+rotation = -0.142329
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
