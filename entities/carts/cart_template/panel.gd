@@ -5,7 +5,7 @@ extends Panel
 
 var is_hover = false
 
-func _get_drag_data(at_position: Vector2) -> Variant:
+func _get_drag_data(_at_position: Vector2) -> Variant:
 	if !card_sprite.visible:
 		return
 		
@@ -21,11 +21,11 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	card.change_card_visibility(false)
 	return card
 
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	return true
 
 #Emitir una señal al padre para que realice una accion
-func _drop_data(at_position: Vector2, data: Variant) -> void:
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	data.change_card_visibility(true)
 
 func _on_mouse_entered() -> void:

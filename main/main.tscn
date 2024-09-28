@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1touvs3ht15k"]
+[gd_scene load_steps=7 format=3 uid="uid://c1touvs3ht15k"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
 [ext_resource type="PackedScene" uid="uid://djaky7olesetp" path="res://entities/players/player.tscn" id="1_isdmp"]
 [ext_resource type="Script" path="res://main/field_drop_detector.gd" id="1_kwt4r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pneb"]
+size = Vector2(13, 202)
 
 [sub_resource type="Curve2D" id="Curve2D_nkn7e"]
 _data = {
@@ -14,6 +17,7 @@ point_count = 8
 [node name="Node" type="Node"]
 script = ExtResource("1_hn30x")
 players = ExtResource("1_isdmp")
+ball = ExtResource("1_4ipka")
 
 [node name="cancha" type="Node" parent="."]
 
@@ -23,13 +27,40 @@ offset_top = 33.0
 offset_right = 1122.0
 offset_bottom = 553.0
 color = Color(0.24246, 0.54, 0.2268, 1)
+metadata/_edit_lock_ = true
 
 [node name="fieldDropDetector" type="Panel" parent="cancha"]
 modulate = Color(1, 0.24, 0.24, 0)
-offset_left = 1.0
-offset_right = 1151.0
-offset_bottom = 651.0
+offset_left = -6.0
+offset_top = -33.0
+offset_right = 1144.0
+offset_bottom = 618.0
 script = ExtResource("1_kwt4r")
+metadata/_edit_lock_ = true
+
+[node name="arco_A" type="Line2D" parent="cancha"]
+points = PackedVector2Array(30, 189, 130, 189, 130, 393, 30, 393)
+width = 2.0
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="cancha/arco_A"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/arco_A/Area2D"]
+position = Vector2(37.5, 292)
+shape = SubResource("RectangleShape2D_0pneb")
+
+[node name="arco_B" type="Line2D" parent="cancha"]
+position = Vector2(22, 39)
+points = PackedVector2Array(1100, 150, 1000, 150, 1000, 354, 1100, 354)
+width = 2.0
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="cancha/arco_B"]
+position = Vector2(-22, -39)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/arco_B/Area2D"]
+position = Vector2(1115, 291)
+shape = SubResource("RectangleShape2D_0pneb")
 
 [node name="Jugadores" type="Node" parent="."]
 
@@ -50,7 +81,7 @@ position = Vector2(355, 377)
 position = Vector2(230, 282)
 
 [node name="Marker2D5" type="Marker2D" parent="initial_positions/Player 1"]
-position = Vector2(73, 280)
+position = Vector2(74, 290)
 
 [node name="Player 2" type="Node" parent="initial_positions"]
 
@@ -67,12 +98,9 @@ position = Vector2(931, 402)
 position = Vector2(941, 203)
 
 [node name="Marker2D5" type="Marker2D" parent="initial_positions/Player 2"]
-position = Vector2(1062, 295)
+position = Vector2(1078, 298)
 
 [node name="cartas" type="Node" parent="."]
-
-[node name="Pelota" parent="." instance=ExtResource("1_4ipka")]
-position = Vector2(581, 273)
 
 [node name="CartsConfig" type="Node" parent="."]
 
@@ -85,16 +113,16 @@ curve = SubResource("Curve2D_nkn7e")
 position = Vector2(270, 642)
 rotation = -0.142329
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="EndTurn_Button" type="Button" parent="HUD"]
 offset_left = 919.0
 offset_top = 605.0
 offset_right = 1106.0
 offset_bottom = 636.0
 text = "confirmar planificacion"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="Turns" type="HBoxContainer" parent="HUD"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -107,13 +135,36 @@ offset_bottom = -52.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer"]
+[node name="Label" type="Label" parent="HUD/Turns"]
 layout_mode = 2
 text = "jugador"
 
-[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer"]
+[node name="Label2" type="Label" parent="HUD/Turns"]
 layout_mode = 2
 text = "1
 "
 
-[connection signal="button_up" from="CanvasLayer/Button" to="." method="_on_end_turn"]
+[node name="Goals" type="HBoxContainer" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="player_1_goals" type="Label" parent="HUD/Goals"]
+layout_mode = 2
+text = "0"
+
+[node name="separator" type="Label" parent="HUD/Goals"]
+layout_mode = 2
+text = " - "
+
+[node name="player_2_goals" type="Label" parent="HUD/Goals"]
+layout_mode = 2
+text = "0"
+
+[connection signal="body_entered" from="cancha/arco_A/Area2D" to="." method="_on_arco_1_goal"]
+[connection signal="body_entered" from="cancha/arco_B/Area2D" to="." method="_on_arco_2_goal"]
+[connection signal="button_up" from="HUD/EndTurn_Button" to="." method="_on_end_turn"]

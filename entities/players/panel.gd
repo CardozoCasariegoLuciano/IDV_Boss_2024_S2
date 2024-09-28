@@ -3,10 +3,10 @@ signal on_cart_used
 
 @onready var player: Player = $".."
 
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	return true
 
-func _drop_data(at_position: Vector2, data: Variant) -> void:
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var card: Card_template = data
 		
 	if card.use_in_rival and Global.current_player_turn != player.userOwner\

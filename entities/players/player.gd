@@ -8,8 +8,8 @@ var ball: Ball
 
 var userOwner
 
-func initialize(marker: Marker2D, userOwner: int):
-	self.userOwner = userOwner
+func initialize(marker: Marker2D, userOwner_id: int):
+	self.userOwner = userOwner_id
 	global_position = marker.global_position
 	if userOwner == 2:
 		modulate = "ff41ff"
@@ -18,7 +18,7 @@ func _ready() -> void:
 	initial_properties()
 	Global.can_execute.connect(execute_move)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	set_friction()
 
 

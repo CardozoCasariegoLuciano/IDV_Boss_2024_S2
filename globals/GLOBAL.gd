@@ -1,17 +1,13 @@
 extends Node
 signal can_execute
-#var can_execute = false
+
+const GOALS_TO_WIN = 1
 
 var current_player_turn = 1
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print("Funcaaa")
-
+var player_1_goals = 0
+var player_2_goals = 0
 
 func next_player_turn():
-	
-	
 	if(current_player_turn == 1): 
 		current_player_turn = 2
 		can_execute.emit(false)
@@ -21,3 +17,11 @@ func next_player_turn():
 	else:
 		current_player_turn = 1
 		can_execute.emit(false)
+
+func any_winner() -> bool:
+	return player_1_goals >= GOALS_TO_WIN or player_2_goals >= GOALS_TO_WIN
+	
+func reset_values():
+	player_1_goals = 0
+	player_2_goals = 0
+	current_player_turn = 1
