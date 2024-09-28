@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_cc4bb"]
 [ext_resource type="Script" path="res://entities/carts/movements/move_card/move_card.gd" id="2_v3gpk"]
-[ext_resource type="Texture2D" uid="uid://cbqpb201cq1jl" path="res://assets/cards/move_card.png" id="3_nms8q"]
+[ext_resource type="Texture2D" uid="uid://bntl365nhbq2k" path="res://assets/cards/final_assets/move_card.png" id="3_tuwpe"]
 
 [node name="Card_Template" instance=ExtResource("1_cc4bb")]
 script = ExtResource("2_v3gpk")
 
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("3_nms8q")
+texture = ExtResource("3_tuwpe")
