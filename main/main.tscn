@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1touvs3ht15k"]
+[gd_scene load_steps=13 format=3 uid="uid://c1touvs3ht15k"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
@@ -14,9 +14,18 @@ bounce = 1.0
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7gpqo"]
 b = Vector2(0, 527)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cwsb1"]
+bounce = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oyiy8"]
+bounce = 1.0
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6js5q"]
 a = Vector2(795, 331)
 b = Vector2(-302, 331)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wgwl1"]
+bounce = 1.0
 
 [sub_resource type="Curve2D" id="Curve2D_nkn7e"]
 _data = {
@@ -90,6 +99,7 @@ points = PackedVector2Array(28, 556, 28, 29)
 width = 5.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="cancha/lineRight"]
+physics_material_override = SubResource("PhysicsMaterial_cwsb1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineRight/StaticBody2D"]
 position = Vector2(27, 29)
@@ -101,6 +111,7 @@ points = PackedVector2Array(1126, 554, 26, 554)
 width = 5.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="cancha/lineBottom"]
+physics_material_override = SubResource("PhysicsMaterial_oyiy8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineBottom/StaticBody2D"]
 position = Vector2(329, 222)
@@ -112,6 +123,7 @@ points = PackedVector2Array(1126, 554, 26, 554)
 width = 5.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="cancha/lineTop"]
+physics_material_override = SubResource("PhysicsMaterial_wgwl1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineTop/StaticBody2D"]
 position = Vector2(329, 224)
