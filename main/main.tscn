@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1touvs3ht15k"]
+[gd_scene load_steps=10 format=3 uid="uid://c1touvs3ht15k"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
@@ -7,6 +7,16 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pneb"]
 size = Vector2(13, 202)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uxay6"]
+bounce = 1.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7gpqo"]
+b = Vector2(0, 527)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6js5q"]
+a = Vector2(795, 331)
+b = Vector2(-302, 331)
 
 [sub_resource type="Curve2D" id="Curve2D_nkn7e"]
 _data = {
@@ -61,6 +71,51 @@ position = Vector2(-22, -39)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/arco_B/Area2D"]
 position = Vector2(1115, 291)
 shape = SubResource("RectangleShape2D_0pneb")
+
+[node name="lineLeft" type="Line2D" parent="cancha"]
+position = Vector2(0, 1)
+points = PackedVector2Array(28, 556, 28, 29)
+width = 5.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cancha/lineLeft"]
+physics_material_override = SubResource("PhysicsMaterial_uxay6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineLeft/StaticBody2D"]
+position = Vector2(29, 29)
+shape = SubResource("SegmentShape2D_7gpqo")
+
+[node name="lineRight" type="Line2D" parent="cancha"]
+position = Vector2(1096, 1)
+points = PackedVector2Array(28, 556, 28, 29)
+width = 5.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cancha/lineRight"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineRight/StaticBody2D"]
+position = Vector2(27, 29)
+shape = SubResource("SegmentShape2D_7gpqo")
+
+[node name="lineBottom" type="Line2D" parent="cancha"]
+position = Vector2(0, 1)
+points = PackedVector2Array(1126, 554, 26, 554)
+width = 5.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cancha/lineBottom"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineBottom/StaticBody2D"]
+position = Vector2(329, 222)
+shape = SubResource("SegmentShape2D_6js5q")
+
+[node name="lineTop" type="Line2D" parent="cancha"]
+position = Vector2(0, -523)
+points = PackedVector2Array(1126, 554, 26, 554)
+width = 5.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cancha/lineTop"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineTop/StaticBody2D"]
+position = Vector2(329, 224)
+shape = SubResource("SegmentShape2D_6js5q")
 
 [node name="Jugadores" type="Node" parent="."]
 
