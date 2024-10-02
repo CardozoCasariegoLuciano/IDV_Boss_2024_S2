@@ -5,6 +5,3 @@
 
 [node name="Card_Template" instance=ExtResource("1_aaydw")]
 script = ExtResource("2_72ju6")
-
-[node name="ColorRect" parent="." index="0"]
-color = Color(0, 1, 1, 1)

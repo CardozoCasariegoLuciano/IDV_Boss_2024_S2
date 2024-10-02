@@ -10,10 +10,10 @@ func _ready() -> void:
 	set_physics_process(false)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if(player_owner):
 		#Muy WTF esto, si saco esta variable (que no se usa) se buguea la pelota
-		var ball_global_position = global_position 
+		var _ball_global_position = global_position 
 		
 		var direction = (player_owner.global_transform.x).normalized()
 		var target_position = player_owner.global_position + direction * distance_ahead

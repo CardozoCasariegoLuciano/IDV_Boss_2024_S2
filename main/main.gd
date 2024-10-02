@@ -1,20 +1,21 @@
 extends Node
 
 @export var players: PackedScene
+@export var ball: PackedScene
 
 @onready var cartas: Node = $cartas
-@onready var label_current_player: Label = $CanvasLayer/HBoxContainer/Label2
+
+@onready var label_current_player: Label = $HUD/Turns/Label2
+@onready var player_1_goals: Label = $HUD/Goals/player_1_goals
+@onready var player_2_goals: Label = $HUD/Goals/player_2_goals
 
 @onready var jugadores: Node = $Jugadores
 @onready var initial_positions: Node = $initial_positions
 
-
-const CANT_CARTS = 4
+const CANT_CARTS = 7
 
 func _ready() -> void:
-	generate_players()
-	generate_carts()
-	label_current_player.text = str(Global.current_player_turn)
+	start_game(false)
 
 func generate_players():
 	var player = 1
@@ -40,9 +41,13 @@ func create_cart(index: int):
 		cartas.add_child.call_deferred(newCart)
 		
 		var path_follow_2d: PathFollow2D = $CartsConfig/CreationCartPath/PathFollow2D
-		path_follow_2d.progress = 120 * index
+		path_follow_2d.progress = 80 * index
 		newCart.global_position = path_follow_2d.global_position
-
+		
+func generate_ball():
+	var new_ball: Ball = ball.instantiate()
+	new_ball.global_position = Vector2(581,273)
+	call_deferred("add_child", new_ball)
 
 func random_card_scene() -> Card_template:
 	var random_index = randi() % CardBank.card_scenes_bank.size()
@@ -59,3 +64,33 @@ func next_player_turn():
 	for card in cartas.get_children():
 		cartas.remove_child(card)
 	generate_carts()
+
+
+func _on_arco_2_goal(body: Node2D) -> void:
+	if body is Ball:
+		Global.player_1_goals +=1
+		player_1_goals.text = str(Global.player_1_goals)
+		call_deferred("remove_child", body)
+		start_game(true)
+
+func _on_arco_1_goal(body: Node2D) -> void:
+	if body is Ball:
+		Global.player_2_goals +=1
+		player_2_goals.text = str(Global.player_2_goals)
+		call_deferred("remove_child", body)
+		start_game(true)
+
+func start_game(clean_old: bool):
+	if(Global.any_winner()):
+		get_tree().call_deferred("change_scene_to_file","res://Views/win_screen/win_screen.tscn")
+		return
+	
+	if(clean_old):
+		for value in jugadores.get_children():
+			jugadores.remove_child(value)
+		for value in cartas.get_children():
+			cartas.remove_child(value)
+	generate_players()
+	generate_carts()
+	generate_ball()
+	label_current_player.text = str(Global.current_player_turn)
