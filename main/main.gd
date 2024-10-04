@@ -3,13 +3,13 @@ extends Node
 @export var players: PackedScene
 @export var ball: PackedScene
 
-@onready var cartas: Node = $cartas
+@onready var cartas: Node2D = $cartas
 
 @onready var label_current_player: Label = $HUD/Turns/Label2
 @onready var player_1_goals: Label = $HUD/Goals/player_1_goals
 @onready var player_2_goals: Label = $HUD/Goals/player_2_goals
 
-@onready var jugadores: Node = $Jugadores
+@onready var jugadores: Node2D = $Jugadores
 @onready var initial_positions: Node = $initial_positions
 
 const CANT_CARTS = 7
@@ -29,12 +29,9 @@ func create_player(value: Node, player: int):
 		jugadores.add_child.call_deferred(newPlayer)
 		newPlayer.initialize(positions, player)
 
-
 func generate_carts():
 	for i in range(CANT_CARTS):
 		create_cart(i)
-	Global.can_execute.emit(false)
-
 
 func create_cart(index: int):
 		var newCart: Card_template = random_card_scene()
@@ -53,18 +50,15 @@ func random_card_scene() -> Card_template:
 	var random_index = randi() % CardBank.card_scenes_bank.size()
 	return CardBank.card_scenes_bank[random_index].instantiate()
 
-
 func _on_end_turn() -> void:
 	Global.next_player_turn()
 	label_current_player.text = str(Global.current_player_turn)
 	next_player_turn()
 
-	
 func next_player_turn():
 	for card in cartas.get_children():
 		cartas.remove_child(card)
 	generate_carts()
-
 
 func _on_arco_2_goal(body: Node2D) -> void:
 	if body is Ball:
@@ -87,9 +81,9 @@ func start_game(clean_old: bool):
 	
 	if(clean_old):
 		for value in jugadores.get_children():
-			jugadores.remove_child(value)
+			value.queue_free()
 		for value in cartas.get_children():
-			cartas.remove_child(value)
+			value.queue_free()
 	generate_players()
 	generate_carts()
 	generate_ball()

@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://entities/carts/cart_template/fullscreen_card_panel.gd" id="4_jgyl3"]
 
 [node name="Card_Template" type="Node2D"]
+z_index = 1
 script = ExtResource("1_d832n")
 
 [node name="Panel" type="Panel" parent="."]
@@ -29,10 +30,6 @@ modulate = Color(1, 1, 1, 0.411765)
 offset_right = 1150.0
 offset_bottom = 651.0
 script = ExtResource("4_jgyl3")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(553, 315)
-scale = Vector2(0.8, 0.8)
 
 [connection signal="gui_input" from="Panel" to="Panel" method="_on_gui_input"]
 [connection signal="mouse_entered" from="Panel" to="Panel" method="_on_mouse_entered"]

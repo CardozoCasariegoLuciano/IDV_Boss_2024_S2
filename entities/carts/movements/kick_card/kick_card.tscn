@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwuerebsvu7ua"]
-
-[ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_aaydw"]
-[ext_resource type="Script" path="res://entities/carts/movements/kick_card/kick_card.gd" id="2_72ju6"]
-
-[node name="Card_Template" instance=ExtResource("1_aaydw")]
-script = ExtResource("2_72ju6")
