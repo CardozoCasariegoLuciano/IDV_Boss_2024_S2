@@ -13,6 +13,7 @@ script = ExtResource("1_6beys")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_33umy")
 
@@ -29,5 +30,12 @@ position = Vector2(-0.900001, 0)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_uad6i")
 
+[node name="config" type="Node" parent="."]
+
+[node name="cleanTimer" type="Timer" parent="config"]
+wait_time = 2.5
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="on_cart_used" from="Panel" to="." method="_on_panel_on_cart_used"]
+[connection signal="timeout" from="config/cleanTimer" to="." method="_on_clean_player"]

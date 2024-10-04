@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcthvb3ax6c65"]
+
+[ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_tiu8e"]
+[ext_resource type="Script" path="res://entities/carts/powers/gigant/gigant_card.gd" id="2_djshs"]
+
+[node name="Card_Template" instance=ExtResource("1_tiu8e")]
+script = ExtResource("2_djshs")
+
+[node name="Label" type="Label" parent="Sprite2D" index="0"]
+offset_left = -56.6667
+offset_top = 70.0
+offset_right = 55.3333
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Gigante"

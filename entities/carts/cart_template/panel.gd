@@ -6,12 +6,12 @@ extends Panel
 var is_hover = false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
-	if !card_sprite.visible:
-		return
+	if !card_sprite.visible: return
 		
 	var preview_cart = Sprite2D.new()
 	preview_cart.texture = card_sprite.texture
 	preview_cart.scale = card_sprite.scale * 0.4
+	preview_cart.modulate.a = 0.7
 	preview_cart.z_index=1
 
 	var preview = Control.new()
@@ -37,6 +37,7 @@ func _on_mouse_exited() -> void:
 		hover(-1)
 
 func _on_gui_input(event: InputEvent) -> void:
+	if(!card_sprite.visible):return
 	if(event is InputEventMouseButton and event.button_index == 1 and !event.pressed):
 		card_fullscreen.visible = true
 		hover(-1)
