@@ -13,8 +13,8 @@ size = Vector2(13, 202)
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uxay6"]
 bounce = 1.0
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_7gpqo"]
-b = Vector2(0, 527)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2okw"]
+size = Vector2(28, 565)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cwsb1"]
 bounce = 1.0
@@ -22,9 +22,8 @@ bounce = 1.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oyiy8"]
 bounce = 1.0
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_6js5q"]
-a = Vector2(795, 331)
-b = Vector2(-302, 331)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epenr"]
+size = Vector2(1120.5, 21.5)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wgwl1"]
 bounce = 1.0
@@ -92,8 +91,8 @@ width = 5.0
 physics_material_override = SubResource("PhysicsMaterial_uxay6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineLeft/StaticBody2D"]
-position = Vector2(29, 29)
-shape = SubResource("SegmentShape2D_7gpqo")
+position = Vector2(19, 292)
+shape = SubResource("RectangleShape2D_b2okw")
 
 [node name="lineRight" type="Line2D" parent="cancha"]
 position = Vector2(1096, 1)
@@ -104,8 +103,8 @@ width = 5.0
 physics_material_override = SubResource("PhysicsMaterial_cwsb1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineRight/StaticBody2D"]
-position = Vector2(27, 29)
-shape = SubResource("SegmentShape2D_7gpqo")
+position = Vector2(35.25, 294.5)
+shape = SubResource("RectangleShape2D_b2okw")
 
 [node name="lineBottom" type="Line2D" parent="cancha"]
 position = Vector2(0, 1)
@@ -116,8 +115,8 @@ width = 5.0
 physics_material_override = SubResource("PhysicsMaterial_oyiy8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineBottom/StaticBody2D"]
-position = Vector2(329, 222)
-shape = SubResource("SegmentShape2D_6js5q")
+position = Vector2(576.5, 562.27)
+shape = SubResource("RectangleShape2D_epenr")
 
 [node name="lineTop" type="Line2D" parent="cancha"]
 position = Vector2(0, -523)
@@ -128,8 +127,8 @@ width = 5.0
 physics_material_override = SubResource("PhysicsMaterial_wgwl1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cancha/lineTop/StaticBody2D"]
-position = Vector2(329, 224)
-shape = SubResource("SegmentShape2D_6js5q")
+position = Vector2(576.25, 545.75)
+shape = SubResource("RectangleShape2D_epenr")
 
 [node name="Jugadores" type="Node2D" parent="."]
 
