@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1touvs3ht15k"]
+[gd_scene load_steps=9 format=3 uid="uid://c1touvs3ht15k"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
 [ext_resource type="PackedScene" uid="uid://djaky7olesetp" path="res://entities/players/player.tscn" id="1_isdmp"]
 [ext_resource type="Script" path="res://main/field_drop_detector.gd" id="1_kwt4r"]
+[ext_resource type="Script" path="res://main/cartas.gd" id="5_7jnx3"]
+[ext_resource type="Script" path="res://main/hud.gd" id="5_qptaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pneb"]
 size = Vector2(13, 202)
@@ -62,7 +64,7 @@ position = Vector2(-22, -39)
 position = Vector2(1115, 291)
 shape = SubResource("RectangleShape2D_0pneb")
 
-[node name="Jugadores" type="Node" parent="."]
+[node name="Jugadores" type="Node2D" parent="."]
 
 [node name="initial_positions" type="Node" parent="."]
 
@@ -100,7 +102,8 @@ position = Vector2(941, 203)
 [node name="Marker2D5" type="Marker2D" parent="initial_positions/Player 2"]
 position = Vector2(1078, 298)
 
-[node name="cartas" type="Node" parent="."]
+[node name="cartas" type="Node2D" parent="."]
+script = ExtResource("5_7jnx3")
 
 [node name="CartsConfig" type="Node" parent="."]
 
@@ -114,6 +117,7 @@ position = Vector2(270, 642)
 rotation = -0.142329
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("5_qptaj")
 
 [node name="EndTurn_Button" type="Button" parent="HUD"]
 offset_left = 919.0

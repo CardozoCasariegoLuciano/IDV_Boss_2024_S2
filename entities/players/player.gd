@@ -1,8 +1,6 @@
 extends RigidBody2D
 class_name Player
 
-@onready var clean_timer: Timer = $config/cleanTimer
-
 var enable_click := false
 var used_cards: Array[Card_template]
 var click_position
@@ -18,6 +16,7 @@ func initialize(marker: Marker2D, userOwner_id: int):
 func _ready() -> void:
 	initial_properties()
 	Global.can_execute.connect(execute_move)
+	Global.clean_cards_effect.connect(clean_player)
 
 func _physics_process(_delta):
 	set_friction()
@@ -26,9 +25,11 @@ func execute_move(can_execute: bool):
 	if(can_execute and !used_cards.is_empty()):
 		for card in used_cards:
 			card.apply_action()
-		clean_timer.start()
 
 func _on_panel_on_cart_used(data: Card_template) -> void:
+	if(data.use_in_field):
+		data.change_card_visibility(1)
+		return
 	if(!used_cards.is_empty() and used_cards[-1].can_concatenate):
 		used_cards.append(data)
 	else:
@@ -37,20 +38,17 @@ func _on_panel_on_cart_used(data: Card_template) -> void:
 
 	if(!data.require_click):
 		data.set_data(self, Vector2.ZERO)
-		data.use_card()
 
 func _input(event):
-	if(!enable_click): return
+	if(!enable_click or used_cards.is_empty()): return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			click_position = get_global_mouse_position()
 			
 			var angle = (click_position - global_position).angle()
 			set_deferred("rotation", angle)
-			
 			var last_card = used_cards[-1]
 			last_card.set_data(self, event.position)
-			last_card.use_card()
 			enable_click = false
 
 func set_friction():
@@ -83,7 +81,8 @@ func initial_properties():
 func _on_body_entered(_body: Node) -> void:
 	click_position = null
 
-func _on_clean_player() -> void:
-	for card in used_cards:
-		card.clean_player()
-	used_cards = []
+func clean_player(can_clean: bool) -> void:
+	if(can_clean): 
+		for card in used_cards:
+			card.clean_target()
+		used_cards.clear()

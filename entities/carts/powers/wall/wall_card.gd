@@ -1,14 +1,16 @@
 extends Card_template
 
 @export var wall_scene: PackedScene
+var wall: Node
 
 func _ready() -> void:
 	require_click = true
-	can_concatenate = true
+	use_in_field = true
+	
+func after_set_data():
+	wall = wall_scene.instantiate() as StaticBody2D
+	wall.global_position = click_point
+	card_target.add_child(wall)
 
-func apply_action():
-	player.mass = 300
-	player.modulate = Color(.3,.3,.3,1)
-
-func clean_player():
-	player.initial_properties()
+func clean_target():
+	card_target.remove_child(wall)

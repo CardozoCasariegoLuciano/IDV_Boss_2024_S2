@@ -4,12 +4,12 @@ extends Panel
 @onready var card_fullscreen: CanvasLayer = $"../CanvasLayer"
 
 var is_hover = false
+var is_disable = false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if !card_sprite.visible: return
 		
-	var preview_cart = Sprite2D.new()
-	preview_cart.texture = card_sprite.texture
+	var preview_cart = card_sprite.duplicate()
 	preview_cart.scale = card_sprite.scale * 0.4
 	preview_cart.modulate.a = 0.7
 	preview_cart.z_index=1

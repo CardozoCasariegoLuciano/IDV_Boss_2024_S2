@@ -1,19 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://dha53vtws8hfb"]
+[gd_scene load_steps=5 format=3 uid="uid://dha53vtws8hfb"]
 
 [ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_bchkx"]
 [ext_resource type="Script" path="res://entities/carts/powers/wall/wall_card.gd" id="2_tu3k8"]
 [ext_resource type="PackedScene" uid="uid://b8xn6eeuvjgwr" path="res://entities/carts/powers/wall/wall.tscn" id="3_fkga8"]
+[ext_resource type="Texture2D" uid="uid://s45ckkm58fek" path="res://assets/cards/final_assets/8666641.png" id="4_4mgdp"]
 
 [node name="Card_Template" instance=ExtResource("1_bchkx")]
 script = ExtResource("2_tu3k8")
 wall_scene = ExtResource("3_fkga8")
 
 [node name="Label" type="Label" parent="Sprite2D" index="0"]
-offset_left = -20.0
-offset_top = 80.0
-offset_right = 22.0
-offset_bottom = 108.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.5
+offset_top = -281.0
+offset_right = -168.5
+offset_bottom = -239.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Wall
 "
+
+[node name="Label2" type="Label" parent="Sprite2D" index="1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -220.0
+offset_right = -30.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Esta carta crea un muro en la posición seleccionada de la cancha
+
+"
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Sprite2D" index="2"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.333
+offset_top = -306.667
+offset_right = -183.333
+offset_bottom = -257.667
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "15
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" index="3"]
+position = Vector2(-1.52588e-05, -93.3333)
+scale = Vector2(0.49349, 0.49349)
+texture = ExtResource("4_4mgdp")
