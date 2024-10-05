@@ -1,10 +1,14 @@
 extends Node
 signal can_execute
 signal clean_cards_effect
+signal on_reduce_energy
+signal try_to_use_card
 
 const GOALS_TO_WIN = 1
+const INIT_ENERGY = 15
 
 var current_player_turn = 1
+var current_player_energy := INIT_ENERGY
 var player_1_goals = 0
 var player_2_goals = 0
 
@@ -36,10 +40,14 @@ func next_player_turn():
 		current_player_turn = 2
 		can_execute.emit(false)
 		clean_cards_effect.emit(false)
+		current_player_energy = INIT_ENERGY
+		on_reduce_energy.emit(INIT_ENERGY)
 	elif(current_player_turn == 2):
 		current_player_turn = 1
 		can_execute.emit(true)
 		clean_timer.start()
+		current_player_energy = INIT_ENERGY
+		on_reduce_energy.emit(INIT_ENERGY)
 	else:
 		current_player_turn = 1
 		can_execute.emit(false)
@@ -52,3 +60,14 @@ func reset_values():
 	player_1_goals = 0
 	player_2_goals = 0
 	current_player_turn = 1
+
+func can_use_car(card: Card_template) -> bool: 
+	var can = card.energy_cost <= current_player_energy
+	return can
+
+func reduce_energy(card: Card_template):
+	if(current_player_energy >= card.energy_cost):
+		current_player_energy -= card.energy_cost
+		on_reduce_energy.emit(current_player_energy)
+	else:
+		push_error("Algo fallo con la validacion de energia")

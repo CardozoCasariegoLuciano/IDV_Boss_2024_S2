@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8xn6eeuvjgwr"]
+[gd_scene load_steps=3 format=3 uid="uid://b8xn6eeuvjgwr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2rcdy"]
+bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ji3mb"]
 size = Vector2(65.1443, 154.5)
 
 [node name="Wall" type="StaticBody2D"]
 scale = Vector2(0.544944, 1)
+physics_material_override = SubResource("PhysicsMaterial_2rcdy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4.12884, -0.25)

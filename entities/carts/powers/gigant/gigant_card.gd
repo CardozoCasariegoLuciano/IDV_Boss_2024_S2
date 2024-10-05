@@ -3,6 +3,7 @@ extends Card_template
 func _ready() -> void:
 	require_click = false
 	can_concatenate = true
+	energy_cost = 8
 
 func apply_action():
 	var player = card_target as Player

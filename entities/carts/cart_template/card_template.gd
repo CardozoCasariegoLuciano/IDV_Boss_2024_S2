@@ -10,6 +10,8 @@ var require_click = true
 var use_in_rival = false
 var use_in_field = false
 var can_concatenate = false
+
+var energy_cost = 0
 var power
 
 var card_target: Node
