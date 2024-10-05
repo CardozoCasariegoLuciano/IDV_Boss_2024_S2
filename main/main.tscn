@@ -174,7 +174,7 @@ script = ExtResource("5_7jnx3")
 [node name="CartsConfig" type="Node" parent="."]
 
 [node name="CreationCartPath" type="Path2D" parent="CartsConfig"]
-position = Vector2(-63.2889, -571)
+position = Vector2(-63.2889, -547)
 scale = Vector2(1.21218, 1.89474)
 curve = SubResource("Curve2D_nkn7e")
 
@@ -219,8 +219,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -21.0
+offset_top = -6.0
 offset_right = 21.0
-offset_bottom = 40.0
+offset_bottom = 34.0
 grow_horizontal = 2
 
 [node name="player_1_goals" type="Label" parent="HUD/Goals"]
@@ -232,6 +233,24 @@ layout_mode = 2
 text = " - "
 
 [node name="player_2_goals" type="Label" parent="HUD/Goals"]
+layout_mode = 2
+text = "0"
+
+[node name="Energy" type="HBoxContainer" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -80.0
+offset_right = 113.0
+offset_bottom = -40.0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="HUD/Energy"]
+layout_mode = 2
+text = "Energia: "
+
+[node name="energy" type="Label" parent="HUD/Energy"]
 layout_mode = 2
 text = "0"
 

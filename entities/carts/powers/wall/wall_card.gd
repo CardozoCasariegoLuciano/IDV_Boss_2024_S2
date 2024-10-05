@@ -6,6 +6,7 @@ var wall: Node
 func _ready() -> void:
 	require_click = true
 	use_in_field = true
+	energy_cost = 15
 	
 func after_set_data():
 	wall = wall_scene.instantiate() as StaticBody2D

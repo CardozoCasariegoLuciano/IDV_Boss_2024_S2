@@ -7,11 +7,17 @@ var used_cards: Array[Card_template]
 func _ready() -> void:
 	Global.clean_cards_effect.connect(clean_card_effects)
 
-func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
-	return true
+func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+	var card = data as Card_template
+	var can_use = Global.can_use_car(card)
+	if(!can_use):
+		card.change_card_visibility(true)
+	return can_use
 	
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var card = data as Card_template
+	Global.reduce_energy(card)
+	
 	if(card.use_in_field):
 		used_cards.append(card)
 		enable_click = card.require_click

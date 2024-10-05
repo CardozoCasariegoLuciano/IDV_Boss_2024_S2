@@ -1,5 +1,5 @@
 extends Panel
-@onready var card: Node2D = $".."
+@onready var card: Card_template = $".."
 @onready var card_sprite: Sprite2D = $"../Sprite2D"
 @onready var card_fullscreen: CanvasLayer = $"../CanvasLayer"
 
@@ -8,7 +8,8 @@ var is_disable = false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if !card_sprite.visible: return
-		
+	Global.try_to_use_card.emit(Global.current_player_energy >= card.energy_cost)
+
 	var preview_cart = card_sprite.duplicate()
 	preview_cart.scale = card_sprite.scale * 0.4
 	preview_cart.modulate.a = 0.7
