@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://brpe030wttgwg"]
+
+[ext_resource type="Script" path="res://Views/pre_game/deck_selector.gd" id="1_ya6ih"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_olg7w"]
+font_size = 24
+
+[node name="Deck selector" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+script = ExtResource("1_ya6ih")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1111.0
+offset_bottom = 616.0
+color = Color(0.1595, 0.33, 0, 1)
+
+[node name="close_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -71.0
+offset_right = 42.5
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "confirmar"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.5
+offset_top = 24.0
+offset_right = 75.5
+offset_bottom = 47.0
+grow_horizontal = 2
+text = "Mazo del jugador: 1"
+label_settings = SubResource("LabelSettings_olg7w")
+
+[node name="options" type="Node" parent="."]
+
+[connection signal="button_up" from="close_button" to="." method="_on_confirm"]

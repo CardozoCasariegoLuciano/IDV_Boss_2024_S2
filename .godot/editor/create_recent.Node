@@ -1,5 +1,10 @@
-ColorRect
-Button
+Node
 Label
-HBoxContainer
+Button
+ColorRect
+Control
 VBoxContainer
+HBoxContainer
+Line2D
+CanvasLayer
+Panel

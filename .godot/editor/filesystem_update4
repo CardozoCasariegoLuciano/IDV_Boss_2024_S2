@@ -1,3 +1,11 @@
 res://main/main.tscn
 res://entities/carts/cart_template/card_template.tscn
 res://entities/carts/movements/move_card/move_card.tscn
+res://Views/main_menu/main_menu.tscn
+res://Views/main_menu/main_menu.gd
+res://Views/win_screen/win_screen.gd
+res://globals/CARD_BANK.gd
+res://Views/pre_game/pre_game.tscn
+res://Views/pre_game/pre_game.gd
+res://Views/pre_game/deck_selector.tscn
+res://Views/pre_game/deck_selector.gd
