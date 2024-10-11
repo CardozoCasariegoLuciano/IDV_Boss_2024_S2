@@ -1,6 +1,7 @@
 extends Card_template
 
 func _ready() -> void:
+	scene_path = preload("res://entities/carts/powers/gigant/gigant_card.tscn")
 	require_click = false
 	can_concatenate = true
 	energy_cost = 8

@@ -236,21 +236,46 @@ text = " - "
 layout_mode = 2
 text = "0"
 
-[node name="Energy" type="HBoxContainer" parent="HUD"]
+[node name="Turn_data" type="VBoxContainer" parent="HUD"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -80.0
-offset_right = 113.0
-offset_bottom = -40.0
+offset_top = -85.0
+offset_right = 163.0
+offset_bottom = -8.0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="HUD/Energy"]
+[node name="deck" type="HBoxContainer" parent="HUD/Turn_data"]
+layout_mode = 2
+
+[node name="text" type="Label" parent="HUD/Turn_data/deck"]
+layout_mode = 2
+text = "Mazo: "
+
+[node name="deck" type="Label" parent="HUD/Turn_data/deck"]
+layout_mode = 2
+text = "0"
+
+[node name="discard_deck" type="HBoxContainer" parent="HUD/Turn_data"]
+layout_mode = 2
+
+[node name="text" type="Label" parent="HUD/Turn_data/discard_deck"]
+layout_mode = 2
+text = "Cartas usadas: "
+
+[node name="discard deck" type="Label" parent="HUD/Turn_data/discard_deck"]
+layout_mode = 2
+text = "0"
+
+[node name="Energy" type="HBoxContainer" parent="HUD/Turn_data"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HUD/Turn_data/Energy"]
 layout_mode = 2
 text = "Energia: "
 
-[node name="energy" type="Label" parent="HUD/Energy"]
+[node name="energy" type="Label" parent="HUD/Turn_data/Energy"]
 layout_mode = 2
 text = "0"
 
