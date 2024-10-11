@@ -1,0 +1,9 @@
+res://entities/carts/cart_template/card_template.tscn::16c4bdd497629224da45f1b748b19ef6::1728613688::res://.godot/exported/133200997/export-a21648ea73c049278f40e0610b62e2b4-card_template.scn
+res://entities/carts/movements/move_card/move_card.tscn::30bf0c9ef9b5f3e04944db690fb5e774::1728613688::res://.godot/exported/133200997/export-a3e305fa2f189345f4a0848d8dfce4e7-move_card.scn
+res://entities/carts/powers/gigant/gigant_card.tscn::633922497bdb3590436774088e1d4939::1728070081::res://.godot/exported/133200997/export-882e590cb5e437e2884232599797a49f-gigant_card.scn
+res://entities/carts/powers/wall/wall.tscn::e336231cb874fb8c4c51e44cc0379a09::1728613616::res://.godot/exported/133200997/export-3671b725c461dfb0804c0e94565547ee-wall.scn
+res://entities/carts/powers/wall/wall_card.tscn::f375ec945027471ee22ca83176011772::1728070081::res://.godot/exported/133200997/export-061bf94c7fa0daf0d99c32c72ea53dbb-wall_card.scn
+res://entities/pelota/pelota.tscn::fd5cfdba89179d26b7a2b93c1a51831b::1728070081::res://.godot/exported/133200997/export-5d72e200f0a0808b9ae89bff456fe0cd-pelota.scn
+res://entities/players/player.tscn::1e378b0eae554d35332af84679c1e1a8::1728613034::res://.godot/exported/133200997/export-345889851fbb99b6dbd509062a66cf54-player.scn
+res://main/main.tscn::12f734a0ab8f9f75d691e94ce07ad3b9::1728613688::res://.godot/exported/133200997/export-435f623093a3e2498450e744191b98a6-main.scn
+res://Views/win_screen/win_screen.tscn::d2b771cbe1471050450af9585d466156::1728070081::res://.godot/exported/133200997/export-ee4a4d02f2708e22c629a795b616eb75-win_screen.scn

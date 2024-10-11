@@ -1,6 +1,3 @@
 res://main/main.tscn
 res://entities/carts/cart_template/card_template.tscn
-res://entities/players/player.tscn
 res://entities/carts/movements/move_card/move_card.tscn
-res://entities/carts/cart_template/card_template.gd
-res://main/main.gd
