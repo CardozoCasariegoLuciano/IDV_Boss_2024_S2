@@ -4,6 +4,7 @@ extends Card_template
 var wall: Node
 
 func _ready() -> void:
+	scene_path = preload("res://entities/carts/powers/wall/wall_card.tscn")
 	require_click = true
 	use_in_field = true
 	energy_cost = 15

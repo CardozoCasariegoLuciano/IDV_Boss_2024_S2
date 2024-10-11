@@ -12,8 +12,6 @@ extends Node
 @onready var jugadores: Node2D = $Jugadores
 @onready var initial_positions: Node = $initial_positions
 
-const CANT_CARTS = 7
-
 func _ready() -> void:
 	start_game(false)
 
@@ -30,25 +28,22 @@ func create_player(value: Node, player: int):
 		newPlayer.initialize(positions, player)
 
 func generate_carts():
-	for i in range(CANT_CARTS):
-		create_cart(i)
+	CardBank.fill_current_player_hand()
+	var generated_cards = 0
+	for card in CardBank.get_current_player_hand():
+		add_card(card, generated_cards)
+		generated_cards += 1
 
-func create_cart(index: int):
-		var newCart: Card_template = random_card_scene()
-		cartas.add_child.call_deferred(newCart)
-		
-		var path_follow_2d: PathFollow2D = $CartsConfig/CreationCartPath/PathFollow2D
-		path_follow_2d.progress = 80 * index
-		newCart.global_position = path_follow_2d.global_position
-		
+func add_card(card: Card_template, index: int):
+	cartas.add_child.call_deferred(card)
+	var path_follow_2d: PathFollow2D = $CartsConfig/CreationCartPath/PathFollow2D
+	path_follow_2d.progress = 80 * index
+	card.global_position = path_follow_2d.global_position
+
 func generate_ball():
 	var new_ball: Ball = ball.instantiate()
 	new_ball.global_position = Vector2(581,273)
 	call_deferred("add_child", new_ball)
-
-func random_card_scene() -> Card_template:
-	var random_index = randi() % CardBank.card_scenes_bank.size()
-	return CardBank.card_scenes_bank[random_index].instantiate()
 
 func _on_end_turn() -> void:
 	Global.next_player_turn()
@@ -60,13 +55,15 @@ func next_player_turn():
 		cartas.remove_child(card)
 	generate_carts()
 
+#TODO refactor mover este metodo a otro lado (hace ruido que este en main)
 func _on_arco_2_goal(body: Node2D) -> void:
 	if body is Ball:
 		Global.player_1_goals +=1
 		player_1_goals.text = str(Global.player_1_goals)
 		call_deferred("remove_child", body)
 		start_game(true)
-
+		
+#TODO refactor mover este metodo a otro lado (hace ruido que este en main)
 func _on_arco_1_goal(body: Node2D) -> void:
 	if body is Ball:
 		Global.player_2_goals +=1

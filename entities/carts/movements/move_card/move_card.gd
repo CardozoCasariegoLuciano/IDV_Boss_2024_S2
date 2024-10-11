@@ -1,6 +1,7 @@
 extends Card_template
 
 func _ready() -> void:
+	scene_path = preload("res://entities/carts/movements/move_card/move_card.tscn")
 	power = 10000
 	require_click = true
 	energy_cost = 5
