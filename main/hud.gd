@@ -10,11 +10,11 @@ func _ready() -> void:
 	Global.clean_cards_effect.connect(enable_button)
 	Global.on_reduce_energy.connect(change_energy_label)
 	Global.try_to_use_card.connect(change_color_label)
-	CardBank.on_change_quantity.connect(update_cards_hud)
+	Deck.on_change_quantity.connect(update_cards_hud)
 
 	energy.text = str(Global.current_player_energy)
-	discard_deck.text = str(CardBank.get_current_player_DiscardDeck().size())
-	deck.text = str(CardBank.get_current_player_Deck().size())
+	discard_deck.text = str(Deck.get_current_player_DiscardDeck().size())
+	deck.text = str(Deck.get_current_player_Deck().size())
 
 func disable_button(can_execute: bool):
 	if(can_execute):
@@ -36,5 +36,5 @@ func change_color_label(value: bool):
 		tween.tween_property(energy, "modulate", Color.WHITE, 1.5).set_trans(Tween.TRANS_SINE)
 
 func update_cards_hud():
-	discard_deck.text = str(CardBank.get_current_player_DiscardDeck().size())
-	deck.text = str(CardBank.get_current_player_Deck().size())
+	discard_deck.text = str(Deck.get_current_player_DiscardDeck().size())
+	deck.text = str(Deck.get_current_player_Deck().size())

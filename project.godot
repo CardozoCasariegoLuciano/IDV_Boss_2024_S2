@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://globals/GLOBAL.gd"
 CardBank="*res://globals/CARD_BANK.gd"
+Deck="*res://globals/DECK.gd"
 
 [display]
 

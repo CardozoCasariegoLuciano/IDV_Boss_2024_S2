@@ -4,8 +4,11 @@ class_name Card_template
 #TODO_2 mejoras en el diseño de la carta:
 # que el nombre de la carta este mas arriba para poder verlo sin tener que hacerle hover
 
+@onready var panel: Panel = $Panel
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var card_sprite: Sprite2D = $Sprite2D
+@onready var button: Button = $CanvasLayer/Button
+
 var scene_path
 
 var require_click = true
@@ -38,6 +41,11 @@ func after_set_data():
 	pass
 
 func _on_discard_card() -> void:
-	CardBank.use_and_discard_card(self)
+	Deck.use_and_discard_card(self)
 	change_card_visibility(false)
 	canvas_layer.visible = false
+	
+func disble_hover():
+	button.visible = false
+	panel.can_hover = false
+	panel.size.y = 1050

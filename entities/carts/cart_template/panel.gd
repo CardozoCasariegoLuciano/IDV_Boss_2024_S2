@@ -4,6 +4,8 @@ extends Panel
 @onready var card_fullscreen: CanvasLayer = $"../CanvasLayer"
 
 var is_hover = false
+var can_hover = true
+
 var is_disable = false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
@@ -30,18 +32,18 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	data.change_card_visibility(true)
 
 func _on_mouse_entered() -> void:
-	if(!is_hover):
+	if(!is_hover and can_hover):
 		hover(1)
 
 func _on_mouse_exited() -> void:
-	if(is_hover):
+	if(is_hover and can_hover):
 		hover(-1)
 
 func _on_gui_input(event: InputEvent) -> void:
 	if(!card_sprite.visible):return
 	if(event is InputEventMouseButton and event.button_index == 1 and !event.pressed):
 		card_fullscreen.visible = true
-		hover(-1)
+		if(can_hover): hover(-1)
 
 # 1 para aplicar el hover
 #-1 para no aplicarlo

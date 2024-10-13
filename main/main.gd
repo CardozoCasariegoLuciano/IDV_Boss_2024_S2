@@ -13,7 +13,8 @@ extends Node
 @onready var initial_positions: Node = $initial_positions
 
 func _ready() -> void:
-	start_game(false)
+	Deck.set_players_Decks()
+	start_game(false);
 
 func generate_players():
 	var player = 1
@@ -28,9 +29,9 @@ func create_player(value: Node, player: int):
 		newPlayer.initialize(positions, player)
 
 func generate_carts():
-	CardBank.fill_current_player_hand()
+	Deck.fill_current_player_hand()
 	var generated_cards = 0
-	for card in CardBank.get_current_player_hand():
+	for card in Deck.get_current_player_hand():
 		add_card(card, generated_cards)
 		generated_cards += 1
 
