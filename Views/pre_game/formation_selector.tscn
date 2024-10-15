@@ -41,6 +41,7 @@ grow_vertical = 0
 text = "confirmar"
 
 [node name="Label" type="Label" parent="."]
+z_index = 5
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

@@ -1,3 +1,4 @@
+Label
 Panel
 CollisionShape2D
 Area2D
@@ -5,7 +6,6 @@ Line2D
 Control
 Node2D
 Node
-Label
 Button
 HBoxContainer
 Marker2D

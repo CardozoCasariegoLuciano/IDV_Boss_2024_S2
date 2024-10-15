@@ -3,3 +3,5 @@ res://entities/formations/formation_template/formation_template.tscn
 res://Views/pre_game/pre_game.tscn
 res://Views/pre_game/formation_selector.tscn
 res://entities/formations/formation_3/formation_3.tscn
+res://Views/pre_game/formation_selector.gd
+res://entities/formations/formation_template/formation_template.gd
