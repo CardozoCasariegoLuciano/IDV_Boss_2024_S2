@@ -4,7 +4,7 @@ signal clean_cards_effect
 signal on_reduce_energy
 signal try_to_use_card
 
-const GOALS_TO_WIN = 1
+const GOALS_TO_WIN = 2
 const INIT_ENERGY = 15
 
 var current_player_turn = 1
