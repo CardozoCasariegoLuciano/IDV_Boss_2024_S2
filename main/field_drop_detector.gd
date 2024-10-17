@@ -21,7 +21,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if(card.use_in_field):
 		used_cards.append(card)
 		enable_click = card.require_click
-		CardBank.use_and_discard_card(card)
+		Deck.use_and_discard_card(card)
 	else:
 		data.change_card_visibility(1)
 

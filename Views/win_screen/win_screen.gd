@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _on_new_game() -> void:
 	Global.reset_values()
+	Deck.reset_values()
 	get_tree().change_scene_to_file("res://main/main.tscn")
 
 func _on_exit() -> void:

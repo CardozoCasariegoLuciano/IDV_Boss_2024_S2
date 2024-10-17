@@ -17,6 +17,6 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if card.use_in_rival and Global.current_player_turn != player.userOwner\
 	or !card.use_in_rival and Global.current_player_turn == player.userOwner:
 		on_cart_used.emit(card)
-		CardBank.use_and_discard_card(card)
+		Deck.use_and_discard_card(card)
 	else:
 		card.change_card_visibility(1) #La retorna al mazo
