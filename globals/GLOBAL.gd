@@ -61,7 +61,7 @@ func reset_values():
 	player_2_goals = 0
 	current_player_turn = 1
 
-func can_use_car(card: Card_template) -> bool: 
+func can_use_card(card: Card_template) -> bool: 
 	var can = card.energy_cost <= current_player_energy
 	return can
 
