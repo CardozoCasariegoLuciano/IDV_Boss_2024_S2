@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dovsrj8ojxyfb"]
+
+[ext_resource type="PackedScene" uid="uid://cu2rqcr65jba3" path="res://entities/formations/formation_template/formation_template.tscn" id="1_vvfit"]
+
+[node name="formation" instance=ExtResource("1_vvfit")]
+
+[node name="Marker2D" parent="markers" index="0"]
+position = Vector2(200, 100)
+
+[node name="Marker2D2" parent="markers" index="1"]
+position = Vector2(200, -100)
+
+[node name="Marker2D3" parent="markers" index="2"]
+position = Vector2(40, 0)
+
+[node name="Marker2D4" parent="markers" index="3"]
+position = Vector2(340, 100)
+
+[node name="Marker2D5" parent="markers" index="4"]
+position = Vector2(340, -100)

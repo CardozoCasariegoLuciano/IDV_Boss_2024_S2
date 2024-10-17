@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu2rqcr65jba3"]
+
+[ext_resource type="Script" path="res://entities/formations/formation_template/formation_template.gd" id="1_xdov0"]
+[ext_resource type="Script" path="res://entities/formations/formation_template/click_detector.gd" id="2_kvtg7"]
+
+[node name="formation" type="Node2D"]
+position = Vector2(40, 290)
+script = ExtResource("1_xdov0")
+
+[node name="reference" type="Node2D" parent="."]
+position = Vector2(-40, -290)
+
+[node name="ColorRect" type="ColorRect" parent="reference"]
+offset_left = 30.0
+offset_top = 33.0
+offset_right = 1122.0
+offset_bottom = 553.0
+color = Color(0.24246, 0.54, 0.2268, 1)
+metadata/_edit_lock_ = true
+
+[node name="arco_A" type="Line2D" parent="reference"]
+points = PackedVector2Array(30, 189, 130, 189, 130, 393, 30, 393)
+width = 5.0
+metadata/_edit_lock_ = true
+
+[node name="arco_B" type="Line2D" parent="reference"]
+position = Vector2(22, 39)
+points = PackedVector2Array(1100, 150, 1000, 150, 1000, 354, 1100, 354)
+width = 5.0
+metadata/_edit_lock_ = true
+
+[node name="markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="markers"]
+position = Vector2(340, 100)
+
+[node name="Marker2D2" type="Marker2D" parent="markers"]
+position = Vector2(340, -100)
+
+[node name="Marker2D3" type="Marker2D" parent="markers"]
+position = Vector2(200, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="markers"]
+position = Vector2(340, 0)
+
+[node name="Marker2D5" type="Marker2D" parent="markers"]
+position = Vector2(50, 0)
+
+[node name="Selected_line" type="Line2D" parent="."]
+points = PackedVector2Array(-10, -257, -10, 263, 1082, 263, 1082, -257, -15, -257)
+width = 15.0
+default_color = Color(1, 0.983333, 0, 1)
+
+[node name="click_detector" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -11.0
+offset_top = -257.0
+offset_right = 1081.0
+offset_bottom = 262.0
+script = ExtResource("2_kvtg7")
+
+[connection signal="gui_input" from="click_detector" to="click_detector" method="_on_gui_input"]

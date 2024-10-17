@@ -17,13 +17,18 @@ func _ready() -> void:
 	start_game(false);
 
 func generate_players():
-	var player = 1
-	for value in initial_positions.get_children():
-		create_player(value, player)
-		player = 2
+	for player in range(1,3):
+		var formation_scene = Formations.players_formations[player - 1]
+		var formation = (formation_scene as PackedScene).instantiate() as Formation_template
+		initial_positions.add_child(formation)
+		formation.hide_panel()
+		formation.position = Vector2(40, 290)
+		if(player == 2):
+			formation.set_formation_to_player_2()
+		create_players(formation, player)
 
-func create_player(value: Node, player: int):
-	for positions in value.get_children():
+func create_players(value: Formation_template, player: int):
+	for positions in value.get_markers():
 		var newPlayer: Player = players.instantiate()
 		jugadores.add_child.call_deferred(newPlayer)
 		newPlayer.initialize(positions, player)
@@ -76,13 +81,15 @@ func start_game(clean_old: bool):
 	if(Global.any_winner()):
 		get_tree().call_deferred("change_scene_to_file","res://Views/win_screen/win_screen.tscn")
 		return
-	
+		
 	if(clean_old):
 		for value in jugadores.get_children():
 			value.queue_free()
 		for value in cartas.get_children():
 			value.queue_free()
+	Deck.reset_values()
 	generate_players()
 	generate_carts()
 	generate_ball()
+	
 	label_current_player.text = str(Global.current_player_turn)

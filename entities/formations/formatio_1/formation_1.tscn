@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl4o64jswwj6b"]
+
+[ext_resource type="PackedScene" uid="uid://cu2rqcr65jba3" path="res://entities/formations/formation_template/formation_template.tscn" id="1_r4yt0"]
+
+[node name="formation" instance=ExtResource("1_r4yt0")]

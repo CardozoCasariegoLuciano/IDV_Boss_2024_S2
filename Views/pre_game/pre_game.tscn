@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://5wrt8iit786d"]
+[gd_scene load_steps=4 format=3 uid="uid://5wrt8iit786d"]
 
 [ext_resource type="Script" path="res://Views/pre_game/pre_game.gd" id="1_yi5tk"]
 [ext_resource type="PackedScene" uid="uid://brpe030wttgwg" path="res://Views/pre_game/deck_selector.tscn" id="2_osjdq"]
+[ext_resource type="PackedScene" uid="uid://dhql4t8810uip" path="res://Views/pre_game/formation_selector.tscn" id="3_rrcj6"]
 
 [node name="pre_game" type="CanvasLayer"]
 script = ExtResource("1_yi5tk")
 deck_selector = ExtResource("2_osjdq")
+formation_selector = ExtResource("3_rrcj6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
@@ -66,7 +68,6 @@ text = "arma tu mazo"
 [node name="formation button" type="Button" parent="player 1/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
-disabled = true
 text = "Elige tu formación
 "
 
@@ -116,7 +117,6 @@ text = "arma tu mazo"
 [node name="formation button" type="Button" parent="player 2/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
-disabled = true
 text = "Elige tu formación
 "
 
@@ -129,4 +129,6 @@ text = "Elige tu DT
 
 [connection signal="button_up" from="Button" to="." method="_on_start_game"]
 [connection signal="button_up" from="player 1/Buttons/deck button" to="." method="_on_player_1_select_deck"]
+[connection signal="button_up" from="player 1/Buttons/formation button" to="." method="_on_player_1_select_formation"]
 [connection signal="button_up" from="player 2/Buttons/deck button" to="." method="_on_player_2_select_deck"]
+[connection signal="button_up" from="player 2/Buttons/formation button" to="." method="_on_player_2_select_formation"]
