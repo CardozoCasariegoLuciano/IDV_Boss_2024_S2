@@ -12,8 +12,17 @@ extends Node
 @onready var jugadores: Node2D = $Jugadores
 @onready var initial_positions: Node = $initial_positions
 
+@onready var main_sfx: AudioStreamPlayer = $MainSfx
+@onready var goal_sfx: AudioStreamPlayer = $GoalSfx
+@onready var croud_sfx: AudioStreamPlayer = $CroudSfx
+
+@export var whistle_sound: AudioStream
+@export var goal_sound: AudioStream
+@export var croud_sound: AudioStream
+
 func _ready() -> void:
 	Deck.set_players_Decks()
+	_play_croud_sound()
 	start_game(false);
 
 func generate_players():
@@ -64,6 +73,7 @@ func next_player_turn():
 #TODO refactor mover este metodo a otro lado (hace ruido que este en main)
 func _on_arco_2_goal(body: Node2D) -> void:
 	if body is Ball:
+		_play_goal_sound()
 		Global.player_1_goals +=1
 		player_1_goals.text = str(Global.player_1_goals)
 		call_deferred("remove_child", body)
@@ -72,12 +82,14 @@ func _on_arco_2_goal(body: Node2D) -> void:
 #TODO refactor mover este metodo a otro lado (hace ruido que este en main)
 func _on_arco_1_goal(body: Node2D) -> void:
 	if body is Ball:
+		_play_goal_sound()
 		Global.player_2_goals +=1
 		player_2_goals.text = str(Global.player_2_goals)
 		call_deferred("remove_child", body)
 		start_game(true)
 
 func start_game(clean_old: bool):
+	_play_sound(whistle_sound)
 	if(Global.any_winner()):
 		get_tree().call_deferred("change_scene_to_file","res://Views/win_screen/win_screen.tscn")
 		return
@@ -93,3 +105,16 @@ func start_game(clean_old: bool):
 	generate_ball()
 	
 	label_current_player.text = str(Global.current_player_turn)
+
+func _play_sound(sound: AudioStream):
+	main_sfx.stream = sound
+	main_sfx.play()
+	
+func _play_goal_sound():
+	goal_sfx.stream = goal_sound
+	goal_sfx.play()
+
+func _play_croud_sound():
+	croud_sfx.volume_db = -60
+	croud_sfx.stream = croud_sound
+	croud_sfx.play()

@@ -8,6 +8,10 @@ class_name Card_template
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var card_sprite: Sprite2D = $Sprite2D
 @onready var button: Button = $CanvasLayer/Button
+@onready var card_sfx: AudioStreamPlayer = $CardSfx
+
+@export var take_card_sfx: AudioStream
+@export var card_played_sfx: AudioStream
 
 var scene_path
 
@@ -23,12 +27,14 @@ var card_target: Node
 var click_point: Vector2
 
 func set_data(target: Node,point: Vector2):
+	_play_sfx(card_played_sfx)
 	self.card_target = target
 	self.click_point = point
 	after_set_data()
 
 
 func change_card_visibility(value: bool):
+	_play_sfx(take_card_sfx)
 	card_sprite.visible = value
 
 func apply_action():
@@ -49,3 +55,7 @@ func disble_hover():
 	button.visible = false
 	panel.can_hover = false
 	panel.size.y = 1050
+
+func _play_sfx(sound: AudioStream):
+	card_sfx.stream = sound
+	card_sfx.play()
