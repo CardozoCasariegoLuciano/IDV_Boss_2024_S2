@@ -18,7 +18,8 @@ extends Node
 
 @export var whistle_sound: AudioStream
 @export var goal_sound: AudioStream
-@export var croud_sound: AudioStream
+@export var croud_sound: AudioStreamOggVorbis
+@export var finished_turn_sound: AudioStream
 
 func _ready() -> void:
 	Deck.set_players_Decks()
@@ -61,6 +62,7 @@ func generate_ball():
 	call_deferred("add_child", new_ball)
 
 func _on_end_turn() -> void:
+	_play_sound(finished_turn_sound)
 	Global.next_player_turn()
 	label_current_player.text = str(Global.current_player_turn)
 	next_player_turn()
@@ -115,6 +117,6 @@ func _play_goal_sound():
 	goal_sfx.play()
 
 func _play_croud_sound():
-	croud_sfx.volume_db = -60
+	croud_sfx.volume_db = -50
 	croud_sfx.stream = croud_sound
 	croud_sfx.play()
