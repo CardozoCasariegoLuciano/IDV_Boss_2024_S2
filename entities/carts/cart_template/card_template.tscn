@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c81uyxatkkoh5"]
+[gd_scene load_steps=7 format=3 uid="uid://c81uyxatkkoh5"]
 
 [ext_resource type="Script" path="res://entities/carts/cart_template/card_template.gd" id="1_d832n"]
+[ext_resource type="AudioStream" uid="uid://pun30itqhwac" path="res://assets/audio/ui/takeIt.mp3" id="2_1rkfo"]
 [ext_resource type="Script" path="res://entities/carts/cart_template/panel.gd" id="2_gt6uc"]
 [ext_resource type="Texture2D" uid="uid://cci4bdqimpuuh" path="res://assets/cards/final_assets/card_template.png" id="3_rgsyl"]
+[ext_resource type="AudioStream" uid="uid://bhto0sv8scu7s" path="res://assets/audio/ui/cardPlayed.mp3" id="3_vv577"]
 [ext_resource type="Script" path="res://entities/carts/cart_template/fullscreen_card_panel.gd" id="4_jgyl3"]
 
 [node name="Card_Template" type="Node2D"]
 z_index = 1
 script = ExtResource("1_d832n")
+take_card_sfx = ExtResource("2_1rkfo")
+card_played_sfx = ExtResource("3_vv577")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -49,6 +53,8 @@ offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Send to discard deck"
+
+[node name="CardSfx" type="AudioStreamPlayer" parent="."]
 
 [connection signal="gui_input" from="Panel" to="Panel" method="_on_gui_input"]
 [connection signal="mouse_entered" from="Panel" to="Panel" method="_on_mouse_entered"]

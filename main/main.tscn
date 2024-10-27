@@ -1,11 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://4gn2e1ru5o1x"]
+[gd_scene load_steps=19 format=3 uid="uid://4gn2e1ru5o1x"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
 [ext_resource type="PackedScene" uid="uid://djaky7olesetp" path="res://entities/players/player.tscn" id="1_isdmp"]
 [ext_resource type="Script" path="res://main/field_drop_detector.gd" id="1_kwt4r"]
+[ext_resource type="AudioStream" uid="uid://c2k08tard3jhv" path="res://assets/audio/game/croudSound.ogg" id="4_cb0gf"]
 [ext_resource type="Script" path="res://main/cartas.gd" id="5_7jnx3"]
+[ext_resource type="AudioStream" uid="uid://omtcat6b8uii" path="res://assets/audio/game/whistle.ogg" id="5_kaams"]
 [ext_resource type="Script" path="res://main/hud.gd" id="5_qptaj"]
+[ext_resource type="AudioStream" uid="uid://d4lwsjpnkyoau" path="res://assets/audio/game/goalSfx.ogg" id="6_w4uf2"]
+[ext_resource type="AudioStream" uid="uid://dey34syvh5rc0" path="res://assets/audio/ui/turnFinished.mp3" id="7_qlwp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pneb"]
 size = Vector2(13, 202)
@@ -38,6 +42,10 @@ point_count = 8
 script = ExtResource("1_hn30x")
 players = ExtResource("1_isdmp")
 ball = ExtResource("1_4ipka")
+whistle_sound = ExtResource("5_kaams")
+goal_sound = ExtResource("6_w4uf2")
+croud_sound = ExtResource("4_cb0gf")
+finished_turn_sound = ExtResource("7_qlwp5")
 
 [node name="cancha" type="Node" parent="."]
 
@@ -244,6 +252,12 @@ text = "Energia: "
 [node name="energy" type="Label" parent="HUD/Turn_data/Energy"]
 layout_mode = 2
 text = "0"
+
+[node name="MainSfx" type="AudioStreamPlayer" parent="."]
+
+[node name="GoalSfx" type="AudioStreamPlayer" parent="."]
+
+[node name="CroudSfx" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="cancha/arco_A/Area2D" to="." method="_on_arco_1_goal"]
 [connection signal="body_entered" from="cancha/arco_B/Area2D" to="." method="_on_arco_2_goal"]
