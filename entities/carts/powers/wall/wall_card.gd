@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 func after_set_data():
 	wall = wall_scene.instantiate() as StaticBody2D
-	wall.global_position = click_point
+	wall.global_position = click_value
 	card_target.add_child(wall)
 
 func clean_target():

@@ -30,7 +30,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			var last_card = used_cards[-1]
-			last_card.set_data(main, event.position)
+			last_card.set_data_click(main, event.position)
 			enable_click = false
 
 func clean_card_effects(can_clean: bool):

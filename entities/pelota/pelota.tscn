@@ -3,14 +3,15 @@
 [ext_resource type="Script" path="res://entities/pelota/pelota.gd" id="1_piii8"]
 [ext_resource type="Texture2D" uid="uid://j742xb5huoi1" path="res://assets/pelota/pelota.png" id="3_js5ru"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n2ope"]
-friction = 1e+12
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_db10d"]
+friction = 1000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rsgg5"]
 radius = 70.0
 
 [node name="Pelota" type="RigidBody2D"]
-physics_material_override = SubResource("PhysicsMaterial_n2ope")
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_db10d")
 gravity_scale = 0.0
 script = ExtResource("1_piii8")
 metadata/_edit_group_ = true

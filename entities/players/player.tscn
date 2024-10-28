@@ -1,16 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://djaky7olesetp"]
+[gd_scene load_steps=7 format=3 uid="uid://djaky7olesetp"]
 
 [ext_resource type="Script" path="res://entities/players/player.gd" id="1_6beys"]
 [ext_resource type="Texture2D" uid="uid://cvfaw4d486hss" path="res://icon.svg" id="1_33umy"]
 [ext_resource type="Script" path="res://entities/players/panel.gd" id="3_20nvj"]
+[ext_resource type="Texture2D" uid="uid://bql1dpnu3diuv" path="res://assets/players/selected.png" id="4_xjwvh"]
+[ext_resource type="Texture2D" uid="uid://dy2spm6amlh3k" path="res://assets/players/player_direction.png" id="5_rqnkr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uad6i"]
-size = Vector2(129, 122)
+[sub_resource type="CircleShape2D" id="CircleShape2D_k28c6"]
+radius = 64.5
 
 [node name="Player" type="RigidBody2D"]
-position = Vector2(-4, -6)
+position = Vector2(-1, -6)
 script = ExtResource("1_6beys")
 metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.900001, 0)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("CircleShape2D_k28c6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
@@ -25,10 +32,18 @@ offset_right = 22.0
 offset_bottom = 23.0
 script = ExtResource("3_20nvj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.900001, 0)
-scale = Vector2(0.2, 0.2)
-shape = SubResource("RectangleShape2D_uad6i")
+[node name="selected" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.122222, 0.122222)
+texture = ExtResource("4_xjwvh")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="player_direction" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(13, 0)
+rotation = -0.00872665
+scale = Vector2(0.0410256, 0.0410256)
+texture = ExtResource("5_rqnkr")
+centered = false
+offset = Vector2(0, -177)
+
 [connection signal="on_cart_used" from="Panel" to="." method="_on_panel_on_cart_used"]

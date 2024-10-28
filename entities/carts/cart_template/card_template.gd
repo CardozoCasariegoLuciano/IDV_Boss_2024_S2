@@ -24,14 +24,18 @@ var energy_cost = 0
 var power
 
 var card_target: Node
-var click_point: Vector2
+var click_value: Vector2
 
-func set_data(target: Node,point: Vector2):
+func set_target(target: Node):
 	_play_sfx(card_played_sfx)
 	self.card_target = target
-	self.click_point = point
 	after_set_data()
 
+func set_data_click(target: Node,point: Vector2):
+	_play_sfx(card_played_sfx)
+	self.card_target = target
+	self.click_value = point
+	after_set_data()
 
 func change_card_visibility(value: bool):
 	_play_sfx(take_card_sfx)
@@ -41,6 +45,9 @@ func apply_action():
 	pass
 	
 func clean_target():
+	pass
+	
+func after_turn():
 	pass
 	
 func after_set_data():
