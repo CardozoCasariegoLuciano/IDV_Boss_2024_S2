@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://4gn2e1ru5o1x"]
+[gd_scene load_steps=21 format=3 uid="uid://4gn2e1ru5o1x"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
@@ -9,7 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://omtcat6b8uii" path="res://assets/audio/game/whistle.ogg" id="5_kaams"]
 [ext_resource type="Script" path="res://main/hud.gd" id="5_qptaj"]
 [ext_resource type="AudioStream" uid="uid://d4lwsjpnkyoau" path="res://assets/audio/game/goalSfx.ogg" id="6_w4uf2"]
+[ext_resource type="Script" path="res://main/cancha.gd" id="7_5wxwe"]
 [ext_resource type="AudioStream" uid="uid://dey34syvh5rc0" path="res://assets/audio/ui/turnFinished.mp3" id="7_qlwp5"]
+[ext_resource type="Script" path="res://main/jugadores.gd" id="9_aknih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pneb"]
 size = Vector2(13, 202)
@@ -40,14 +42,13 @@ point_count = 8
 
 [node name="Node" type="Node"]
 script = ExtResource("1_hn30x")
-players = ExtResource("1_isdmp")
 ball = ExtResource("1_4ipka")
 whistle_sound = ExtResource("5_kaams")
-goal_sound = ExtResource("6_w4uf2")
 croud_sound = ExtResource("4_cb0gf")
 finished_turn_sound = ExtResource("7_qlwp5")
 
 [node name="cancha" type="Node" parent="."]
+script = ExtResource("7_5wxwe")
 
 [node name="ColorRect" type="ColorRect" parent="cancha"]
 offset_left = 30.0
@@ -65,6 +66,9 @@ offset_right = 1144.0
 offset_bottom = 618.0
 script = ExtResource("1_kwt4r")
 metadata/_edit_lock_ = true
+
+[node name="GoalSfx" type="AudioStreamPlayer" parent="cancha"]
+stream = ExtResource("6_w4uf2")
 
 [node name="arco_A" type="Line2D" parent="cancha"]
 points = PackedVector2Array(30, 189, 130, 189, 130, 393, 30, 393)
@@ -138,23 +142,29 @@ physics_material_override = SubResource("PhysicsMaterial_wgwl1")
 position = Vector2(576.25, 545.75)
 shape = SubResource("RectangleShape2D_epenr")
 
-[node name="Jugadores" type="Node2D" parent="."]
+[node name="players_section" type="Node2D" parent="."]
+script = ExtResource("9_aknih")
+players = ExtResource("1_isdmp")
 
-[node name="initial_positions" type="Node" parent="."]
+[node name="initial_positions" type="Node" parent="players_section"]
 
-[node name="cartas" type="Node2D" parent="."]
+[node name="players_instances" type="Node2D" parent="players_section"]
+
+[node name="cards_section" type="Node2D" parent="."]
 script = ExtResource("5_7jnx3")
 
-[node name="CartsConfig" type="Node" parent="."]
+[node name="CartsConfig" type="Node" parent="cards_section"]
 
-[node name="CreationCartPath" type="Path2D" parent="CartsConfig"]
+[node name="CreationCartPath" type="Path2D" parent="cards_section/CartsConfig"]
 position = Vector2(-63.2889, -547)
 scale = Vector2(1.21218, 1.89474)
 curve = SubResource("Curve2D_nkn7e")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="CartsConfig/CreationCartPath"]
+[node name="PathFollow2D" type="PathFollow2D" parent="cards_section/CartsConfig/CreationCartPath"]
 position = Vector2(270, 642)
 rotation = -0.142329
+
+[node name="cards_intances" type="Node2D" parent="cards_section"]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("5_qptaj")
@@ -255,10 +265,8 @@ text = "0"
 
 [node name="MainSfx" type="AudioStreamPlayer" parent="."]
 
-[node name="GoalSfx" type="AudioStreamPlayer" parent="."]
-
 [node name="CroudSfx" type="AudioStreamPlayer" parent="."]
 
-[connection signal="body_entered" from="cancha/arco_A/Area2D" to="." method="_on_arco_1_goal"]
-[connection signal="body_entered" from="cancha/arco_B/Area2D" to="." method="_on_arco_2_goal"]
+[connection signal="body_entered" from="cancha/arco_A/Area2D" to="cancha" method="_on_arco_1_goal"]
+[connection signal="body_entered" from="cancha/arco_B/Area2D" to="cancha" method="_on_arco_2_goal"]
 [connection signal="button_up" from="HUD/EndTurn_Button" to="." method="_on_end_turn"]
