@@ -138,6 +138,11 @@ physics_material_override = SubResource("PhysicsMaterial_wgwl1")
 position = Vector2(576.25, 545.75)
 shape = SubResource("RectangleShape2D_epenr")
 
+[node name="midLine" type="Line2D" parent="cancha"]
+position = Vector2(5, 1)
+points = PackedVector2Array(576, 31, 576, 98.7251, 576, 555)
+width = 5.0
+
 [node name="Jugadores" type="Node2D" parent="."]
 
 [node name="initial_positions" type="Node" parent="."]

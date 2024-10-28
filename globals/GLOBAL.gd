@@ -15,6 +15,8 @@ var player_2_goals = 0
 var clean_timer: Timer
 var disaable_timer: Timer
 
+var finished_turn_scene = load("res://Views/finished_turn/finished_turn.tscn")
+
 func _ready() -> void:
 	init_clean_timer()
 

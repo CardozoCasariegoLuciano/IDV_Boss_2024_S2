@@ -21,10 +21,11 @@ extends Node
 @export var croud_sound: AudioStreamOggVorbis
 @export var finished_turn_sound: AudioStream
 
+
 func _ready() -> void:
 	Deck.set_players_Decks()
 	_play_croud_sound()
-	start_game(false);
+	start_game(false)
 
 func generate_players():
 	for player in range(1,3):
@@ -66,6 +67,17 @@ func _on_end_turn() -> void:
 	Global.next_player_turn()
 	label_current_player.text = str(Global.current_player_turn)
 	next_player_turn()
+	if Global.current_player_turn == 2:
+		# Cargar la escena emergente
+		var popup_scene = preload("res://Views/finished_turn/finished_turn.tscn")
+		var popup_instance = popup_scene.instantiate()
+		add_child(popup_instance)
+	else:
+		await get_tree().create_timer(2.0).timeout
+		var popup_scene = preload("res://Views/finished_turn/finished_turn.tscn")
+		var popup_instance = popup_scene.instantiate()
+		add_child(popup_instance)
+		
 
 func next_player_turn():
 	for card in cartas.get_children():
