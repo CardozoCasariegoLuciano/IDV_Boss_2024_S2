@@ -7,7 +7,7 @@
 friction = 1000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rsgg5"]
-radius = 70.0
+radius = 110.0
 
 [node name="Pelota" type="RigidBody2D"]
 mass = 2.0
@@ -17,9 +17,14 @@ script = ExtResource("1_piii8")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.06, 0.06)
+scale = Vector2(0.0939583, 0.0939583)
 texture = ExtResource("3_js5ru")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.1, 0.1)
 shape = SubResource("CircleShape2D_rsgg5")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

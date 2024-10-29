@@ -1,6 +1,8 @@
 extends CanvasLayer
 @onready var cancha: Node = $"../cancha"
 
+@onready var help_modal: Node2D = $Node
+
 @onready var end_turn_button: Button = $EndTurn_Button
 #Turn data
 @onready var energy: Label = $Turn_data/Energy/energy
@@ -51,3 +53,7 @@ func update_cards_hud():
 func update_goals():
 	player_1_goals.text = str(Global.player_1_goals)
 	player_2_goals.text = str(Global.player_2_goals)
+
+
+func _on_button_button_up() -> void:
+	help_modal.visible = true

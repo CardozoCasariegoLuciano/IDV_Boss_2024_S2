@@ -3,11 +3,11 @@ extends Card_template
 var click_init_value
 var click_last_value
 var player: Player
-var max_range_value = 100
+var max_range_value = 250
 
 func _ready() -> void:
 	scene_path = preload("res://entities/carts/movements/move_card/move_card.tscn")
-	power = 8000
+	power = 11500
 	require_click = true
 	energy_cost = 5
 
@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	player.selected.rotation += 8.0 * delta
 	if(click_init_value):
 		var angle = ( click_init_value - get_global_mouse_position()).angle()
-		player.set_deferred("rotation", angle)
+		player.arrow_direction.set_deferred("rotation", angle)
 		
 		var distance = clamp(click_init_value.distance_to(get_global_mouse_position()), 0, max_range_value)
 		var color_factor = distance / max_range_value
@@ -43,6 +43,7 @@ func after_set_data():
 	if(!card_target): return
 	self.player = card_target
 	card_target.selected.visible = true
+
 
 func apply_action():
 	var execute_player = card_target as Player
