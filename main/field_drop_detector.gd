@@ -6,6 +6,15 @@ var used_cards: Array[Card_template]
 
 func _ready() -> void:
 	Global.clean_cards_effect.connect(clean_card_effects)
+	Global.can_execute.connect(execute_move)
+
+func execute_move(can_execute: bool):
+	if(can_execute and !used_cards.is_empty()):
+		for card in used_cards:
+			card.apply_action()
+	if(!can_execute and !used_cards.is_empty()):
+		for card in used_cards:
+			card.after_turn()
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	var card = data as Card_template
@@ -14,24 +23,16 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 		card.change_card_visibility(true)
 	return can_use
 	
-func _drop_data(_at_position: Vector2, data: Variant) -> void:
+func _drop_data(at_position: Vector2, data: Variant) -> void:
 	var card = data as Card_template
 
 	if(card.use_in_field):
 		Global.reduce_energy(card)
 		used_cards.append(card)
-		enable_click = card.require_click
+		data.set_target_and_point(main, at_position)
 		Deck.use_and_discard_card(card)
 	else:
 		data.change_card_visibility(1)
-
-func _input(event):
-	if(!enable_click): return
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			var last_card = used_cards[-1]
-			last_card.set_data(main, event.position)
-			enable_click = false
 
 func clean_card_effects(can_clean: bool):
 	if(!can_clean): return

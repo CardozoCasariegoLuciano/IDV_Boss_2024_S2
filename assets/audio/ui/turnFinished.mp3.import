@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/turnFinished.mp3-2714396c2b1d7a2d6bfdf6b5a63d
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

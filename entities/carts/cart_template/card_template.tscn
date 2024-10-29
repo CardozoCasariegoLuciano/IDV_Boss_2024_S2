@@ -52,7 +52,7 @@ offset_right = -241.0
 offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Send to discard deck"
+text = "descartar carta"
 
 [node name="CardSfx" type="AudioStreamPlayer" parent="."]
 
