@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://4gn2e1ru5o1x"]
+[gd_scene load_steps=22 format=3 uid="uid://4gn2e1ru5o1x"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
@@ -9,7 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://omtcat6b8uii" path="res://assets/audio/game/whistle.ogg" id="5_kaams"]
 [ext_resource type="Script" path="res://main/hud.gd" id="5_qptaj"]
 [ext_resource type="AudioStream" uid="uid://d4lwsjpnkyoau" path="res://assets/audio/game/goalSfx.ogg" id="6_w4uf2"]
+[ext_resource type="Script" path="res://main/cancha.gd" id="7_5wxwe"]
 [ext_resource type="AudioStream" uid="uid://dey34syvh5rc0" path="res://assets/audio/ui/turnFinished.mp3" id="7_qlwp5"]
+[ext_resource type="Script" path="res://main/jugadores.gd" id="9_aknih"]
+[ext_resource type="Script" path="res://main/help_panel.gd" id="13_vx5am"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pneb"]
 size = Vector2(13, 202)
@@ -40,14 +43,13 @@ point_count = 8
 
 [node name="Node" type="Node"]
 script = ExtResource("1_hn30x")
-players = ExtResource("1_isdmp")
 ball = ExtResource("1_4ipka")
 whistle_sound = ExtResource("5_kaams")
-goal_sound = ExtResource("6_w4uf2")
 croud_sound = ExtResource("4_cb0gf")
 finished_turn_sound = ExtResource("7_qlwp5")
 
 [node name="cancha" type="Node" parent="."]
+script = ExtResource("7_5wxwe")
 
 [node name="ColorRect" type="ColorRect" parent="cancha"]
 offset_left = 30.0
@@ -65,6 +67,9 @@ offset_right = 1144.0
 offset_bottom = 618.0
 script = ExtResource("1_kwt4r")
 metadata/_edit_lock_ = true
+
+[node name="GoalSfx" type="AudioStreamPlayer" parent="cancha"]
+stream = ExtResource("6_w4uf2")
 
 [node name="arco_A" type="Line2D" parent="cancha"]
 points = PackedVector2Array(30, 189, 130, 189, 130, 393, 30, 393)
@@ -145,29 +150,37 @@ width = 5.0
 
 [node name="Jugadores" type="Node2D" parent="."]
 
-[node name="initial_positions" type="Node" parent="."]
+[node name="players_section" type="Node2D" parent="."]
+script = ExtResource("9_aknih")
+players = ExtResource("1_isdmp")
 
-[node name="cartas" type="Node2D" parent="."]
+[node name="initial_positions" type="Node" parent="players_section"]
+
+[node name="players_instances" type="Node2D" parent="players_section"]
+
+[node name="cards_section" type="Node2D" parent="."]
 script = ExtResource("5_7jnx3")
 
-[node name="CartsConfig" type="Node" parent="."]
+[node name="CartsConfig" type="Node" parent="cards_section"]
 
-[node name="CreationCartPath" type="Path2D" parent="CartsConfig"]
+[node name="CreationCartPath" type="Path2D" parent="cards_section/CartsConfig"]
 position = Vector2(-63.2889, -547)
 scale = Vector2(1.21218, 1.89474)
 curve = SubResource("Curve2D_nkn7e")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="CartsConfig/CreationCartPath"]
+[node name="PathFollow2D" type="PathFollow2D" parent="cards_section/CartsConfig/CreationCartPath"]
 position = Vector2(270, 642)
 rotation = -0.142329
+
+[node name="cards_intances" type="Node2D" parent="cards_section"]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("5_qptaj")
 
 [node name="EndTurn_Button" type="Button" parent="HUD"]
-offset_left = 919.0
+offset_left = 943.0
 offset_top = 605.0
-offset_right = 1106.0
+offset_right = 1130.0
 offset_bottom = 636.0
 text = "confirmar planificacion"
 
@@ -177,9 +190,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -172.0
+offset_left = -148.0
 offset_top = -75.0
-offset_right = -98.0
+offset_right = -74.0
 offset_bottom = -52.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -219,9 +232,9 @@ text = "0"
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 32.0
+offset_left = 24.0
 offset_top = -85.0
-offset_right = 163.0
+offset_right = 155.0
 offset_bottom = -8.0
 grow_vertical = 0
 
@@ -258,12 +271,109 @@ text = "Energia: "
 layout_mode = 2
 text = "0"
 
-[node name="MainSfx" type="AudioStreamPlayer" parent="."]
+[node name="Button" type="Button" parent="HUD"]
+anchors_preset = -1
+anchor_left = -0.003
+offset_left = 159.456
+offset_top = 616.0
+offset_right = 188.0
+offset_bottom = 647.0
+text = "?"
 
-[node name="GoalSfx" type="AudioStreamPlayer" parent="."]
+[node name="Node" type="Node2D" parent="HUD"]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="HUD/Node"]
+offset_right = 1152.0
+offset_bottom = 650.0
+script = ExtResource("13_vx5am")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Node"]
+offset_left = 235.0
+offset_right = 864.0
+offset_bottom = 652.0
+color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="HUD/Node"]
+layout_mode = 3
+anchor_left = 100.0
+anchor_right = 100.0
+metadata/_edit_lock_ = true
+
+[node name="Cartas" type="Label" parent="HUD/Node/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.206
+anchor_right = 0.749
+anchor_bottom = 1.0
+offset_left = 246.0
+offset_top = 62.0
+offset_right = 296.0
+offset_bottom = 85.0
+text = "Cartas"
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="cartas_1" type="Label" parent="HUD/Node/Control"]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 96.0
+offset_right = 862.0
+offset_bottom = 145.0
+text = "Para jugar una carta la tienes que arrastrar hasta el jugador objetivo o a la cancha (dependiendo de la carta)"
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="cartas_2" type="Label" parent="HUD/Node/Control"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 158.0
+offset_right = 724.0
+offset_bottom = 181.0
+text = "Al hacer click en una carta se amplia para poder leerla mejor"
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="Mano" type="Label" parent="HUD/Node/Control"]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 210.0
+offset_right = 295.0
+offset_bottom = 233.0
+text = "Mano:"
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="mano_1" type="Label" parent="HUD/Node/Control"]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 242.0
+offset_right = 859.0
+offset_bottom = 291.0
+text = "Las cartas que no se usan en un turno se quedan en tu mano para ser usadas en otro momento"
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="mano_2" type="Label" parent="HUD/Node/Control"]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 307.0
+offset_right = 711.0
+offset_bottom = 382.0
+text = "Para descartar una carta y no tenerla en la proxima ronda click en la carta -> descartar
+	"
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="MainSfx" type="AudioStreamPlayer" parent="."]
 
 [node name="CroudSfx" type="AudioStreamPlayer" parent="."]
 
-[connection signal="body_entered" from="cancha/arco_A/Area2D" to="." method="_on_arco_1_goal"]
-[connection signal="body_entered" from="cancha/arco_B/Area2D" to="." method="_on_arco_2_goal"]
+[connection signal="body_entered" from="cancha/arco_A/Area2D" to="cancha" method="_on_arco_1_goal"]
+[connection signal="body_entered" from="cancha/arco_B/Area2D" to="cancha" method="_on_arco_2_goal"]
 [connection signal="button_up" from="HUD/EndTurn_Button" to="." method="_on_end_turn"]
+[connection signal="button_up" from="HUD/Button" to="HUD" method="_on_button_button_up"]
+[connection signal="gui_input" from="HUD/Node/Panel" to="HUD/Node/Panel" method="_on_gui_input"]
