@@ -12,6 +12,7 @@ extends Node
 @export var croud_sound: AudioStreamOggVorbis
 @export var finished_turn_sound: AudioStream
 
+
 func _ready() -> void:
 	Deck.set_players_Decks()
 	_play_croud_sound()
@@ -26,6 +27,20 @@ func generate_ball():
 func _on_end_turn() -> void:
 	_play_sound(finished_turn_sound)
 	Global.next_player_turn()
+	next_player_turn()
+	if Global.current_player_turn == 2:
+		# Cargar la escena emergente
+		var popup_scene = preload("res://Views/finished_turn/finished_turn.tscn")
+		var popup_instance = popup_scene.instantiate()
+		add_child(popup_instance)
+	else:
+		await get_tree().create_timer(2.0).timeout
+		var popup_scene = preload("res://Views/finished_turn/finished_turn.tscn")
+		var popup_instance = popup_scene.instantiate()
+		add_child(popup_instance)
+
+
+func next_player_turn():
 	cards_section.clean_cards()
 	cards_section.generate_carts()
 
