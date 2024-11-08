@@ -1,6 +1,6 @@
 extends Panel
 @onready var card: Card_template = $".."
-@onready var card_sprite: Sprite2D = $"../Sprite2D"
+@onready var card_sprite: Sprite2D = $"../Card"
 @onready var card_fullscreen: CanvasLayer = $"../CanvasLayer"
 
 var is_hover = false

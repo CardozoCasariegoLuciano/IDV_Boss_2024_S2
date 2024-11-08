@@ -22,9 +22,44 @@ offset_bottom = 1791.0
 scale = Vector2(0.2, 0.2)
 script = ExtResource("2_gt6uc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Card" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_rgsyl")
+
+[node name="Energy" type="Label" parent="Card"]
+offset_left = -37.0
+offset_top = -310.0
+offset_right = 33.0
+offset_bottom = -247.0
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="Card"]
+anchors_preset = -1
+anchor_left = 0.242
+anchor_top = 0.596
+anchor_right = 0.75
+anchor_bottom = 0.667
+offset_left = -199.8
+offset_top = -350.2
+offset_right = -200.0
+offset_bottom = -349.9
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Card"]
+offset_left = -157.0
+offset_top = 143.0
+offset_right = 163.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="Card_image" type="Sprite2D" parent="Card"]
+position = Vector2(0, -63.3333)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 4

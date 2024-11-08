@@ -6,7 +6,7 @@ class_name Card_template
 
 @onready var panel: Panel = $Panel
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
-@onready var card_sprite: Sprite2D = $Sprite2D
+@onready var card_sprite: Sprite2D = $Card
 @onready var button: Button = $CanvasLayer/Button
 @onready var card_sfx: AudioStreamPlayer = $CardSfx
 
@@ -40,15 +40,20 @@ func change_card_visibility(value: bool):
 	_play_sfx(take_card_sfx)
 	card_sprite.visible = value
 
+#Este es el metodo principa, es la accion que hace la carta al momento de ejecutar
+#las jugadas de las 2 personas
 func apply_action():
 	pass
-	
+
+#Este metodo se ejecuta luego de que se disparen las jugadas de las 2 personas
 func clean_target():
 	pass
 	
+#Este metodo se ejecuta cuando un juegador termina su turno 
 func after_turn():
 	pass
-	
+
+#Este metodo se ejecuta luego de asignar la carta al objetivo 
 func after_set_data():
 	pass
 

@@ -29,10 +29,16 @@ func _on_add_cards() -> void:
 
 func _on_remove_cards() -> void:
 	if(player == 1 and card.player_1_quantity > 0):
-		card.player_1_quantity -= card.step_quantity
+		if(card.player_1_quantity - card.step_quantity > 0):
+			card.player_1_quantity -= card.step_quantity
+		else:
+			card.player_1_quantity = 0
 		label.text = str(card.player_1_quantity)
 	if(player == 2 and card.player_2_quantity > 0):
-		card.player_2_quantity -= card.step_quantity
+		if(card.player_2_quantity - card.step_quantity > 0):
+			card.player_2_quantity -= card.step_quantity
+		else:
+			card.player_2_quantity = 0
 		label.text = str(card.player_2_quantity)
 	on_update_option_quantity.emit()
 	

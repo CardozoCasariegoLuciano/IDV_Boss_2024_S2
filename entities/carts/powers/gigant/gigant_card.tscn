@@ -1,59 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcthvb3ax6c65"]
+[gd_scene load_steps=6 format=3 uid="uid://dcthvb3ax6c65"]
 
 [ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_tiu8e"]
 [ext_resource type="Script" path="res://entities/carts/powers/gigant/gigant_card.gd" id="2_djshs"]
 [ext_resource type="Texture2D" uid="uid://vh0ufmdu23og" path="res://assets/cards/final_assets/images.png" id="3_1stf7"]
 
+[sub_resource type="Resource" id="Resource_0jn6i"]
+metadata/__load_path__ = "res://assets/audio/ui/takeIt.mp3"
+
+[sub_resource type="Resource" id="Resource_l3xo5"]
+metadata/__load_path__ = "res://assets/audio/ui/cardPlayed.mp3"
+
 [node name="Card_Template" instance=ExtResource("1_tiu8e")]
 script = ExtResource("2_djshs")
+take_card_sfx = SubResource("Resource_0jn6i")
+card_played_sfx = SubResource("Resource_l3xo5")
 
-[node name="Label" type="Label" parent="Sprite2D" index="0"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -628.667
-offset_right = -144.0
-offset_bottom = -586.667
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Gigante"
-
-[node name="Label2" type="Label" parent="Sprite2D" index="1"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -363.0
-offset_top = -567.0
-offset_right = -27.0
-offset_bottom = -393.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
-text = "Aumenta la masa del jugador, lo que le permite empujar a los demás jugadores con mayor facilidad"
-autowrap_mode = 3
-
-[node name="Label3" type="Label" parent="Sprite2D" index="2"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -211.0
-offset_top = -303.333
-offset_right = -191.0
-offset_bottom = -254.333
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
+[node name="Energy" parent="Card" index="0"]
 text = "8"
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" index="3"]
-position = Vector2(-6.66667, -90)
-scale = Vector2(1.31481, 1.31481)
+[node name="Name" parent="Card" index="1"]
+text = "Gigante"
+
+[node name="Description" parent="Card" index="2"]
+text = "Aumenta la masa del jugador, lo que le permite empujar a los demás jugadores con mayor facilidad"
+
+[node name="Card_image" parent="Card" index="3"]
+position = Vector2(0, -90)
+scale = Vector2(1.21111, 1.21111)
 texture = ExtResource("3_1stf7")

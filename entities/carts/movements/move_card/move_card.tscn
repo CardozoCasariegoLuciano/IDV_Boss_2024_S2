@@ -1,11 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://caw0pdl6xb3ht"]
+[gd_scene load_steps=6 format=3 uid="uid://caw0pdl6xb3ht"]
 
 [ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_cc4bb"]
 [ext_resource type="Script" path="res://entities/carts/movements/move_card/move_card.gd" id="2_v3gpk"]
-[ext_resource type="Texture2D" uid="uid://bntl365nhbq2k" path="res://assets/cards/final_assets/move_card.png" id="3_tuwpe"]
+[ext_resource type="Texture2D" uid="uid://ojabt8mm70fs" path="res://assets/cards/final_assets/run.png" id="3_lu4qk"]
+
+[sub_resource type="Resource" id="Resource_0jn6i"]
+metadata/__load_path__ = "res://assets/audio/ui/takeIt.mp3"
+
+[sub_resource type="Resource" id="Resource_l3xo5"]
+metadata/__load_path__ = "res://assets/audio/ui/cardPlayed.mp3"
 
 [node name="Card_Template" instance=ExtResource("1_cc4bb")]
 script = ExtResource("2_v3gpk")
+take_card_sfx = SubResource("Resource_0jn6i")
+card_played_sfx = SubResource("Resource_l3xo5")
 
-[node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("3_tuwpe")
+[node name="Energy" parent="Card" index="0"]
+text = "5"
+
+[node name="Name" parent="Card" index="1"]
+text = "Mover"
+
+[node name="Description" parent="Card" index="2"]
+text = "Esta carta mueve un jugador por la cancha"
+
+[node name="Card_image" parent="Card" index="3"]
+position = Vector2(-16.6667, -86.6666)
+scale = Vector2(1.5641, 1.5641)
+texture = ExtResource("3_lu4qk")
