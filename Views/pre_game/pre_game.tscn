@@ -72,6 +72,7 @@ text = "Elige tu formación
 "
 
 [node name="DT button" type="Button" parent="player 1/Buttons"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 disabled = true
@@ -121,6 +122,7 @@ text = "Elige tu formación
 "
 
 [node name="DT button" type="Button" parent="player 2/Buttons"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 disabled = true
