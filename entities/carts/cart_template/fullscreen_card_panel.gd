@@ -1,6 +1,6 @@
 extends Panel
 @onready var canvas_layer: CanvasLayer = $".."
-@onready var parrent_sprite: Sprite2D = $"../../Sprite2D"
+@onready var parrent_sprite: Sprite2D = $"../../Card"
 
 func _ready() -> void:
 	var fullScreen:Sprite2D = parrent_sprite.duplicate()

@@ -9,5 +9,8 @@ var card_scenes_bank: Array[CardData] = [
 		5,5,5,1),
 	CardData.new().set_values(
 		preload("res://entities/carts/powers/wall/wall_card.tscn"),
-		1,1,1,1)
+		1,1,1,1),
+	CardData.new().set_values(
+		preload("res://entities/carts/movements/move_card_plus/move_card_plus.tscn"),
+		5,5,3,2)
 ]
