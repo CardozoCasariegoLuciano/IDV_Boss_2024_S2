@@ -44,18 +44,21 @@ func next_player_turn():
 		current_player_turn = 2
 		can_execute.emit(false)
 		clean_cards_effect.emit(false)
-		current_player_energy = INIT_ENERGY
-		on_reduce_energy.emit(INIT_ENERGY)
+		set_player_energy()
 	elif(current_player_turn == 2):
 		current_player_turn = 1
 		can_execute.emit(true)
 		clean_timer.start()
-		current_player_energy = INIT_ENERGY
-		on_reduce_energy.emit(INIT_ENERGY)
-	else:
-		current_player_turn = 1
-		can_execute.emit(false)
-		clean_cards_effect.emit(false)
+		set_player_energy()
+		
+		#Aca llamar a las pantallas de entre turnos
+		#Validar el can_execute en los jugadores y la pelota, y cuando ya ninguno se mueva mas,
+		#ahi recien mostrar la pantalla de vuelta del jugadro 1
+
+
+func set_player_energy():
+	current_player_energy = INIT_ENERGY
+	on_reduce_energy.emit(INIT_ENERGY)
 
 func any_winner() -> bool:
 	return player_1_goals >= GOALS_TO_WIN or player_2_goals >= GOALS_TO_WIN
