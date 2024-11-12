@@ -196,6 +196,7 @@ offset_right = -74.0
 offset_bottom = -52.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="HUD/Turns"]
 layout_mode = 2
@@ -203,6 +204,7 @@ text = "jugador"
 
 [node name="Label2" type="Label" parent="HUD/Turns"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = "1
 "
 
@@ -215,17 +217,21 @@ offset_top = -6.0
 offset_right = 21.0
 offset_bottom = 34.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="player_1_goals" type="Label" parent="HUD/Goals"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = "0"
 
 [node name="separator" type="Label" parent="HUD/Goals"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = " - "
 
 [node name="player_2_goals" type="Label" parent="HUD/Goals"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = "0"
 
 [node name="Turn_data" type="VBoxContainer" parent="HUD"]
@@ -237,41 +243,52 @@ offset_top = -85.0
 offset_right = 155.0
 offset_bottom = -8.0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="deck" type="HBoxContainer" parent="HUD/Turn_data"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="text" type="Label" parent="HUD/Turn_data/deck"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = "Mazo: "
 
 [node name="deck" type="Label" parent="HUD/Turn_data/deck"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = "0"
 
 [node name="discard_deck" type="HBoxContainer" parent="HUD/Turn_data"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="text" type="Label" parent="HUD/Turn_data/discard_deck"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = "Cartas usadas: "
 
 [node name="discard deck" type="Label" parent="HUD/Turn_data/discard_deck"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = "0"
 
 [node name="Energy" type="HBoxContainer" parent="HUD/Turn_data"]
 layout_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 4
 
 [node name="Label" type="Label" parent="HUD/Turn_data/Energy"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = "Energia: "
 
 [node name="energy" type="Label" parent="HUD/Turn_data/Energy"]
 layout_mode = 2
+mouse_default_cursor_shape = 6
 text = "0"
 
-[node name="Button" type="Button" parent="HUD"]
+[node name="info" type="Button" parent="HUD"]
 anchors_preset = -1
 anchor_left = -0.003
 offset_left = 159.456
@@ -375,5 +392,5 @@ metadata/_edit_lock_ = true
 [connection signal="body_entered" from="cancha/arco_A/Area2D" to="cancha" method="_on_arco_1_goal"]
 [connection signal="body_entered" from="cancha/arco_B/Area2D" to="cancha" method="_on_arco_2_goal"]
 [connection signal="button_up" from="HUD/EndTurn_Button" to="." method="_on_end_turn"]
-[connection signal="button_up" from="HUD/Button" to="HUD" method="_on_button_button_up"]
+[connection signal="button_up" from="HUD/info" to="HUD" method="_on_button_button_up"]
 [connection signal="gui_input" from="HUD/Node/Panel" to="HUD/Node/Panel" method="_on_gui_input"]

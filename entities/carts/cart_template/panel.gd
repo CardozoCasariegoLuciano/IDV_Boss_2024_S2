@@ -8,6 +8,7 @@ var can_hover = true
 
 var is_disable = false
 
+
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if !card_sprite.visible: return
 	Global.try_to_use_card.emit(Global.current_player_energy >= card.energy_cost)
@@ -22,6 +23,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	
 	set_drag_preview(preview)
 	card.change_card_visibility(false)
+	_on_mouse_exited()
 	return card
 
 func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:

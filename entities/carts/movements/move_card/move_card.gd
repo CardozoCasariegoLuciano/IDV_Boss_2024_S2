@@ -9,6 +9,7 @@ func _ready() -> void:
 	scene_path = preload("res://entities/carts/movements/move_card/move_card.tscn")
 	power = 11500
 	require_click = true
+	is_movement_card = true
 	energy_cost = 5
 
 func _physics_process(delta: float) -> void:

@@ -31,10 +31,6 @@ func execute_move(can_execute: bool):
 			card.after_turn()
 
 func _on_panel_on_cart_used(data: Card_template) -> void:
-	if(data.use_in_field):
-		data.change_card_visibility(1)
-		return
-		
 	used_cards.append(data)
 	data.set_target(self)
 	enable_click = data.require_click

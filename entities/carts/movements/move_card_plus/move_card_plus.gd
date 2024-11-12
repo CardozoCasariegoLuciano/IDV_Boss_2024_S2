@@ -10,6 +10,8 @@ func _ready() -> void:
 	energy_cost = 10
 	power = 20000
 	require_click = true
+	is_movement_card = true
+
 	
 func _physics_process(delta: float) -> void:
 	if(!player): return

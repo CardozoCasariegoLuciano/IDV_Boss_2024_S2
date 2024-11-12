@@ -25,7 +25,7 @@ func _ready() -> void:
 	energy.text = str(Global.current_player_energy)
 	discard_deck.text = str(Deck.get_current_player_DiscardDeck().size())
 	deck.text = str(Deck.get_current_player_Deck().size())
-
+	
 func disable_button(can_execute: bool):
 	players_turn.text = str(Global.current_player_turn)
 	if(can_execute):
@@ -53,7 +53,6 @@ func update_cards_hud():
 func update_goals():
 	player_1_goals.text = str(Global.player_1_goals)
 	player_2_goals.text = str(Global.player_2_goals)
-
 
 func _on_button_button_up() -> void:
 	help_modal.visible = true

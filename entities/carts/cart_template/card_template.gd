@@ -1,9 +1,6 @@
 extends Node2D
 class_name Card_template
 
-#TODO_2 mejoras en el diseño de la carta:
-# que el nombre de la carta este mas arriba para poder verlo sin tener que hacerle hover
-
 @onready var panel: Panel = $Panel
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var card_sprite: Sprite2D = $Card
@@ -18,6 +15,7 @@ var scene_path
 var require_click = true
 var use_in_rival = false
 var use_in_field = false
+var is_movement_card = false #Si es true, cada jugador solo podra tener una sola carta de ese tipo
 
 var energy_cost = 0
 var power
@@ -39,6 +37,7 @@ func set_target_and_point(target: Node, point: Vector2):
 func change_card_visibility(value: bool):
 	_play_sfx(take_card_sfx)
 	card_sprite.visible = value
+
 
 #Este es el metodo principa, es la accion que hace la carta al momento de ejecutar
 #las jugadas de las 2 personas
