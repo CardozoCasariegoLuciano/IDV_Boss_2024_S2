@@ -12,6 +12,8 @@ var current_player_energy := INIT_ENERGY
 var player_1_goals = 0
 var player_2_goals = 0
 
+var is_waiting_action = false
+
 var clean_timer: Timer
 var disaable_timer: Timer
 

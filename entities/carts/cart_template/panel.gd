@@ -11,6 +11,7 @@ var is_disable = false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if !card_sprite.visible: return
+	if(Global.is_waiting_action): return
 	Global.try_to_use_card.emit(Global.current_player_energy >= card.energy_cost)
 
 	var preview_cart = card_sprite.duplicate()
@@ -33,11 +34,11 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	data.change_card_visibility(true)
 
 func _on_mouse_entered() -> void:
-	if(!is_hover and can_hover):
+	if(!is_hover and can_hover and !Global.is_waiting_action):
 		hover(1)
 
 func _on_mouse_exited() -> void:
-	if(is_hover and can_hover):
+	if(is_hover and can_hover and !Global.is_waiting_action):
 		hover(-1)
 
 func _on_gui_input(event: InputEvent) -> void:

@@ -55,6 +55,12 @@ func after_turn():
 #Este metodo se ejecuta luego de asignar la carta al objetivo 
 func after_set_data():
 	pass
+	
+func _process(delta: float) -> void:
+	if(Global.is_waiting_action):
+		visible = false
+	else:
+		visible = true
 
 func _on_discard_card() -> void:
 	Deck.use_and_discard_card(self)
