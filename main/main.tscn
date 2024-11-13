@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://4gn2e1ru5o1x"]
+[gd_scene load_steps=23 format=3 uid="uid://4gn2e1ru5o1x"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://main/cancha.gd" id="7_5wxwe"]
 [ext_resource type="AudioStream" uid="uid://dey34syvh5rc0" path="res://assets/audio/ui/turnFinished.mp3" id="7_qlwp5"]
 [ext_resource type="Script" path="res://main/jugadores.gd" id="9_aknih"]
+[ext_resource type="Script" path="res://main/on_drop_button.gd" id="13_he3rg"]
 [ext_resource type="Script" path="res://main/help_panel.gd" id="13_vx5am"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pneb"]
@@ -184,6 +185,13 @@ offset_right = 1130.0
 offset_bottom = 636.0
 text = "confirmar planificacion"
 
+[node name="Panel" type="Panel" parent="HUD/EndTurn_Button"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 33.0
+script = ExtResource("13_he3rg")
+
 [node name="Turns" type="HBoxContainer" parent="HUD"]
 anchors_preset = 3
 anchor_left = 1.0
@@ -297,6 +305,13 @@ offset_right = 188.0
 offset_bottom = 647.0
 text = "?"
 
+[node name="Panel" type="Panel" parent="HUD/info"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 31.0
+offset_bottom = 32.0
+script = ExtResource("13_he3rg")
+
 [node name="Node" type="Node2D" parent="HUD"]
 visible = false
 metadata/_edit_lock_ = true
@@ -392,5 +407,9 @@ metadata/_edit_lock_ = true
 [connection signal="body_entered" from="cancha/arco_A/Area2D" to="cancha" method="_on_arco_1_goal"]
 [connection signal="body_entered" from="cancha/arco_B/Area2D" to="cancha" method="_on_arco_2_goal"]
 [connection signal="button_up" from="HUD/EndTurn_Button" to="." method="_on_end_turn"]
+[connection signal="gui_input" from="HUD/EndTurn_Button" to="HUD/EndTurn_Button/Panel" method="_on_end_turn_button_gui_input"]
+[connection signal="mouse_entered" from="HUD/EndTurn_Button/Panel" to="HUD/EndTurn_Button/Panel" method="_on_mouse_entered"]
 [connection signal="button_up" from="HUD/info" to="HUD" method="_on_button_button_up"]
+[connection signal="gui_input" from="HUD/info" to="HUD/info/Panel" method="_on_end_turn_button_gui_input"]
+[connection signal="mouse_entered" from="HUD/info/Panel" to="HUD/info/Panel" method="_on_mouse_entered"]
 [connection signal="gui_input" from="HUD/Node/Panel" to="HUD/Node/Panel" method="_on_gui_input"]

@@ -4,6 +4,16 @@ extends Node2D
 @onready var initial_positions: Node = $initial_positions
 @onready var players_instances: Node2D = $players_instances
 
+func _ready() -> void:
+	Global.can_execute.connect(watch_player_movements)
+	set_process(false)
+
+func _process(delta: float) -> void:
+	if(are_players_stop()):
+		set_process(false)
+		await get_tree().create_timer(1).timeout
+		Global.show_end_turn_view()
+
 func generate_players():
 	for player in range(1,3):
 		var formation_scene = Formations.players_formations[player - 1]
@@ -23,3 +33,13 @@ func create_players(value: Formation_template, player: int):
 
 func get_players():
 	return players_instances.get_children()
+
+func watch_player_movements(can_execute: bool):
+	await get_tree().create_timer(1).timeout
+	set_process(can_execute)
+
+func are_players_stop():
+	var value = true
+	for pl in players_instances.get_children():
+		value = value and pl.linear_velocity.length() <= Vector2(4,4).length()
+	return value

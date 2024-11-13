@@ -5,6 +5,5 @@ extends CanvasLayer
 func _ready() -> void:
 	next_turn.text = "Turno del jugador " + str(Global.current_player_turn)
 
-
 func _on_next_player_button_pressed() -> void:
 	queue_free()

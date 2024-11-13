@@ -6,6 +6,7 @@ var can_rotate = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	init_timer()
+	timer.start()
 	
 func init_timer():
 	timer = Timer.new()
