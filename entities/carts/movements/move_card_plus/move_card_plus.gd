@@ -10,6 +10,8 @@ func _ready() -> void:
 	energy_cost = 10
 	power = 20000
 	require_click = true
+	is_movement_card = true
+
 	
 func _physics_process(delta: float) -> void:
 	if(!player): return
@@ -33,6 +35,7 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT  and !event.pressed:
 			click_last_value =  event.position
 			player.selected.visible = false
+			Global.is_waiting_action = false
 			player = null
 			
 func after_turn():
@@ -43,6 +46,7 @@ func after_set_data():
 	if(!card_target): return
 	self.player = card_target
 	card_target.selected.visible = true
+	Global.is_waiting_action = true
 
 
 func apply_action():

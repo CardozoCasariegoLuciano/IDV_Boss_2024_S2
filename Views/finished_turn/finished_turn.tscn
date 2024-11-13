@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Views/finished_turn/finished_turn.gd" id="1_mmvgj"]
 
 [node name="FinishedTurn" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_mmvgj")
 
 [node name="ColorRect" type="ColorRect" parent="."]

@@ -9,6 +9,7 @@ func _ready() -> void:
 	scene_path = preload("res://entities/carts/movements/move_card/move_card.tscn")
 	power = 11500
 	require_click = true
+	is_movement_card = true
 	energy_cost = 5
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +34,7 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT  and !event.pressed:
 			click_last_value =  event.position
 			player.selected.visible = false
+			Global.is_waiting_action = false
 			player = null
 			
 func after_turn():
@@ -43,7 +45,7 @@ func after_set_data():
 	if(!card_target): return
 	self.player = card_target
 	card_target.selected.visible = true
-
+	Global.is_waiting_action = true
 
 func apply_action():
 	var execute_player = card_target as Player
