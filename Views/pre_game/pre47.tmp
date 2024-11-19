@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://5wrt8iit786d"]
+[gd_scene load_steps=7 format=3 uid="uid://5wrt8iit786d"]
 
 [ext_resource type="Script" path="res://Views/pre_game/pre_game.gd" id="1_yi5tk"]
 [ext_resource type="PackedScene" uid="uid://brpe030wttgwg" path="res://Views/pre_game/deck_selector.tscn" id="2_osjdq"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Views/pre_game/control.gd" id="4_dujot"]
 [ext_resource type="Texture2D" uid="uid://46q8mxd534gn" path="res://assets/players/countries/flecha-derecha.png" id="5_3h7e4"]
 [ext_resource type="Texture2D" uid="uid://bwkq05nu12my4" path="res://assets/players/countries/flecha-izquierda.png" id="6_c8s5w"]
-[ext_resource type="Script" path="res://Views/pre_game/control_2.gd" id="7_inoag"]
 
 [node name="pre_game" type="CanvasLayer"]
 script = ExtResource("1_yi5tk")
@@ -28,14 +27,6 @@ offset_right = -24.0
 offset_bottom = 56.0
 grow_horizontal = 0
 text = "Comenzar partida"
-
-[node name="ErrorLabel" type="Label" parent="."]
-modulate = Color(0.921569, 0, 0.101961, 1)
-offset_left = 981.0
-offset_top = 58.0
-offset_right = 1128.0
-offset_bottom = 118.0
-autowrap_mode = 2
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5
@@ -144,14 +135,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Confirmar"
 
-[node name="ErrorLabel" type="Label" parent="player 1/Control"]
-modulate = Color(0.921569, 0, 0.101961, 1)
-layout_mode = 2
-offset_top = 112.0
-offset_right = 576.0
-offset_bottom = 135.0
-horizontal_alignment = 1
-
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2(0, 148)
 points = PackedVector2Array(576, 0, 576, 500)
@@ -219,7 +202,7 @@ horizontal_alignment = 1
 
 [node name="Control2" type="Control" parent="player 2"]
 layout_mode = 2
-script = ExtResource("7_inoag")
+script = ExtResource("4_dujot")
 
 [node name="TextureRect" type="TextureRect" parent="player 2/Control2"]
 layout_mode = 0
@@ -257,15 +240,6 @@ offset_bottom = 82.0
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Confirmar"
-
-[node name="ErrorLabel" type="Label" parent="player 2/Control2"]
-modulate = Color(0.922094, 0, 0.103637, 1)
-layout_mode = 2
-offset_left = 7.0
-offset_top = 105.0
-offset_right = 583.0
-offset_bottom = 128.0
-horizontal_alignment = 1
 
 [connection signal="button_up" from="Button" to="." method="_on_start_game"]
 [connection signal="button_up" from="player 1/Buttons/deck button" to="." method="_on_player_1_select_deck"]
