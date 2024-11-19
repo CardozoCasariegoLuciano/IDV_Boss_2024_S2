@@ -19,8 +19,15 @@ func _ready() -> void:
 	initial_properties()
 	Global.can_execute.connect(execute_move)
 	Global.clean_cards_effect.connect(clean_player)
+	if userOwner == 1:
+		sprite_2d.texture = PlayerSkins.skin_player_1
 	if userOwner == 2:
-		sprite_2d.texture = player_2_texture
+		sprite_2d.texture = PlayerSkins.skin_player_2
+	var desired_size = Vector2(44, 44)  # Tamaño deseado
+	var texture_size = sprite_2d.texture.get_size()
+
+	var scale_factor = min(desired_size.x / texture_size.x, desired_size.y / texture_size.y)
+	sprite_2d.scale = Vector2(scale_factor, scale_factor)
 		
 func execute_move(can_execute: bool):
 	if(can_execute and !used_cards.is_empty()):

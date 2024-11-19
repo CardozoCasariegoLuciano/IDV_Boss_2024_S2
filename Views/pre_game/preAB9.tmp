@@ -29,14 +29,6 @@ offset_bottom = 56.0
 grow_horizontal = 0
 text = "Comenzar partida"
 
-[node name="ErrorLabel" type="Label" parent="."]
-modulate = Color(0.921569, 0, 0.101961, 1)
-offset_left = 981.0
-offset_top = 58.0
-offset_right = 1128.0
-offset_bottom = 118.0
-autowrap_mode = 2
-
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -145,12 +137,10 @@ size_flags_horizontal = 4
 text = "Confirmar"
 
 [node name="ErrorLabel" type="Label" parent="player 1/Control"]
-modulate = Color(0.921569, 0, 0.101961, 1)
 layout_mode = 2
-offset_top = 112.0
+offset_top = 89.0
 offset_right = 576.0
-offset_bottom = 135.0
-horizontal_alignment = 1
+offset_bottom = 112.0
 
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2(0, 148)
@@ -257,15 +247,6 @@ offset_bottom = 82.0
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Confirmar"
-
-[node name="ErrorLabel" type="Label" parent="player 2/Control2"]
-modulate = Color(0.922094, 0, 0.103637, 1)
-layout_mode = 2
-offset_left = 7.0
-offset_top = 105.0
-offset_right = 583.0
-offset_bottom = 128.0
-horizontal_alignment = 1
 
 [connection signal="button_up" from="Button" to="." method="_on_start_game"]
 [connection signal="button_up" from="player 1/Buttons/deck button" to="." method="_on_player_1_select_deck"]

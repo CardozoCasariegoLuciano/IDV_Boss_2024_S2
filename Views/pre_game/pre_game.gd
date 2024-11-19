@@ -4,7 +4,15 @@ extends CanvasLayer
 
 
 func _on_start_game() -> void:
-	get_tree().change_scene_to_file("res://main/main.tscn")
+	if (PlayerSkins.skin_player_1 != null && PlayerSkins.skin_player_2 != null):
+		get_tree().change_scene_to_file("res://main/main.tscn")
+	else:
+		_show_error_message("Ambos jugadores deben elegir equipo antes de comenzar")
+
+func _show_error_message(message: String) -> void:
+	var error_label = $ErrorLabel  # Asegúrate de tener un nodo Label llamado 'ErrorLabel' en tu escena
+	error_label.text = message
+	error_label.visible = true
 
 func _on_player_1_select_deck() -> void:
 	var deck = deck_selector.instantiate()

@@ -21,6 +21,7 @@ Global="*res://globals/GLOBAL.gd"
 CardBank="*res://globals/CARD_BANK.gd"
 Deck="*res://globals/DECK.gd"
 Formations="*res://globals/FORMATIONS.gd"
+PlayerSkins="*res://globals/PLAYER_SKINS.gd"
 
 [display]
 
