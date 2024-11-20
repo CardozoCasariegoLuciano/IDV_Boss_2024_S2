@@ -146,7 +146,7 @@ shape = SubResource("RectangleShape2D_epenr")
 
 [node name="midLine" type="Line2D" parent="cancha"]
 position = Vector2(5, 1)
-points = PackedVector2Array(576, 31, 576, 98.7251, 576, 555)
+points = PackedVector2Array(576, 31, 576, 98.7251, 576, 291.039, 576, 391.338, 576, 555)
 width = 5.0
 
 [node name="Jugadores" type="Node2D" parent="."]
@@ -183,7 +183,7 @@ offset_left = 943.0
 offset_top = 605.0
 offset_right = 1130.0
 offset_bottom = 636.0
-text = "confirmar planificacion"
+text = "Confirmar planificacion"
 
 [node name="Panel" type="Panel" parent="HUD/EndTurn_Button"]
 modulate = Color(1, 1, 1, 0)

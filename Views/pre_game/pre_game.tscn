@@ -1,24 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://5wrt8iit786d"]
+[gd_scene load_steps=10 format=3 uid="uid://5wrt8iit786d"]
 
 [ext_resource type="Script" path="res://Views/pre_game/pre_game.gd" id="1_yi5tk"]
 [ext_resource type="PackedScene" uid="uid://brpe030wttgwg" path="res://Views/pre_game/deck_selector.tscn" id="2_osjdq"]
 [ext_resource type="PackedScene" uid="uid://dhql4t8810uip" path="res://Views/pre_game/formation_selector.tscn" id="3_rrcj6"]
 [ext_resource type="Script" path="res://Views/pre_game/control.gd" id="4_dujot"]
+[ext_resource type="Texture2D" uid="uid://bqu0h3skeq02c" path="res://assets/fondo/fondo_main_page.jpg" id="4_w20cj"]
 [ext_resource type="Texture2D" uid="uid://46q8mxd534gn" path="res://assets/players/countries/flecha-derecha.png" id="5_3h7e4"]
 [ext_resource type="Texture2D" uid="uid://bwkq05nu12my4" path="res://assets/players/countries/flecha-izquierda.png" id="6_c8s5w"]
 [ext_resource type="Script" path="res://Views/pre_game/control_2.gd" id="7_inoag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjo4q"]
+bg_color = Color(0, 0.234667, 0.32, 0.807843)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="pre_game" type="CanvasLayer"]
 script = ExtResource("1_yi5tk")
 deck_selector = ExtResource("2_osjdq")
 formation_selector = ExtResource("3_rrcj6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1152.0
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.339095, 0.339095, 0.339095, 1)
+offset_right = 1154.0
 offset_bottom = 648.0
-color = Color(0.2, 0.5, 0.5, 1)
+texture = ExtResource("4_w20cj")
 
 [node name="Button" type="Button" parent="."]
+modulate = Color(0.945143, 0.819091, 7.70092e-07, 1)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -47,7 +57,23 @@ offset_right = 72.5
 offset_bottom = 39.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
-text = "Prepara tu equipo!"
+text = "¡Prepara tu equipo!"
+
+[node name="menu" type="Panel" parent="."]
+clip_contents = true
+offset_left = 192.0
+offset_top = 118.0
+offset_right = 381.0
+offset_bottom = 476.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rjo4q")
+
+[node name="menu2" type="Panel" parent="."]
+clip_contents = true
+offset_left = 763.0
+offset_top = 118.0
+offset_right = 952.0
+offset_bottom = 476.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rjo4q")
 
 [node name="player 1" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(576, 500)
@@ -75,7 +101,7 @@ theme_override_constants/separation = 15
 [node name="deck button" type="Button" parent="player 1/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "arma tu mazo"
+text = "Arma tu mazo"
 
 [node name="formation button" type="Button" parent="player 1/Buttons"]
 layout_mode = 2
@@ -188,7 +214,7 @@ theme_override_constants/separation = 15
 [node name="deck button" type="Button" parent="player 2/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "arma tu mazo"
+text = "Arma tu mazo"
 
 [node name="formation button" type="Button" parent="player 2/Buttons"]
 layout_mode = 2
