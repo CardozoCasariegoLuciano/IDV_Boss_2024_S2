@@ -25,6 +25,9 @@ func next_player_turn():
 	set_player_energy()
 
 func show_end_turn_view():
+	var popup_scene = preload("res://Views/finished_turn/finished_turn.tscn")
+	var popup_instance = popup_scene.instantiate()
+	add_child(popup_instance)
 	clean_cards_effect.emit(current_player_turn == 1)
 
 func set_player_energy():
