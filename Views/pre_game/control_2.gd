@@ -1,16 +1,7 @@
 extends Control
 
-var texture_paths: Array = ["res://assets/players/countries/argentina.png",
-								"res://assets/players/countries/bolivia.png",
-								"res://assets/players/countries/brasil.png",
-								"res://assets/players/countries/chile.png",
-								"res://assets/players/countries/colombia.png",
-								"res://assets/players/countries/ecuador.png",
-								"res://assets/players/countries/paraguay.png",
-								"res://assets/players/countries/peru.png",
-								"res://assets/players/countries/uruguay.png",
-								"res://assets/players/countries/venezuela.png",] # Array de texturas disponibles para seleccionar
-
+var texture_paths: Array = PlayerSkins.texture_paths
+								
 var current_index_p2: int = 0
 
 @export var textures: Array = []

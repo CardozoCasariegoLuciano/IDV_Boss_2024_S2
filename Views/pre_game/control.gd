@@ -1,15 +1,7 @@
 extends Control
 
-var texture_paths: Array = ["res://assets/players/countries/argentina.png",
-								"res://assets/players/countries/bolivia.png",
-								"res://assets/players/countries/brasil.png",
-								"res://assets/players/countries/chile.png",
-								"res://assets/players/countries/colombia.png",
-								"res://assets/players/countries/ecuador.png",
-								"res://assets/players/countries/paraguay.png",
-								"res://assets/players/countries/peru.png",
-								"res://assets/players/countries/uruguay.png",
-								"res://assets/players/countries/venezuela.png"] # Array de texturas disponibles para seleccionar
+var texture_paths: Array = PlayerSkins.texture_paths
+
 var current_index_p1: int = 0
 var current_index_p2: int = 0
 
@@ -46,7 +38,7 @@ func _on_right_button_pressed():
 
 
 func _on_button_pressed() -> void:
-	if (p1_selection == PlayerSkins.skin_player_1):
+	if (p1_selection == PlayerSkins.skin_player_2):
 		_show_error_message("Jugador 1 no puede seleccionar el mismo equipo que el Jugador 2.")
 		return 
 
@@ -64,8 +56,7 @@ func _on_button_pressed() -> void:
 		p1_selection = null
 
 
-# Función para mostrar un mensaje de error
 func _show_error_message(message: String) -> void:
-	var error_label = $ErrorLabel  # Asegúrate de tener un nodo Label llamado 'ErrorLabel' en tu escena
+	var error_label = $ErrorLabel
 	error_label.text = message
 	error_label.visible = true
