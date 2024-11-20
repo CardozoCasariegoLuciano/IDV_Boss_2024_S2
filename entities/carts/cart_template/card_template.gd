@@ -56,7 +56,7 @@ func after_turn():
 func after_set_data():
 	pass
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(Global.is_waiting_action):
 		visible = false
 	else:

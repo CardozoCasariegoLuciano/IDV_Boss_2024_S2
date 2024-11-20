@@ -13,6 +13,6 @@ func _on_mouse_entered() -> void:
 	if(!Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
 		panel.visible = false
 
-func _on_end_turn_button_gui_input(event: InputEvent) -> void:
+func _on_end_turn_button_gui_input(_event: InputEvent) -> void:
 	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
 		panel.visible = true
