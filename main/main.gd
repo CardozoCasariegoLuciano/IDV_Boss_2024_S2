@@ -54,6 +54,5 @@ func _play_sound(sound: AudioStream):
 	main_sfx.play()
 
 func _play_croud_sound():
-	croud_sfx.volume_db = -35
 	croud_sfx.stream = croud_sound
 	croud_sfx.play()

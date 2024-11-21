@@ -55,7 +55,6 @@ text = "Nuevo juego"
 
 [node name="config" type="Button" parent="menu/VBoxContainer"]
 layout_mode = 2
-disabled = true
 text = "Configuracion"
 
 [connection signal="button_up" from="menu/VBoxContainer/New game" to="." method="_on_new_game"]

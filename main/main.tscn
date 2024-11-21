@@ -71,6 +71,7 @@ metadata/_edit_lock_ = true
 
 [node name="GoalSfx" type="AudioStreamPlayer" parent="cancha"]
 stream = ExtResource("6_w4uf2")
+bus = &"Sfx"
 
 [node name="arco_A" type="Line2D" parent="cancha"]
 points = PackedVector2Array(30, 189, 130, 189, 130, 393, 30, 393)
@@ -401,8 +402,10 @@ autowrap_mode = 3
 metadata/_edit_lock_ = true
 
 [node name="MainSfx" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
 
 [node name="CroudSfx" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [connection signal="body_entered" from="cancha/arco_A/Area2D" to="cancha" method="_on_arco_1_goal"]
 [connection signal="body_entered" from="cancha/arco_B/Area2D" to="cancha" method="_on_arco_2_goal"]

@@ -10,7 +10,6 @@
 [node name="Card_Template" type="Node2D"]
 z_index = 1
 script = ExtResource("1_d832n")
-take_card_sfx = ExtResource("2_1rkfo")
 card_played_sfx = ExtResource("3_vv577")
 
 [node name="Panel" type="Panel" parent="."]
@@ -90,6 +89,11 @@ grow_vertical = 0
 text = "descartar carta"
 
 [node name="CardSfx" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
+
+[node name="CardTakenSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1rkfo")
+bus = &"Card_taken"
 
 [connection signal="gui_input" from="Panel" to="Panel" method="_on_gui_input"]
 [connection signal="mouse_entered" from="Panel" to="Panel" method="_on_mouse_entered"]

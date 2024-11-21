@@ -6,8 +6,8 @@ class_name Card_template
 @onready var card_sprite: Sprite2D = $Card
 @onready var button: Button = $CanvasLayer/Button
 @onready var card_sfx: AudioStreamPlayer = $CardSfx
+@onready var card_taken_sfx: AudioStreamPlayer = $CardTakenSfx
 
-@export var take_card_sfx: AudioStream
 @export var card_played_sfx: AudioStream
 
 var scene_path
@@ -35,7 +35,7 @@ func set_target_and_point(target: Node, point: Vector2):
 	after_set_data()
 
 func change_card_visibility(value: bool):
-	_play_sfx(take_card_sfx)
+	card_taken_sfx.play()
 	card_sprite.visible = value
 
 
