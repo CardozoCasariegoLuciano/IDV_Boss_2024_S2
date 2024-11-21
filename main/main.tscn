@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://4gn2e1ru5o1x"]
+[gd_scene load_steps=24 format=3 uid="uid://4gn2e1ru5o1x"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://d4lwsjpnkyoau" path="res://assets/audio/game/goalSfx.ogg" id="6_w4uf2"]
 [ext_resource type="Script" path="res://main/cancha.gd" id="7_5wxwe"]
 [ext_resource type="AudioStream" uid="uid://dey34syvh5rc0" path="res://assets/audio/ui/turnFinished.mp3" id="7_qlwp5"]
+[ext_resource type="Texture2D" uid="uid://d0cpl1bawep2s" path="res://assets/fondo/cancha.png" id="7_u6gt6"]
 [ext_resource type="Script" path="res://main/jugadores.gd" id="9_aknih"]
 [ext_resource type="Script" path="res://main/on_drop_button.gd" id="13_he3rg"]
 [ext_resource type="Script" path="res://main/help_panel.gd" id="13_vx5am"]
@@ -59,6 +60,14 @@ offset_right = 1122.0
 offset_bottom = 553.0
 color = Color(0.24246, 0.54, 0.2268, 1)
 metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="cancha"]
+offset_left = 28.0
+offset_top = 31.0
+offset_right = 1126.0
+offset_bottom = 557.0
+texture = ExtResource("7_u6gt6")
+expand_mode = 1
 
 [node name="fieldDropDetector" type="Panel" parent="cancha"]
 modulate = Color(1, 0.24, 0.24, 0)

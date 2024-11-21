@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://brpe030wttgwg" path="res://Views/pre_game/deck_selector.tscn" id="2_osjdq"]
 [ext_resource type="PackedScene" uid="uid://dhql4t8810uip" path="res://Views/pre_game/formation_selector.tscn" id="3_rrcj6"]
 [ext_resource type="Script" path="res://Views/pre_game/control.gd" id="4_dujot"]
-[ext_resource type="Texture2D" uid="uid://bqu0h3skeq02c" path="res://assets/fondo/fondo_main_page.jpg" id="4_w20cj"]
+[ext_resource type="Texture2D" uid="uid://i6qfwa1enryq" path="res://assets/fondo/fondo_main_page.jpeg" id="4_ws0ws"]
 [ext_resource type="Texture2D" uid="uid://46q8mxd534gn" path="res://assets/players/countries/flecha-derecha.png" id="5_3h7e4"]
 [ext_resource type="Texture2D" uid="uid://bwkq05nu12my4" path="res://assets/players/countries/flecha-izquierda.png" id="6_c8s5w"]
 [ext_resource type="Script" path="res://Views/pre_game/control_2.gd" id="7_inoag"]
@@ -23,9 +23,11 @@ formation_selector = ExtResource("3_rrcj6")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.339095, 0.339095, 0.339095, 1)
-offset_right = 1154.0
-offset_bottom = 648.0
-texture = ExtResource("4_w20cj")
+offset_left = -2.0
+offset_right = 1161.0
+offset_bottom = 655.0
+texture = ExtResource("4_ws0ws")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(0.945143, 0.819091, 7.70092e-07, 1)
