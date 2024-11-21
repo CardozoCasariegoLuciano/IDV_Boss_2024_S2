@@ -8,7 +8,7 @@ func _ready() -> void:
 	Global.can_execute.connect(watch_player_movements)
 	set_process(false)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(are_players_stop()):
 		set_process(false)
 		await get_tree().create_timer(1).timeout

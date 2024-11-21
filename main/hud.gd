@@ -14,6 +14,8 @@ extends CanvasLayer
 @onready var player_1_goals: Label = $Goals/player_1_goals
 @onready var player_2_goals: Label = $Goals/player_2_goals
 
+var is_config_open = false
+
 func _ready() -> void:
 	Global.can_execute.connect(disable_button)
 	Global.clean_cards_effect.connect(enable_button)
@@ -25,7 +27,18 @@ func _ready() -> void:
 	energy.text = str(Global.current_player_energy)
 	discard_deck.text = str(Deck.get_current_player_DiscardDeck().size())
 	deck.text = str(Deck.get_current_player_Deck().size())
-	
+
+
+func _input(event: InputEvent) -> void:
+	if(Input.is_action_just_pressed("Open_config") and !is_config_open):
+		var config_view = preload("res://Views/menu_config/menu_config.tscn").instantiate()
+		config_view._on_close.connect(_on_close_config)
+		add_child(config_view)
+		is_config_open = true
+
+func _on_close_config():
+	is_config_open = false
+
 func disable_button(can_execute: bool):
 	players_turn.text = str(Global.current_player_turn)
 	if(can_execute):
