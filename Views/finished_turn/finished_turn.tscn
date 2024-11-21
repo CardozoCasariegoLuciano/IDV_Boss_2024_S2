@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jkknwe4s7ha"]
 
 [ext_resource type="Script" path="res://Views/finished_turn/finished_turn.gd" id="1_mmvgj"]
-[ext_resource type="Texture2D" uid="uid://ceu3l3dd2xl5r" path="res://assets/fondo/waiting.jpg" id="2_uun3y"]
+[ext_resource type="Texture2D" uid="uid://b68ymaeytvdym" path="res://assets/fondo/waiting.jpeg" id="2_rp872"]
 
 [node name="FinishedTurn" type="CanvasLayer"]
 layer = 10
@@ -17,9 +17,12 @@ color = Color(0.65834, 0.65834, 0.65834, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.265361, 0.265361, 0.265361, 1)
-offset_right = 1152.0
-offset_bottom = 647.0
-texture = ExtResource("2_uun3y")
+offset_left = -25.0
+offset_top = -64.0
+offset_right = 1176.0
+offset_bottom = 667.0
+texture = ExtResource("2_rp872")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8

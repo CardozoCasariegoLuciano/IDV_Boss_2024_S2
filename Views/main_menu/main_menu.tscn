@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://08vgyv8fxof4"]
 
 [ext_resource type="Script" path="res://Views/main_menu/main_menu.gd" id="1_p2c4j"]
-[ext_resource type="Texture2D" uid="uid://bqu0h3skeq02c" path="res://assets/fondo/fondo_main_page.jpg" id="2_2lkum"]
+[ext_resource type="Texture2D" uid="uid://i6qfwa1enryq" path="res://assets/fondo/fondo_main_page.jpeg" id="2_c632s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wcid"]
 bg_color = Color(0, 0.234667, 0.32, 0.807843)
@@ -15,9 +15,11 @@ script = ExtResource("1_p2c4j")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.593134, 0.593134, 0.593133, 1)
-offset_right = 1153.0
-offset_bottom = 648.0
-texture = ExtResource("2_2lkum")
+offset_left = -2.0
+offset_right = 1161.0
+offset_bottom = 655.0
+texture = ExtResource("2_c632s")
+expand_mode = 1
 
 [node name="menu" type="Panel" parent="."]
 clip_contents = true

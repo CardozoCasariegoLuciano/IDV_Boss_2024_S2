@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhql4t8810uip"]
+[gd_scene load_steps=4 format=3 uid="uid://dhql4t8810uip"]
 
 [ext_resource type="Script" path="res://Views/pre_game/formation_selector.gd" id="1_mrtbs"]
+[ext_resource type="Texture2D" uid="uid://cll1pi8k43bxt" path="res://assets/fondo/formation-selector.jpeg" id="2_r7cbf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5652c"]
 font_size = 24
@@ -24,6 +25,16 @@ layout_mode = 0
 offset_right = 1077.0
 offset_bottom = 576.0
 color = Color(0.1595, 0.33, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0859837, 0.0859838, 0.0859838, 1)
+layout_mode = 0
+offset_left = -13.0
+offset_top = -32.0
+offset_right = 1086.0
+offset_bottom = 608.0
+texture = ExtResource("2_r7cbf")
+expand_mode = 1
 
 [node name="close_button" type="Button" parent="."]
 layout_mode = 1
