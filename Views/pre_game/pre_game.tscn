@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5wrt8iit786d"]
+[gd_scene load_steps=14 format=3 uid="uid://5wrt8iit786d"]
 
 [ext_resource type="Script" path="res://Views/pre_game/pre_game.gd" id="1_yi5tk"]
 [ext_resource type="PackedScene" uid="uid://brpe030wttgwg" path="res://Views/pre_game/deck_selector.tscn" id="2_osjdq"]
@@ -6,8 +6,12 @@
 [ext_resource type="Script" path="res://Views/pre_game/control.gd" id="4_dujot"]
 [ext_resource type="Texture2D" uid="uid://i6qfwa1enryq" path="res://assets/fondo/fondo_main_page.jpeg" id="4_ws0ws"]
 [ext_resource type="Texture2D" uid="uid://46q8mxd534gn" path="res://assets/players/countries/flecha-derecha.png" id="5_3h7e4"]
+[ext_resource type="StyleBox" uid="uid://1jmpjhepq6et" path="res://styles/button_green_styles_hover.tres" id="5_gabjx"]
 [ext_resource type="Texture2D" uid="uid://bwkq05nu12my4" path="res://assets/players/countries/flecha-izquierda.png" id="6_c8s5w"]
+[ext_resource type="StyleBox" uid="uid://d1n6cshtrvcay" path="res://styles/button_green_style.tres" id="6_lvui4"]
 [ext_resource type="Script" path="res://Views/pre_game/control_2.gd" id="7_inoag"]
+[ext_resource type="StyleBox" uid="uid://by2qbg25pw6k3" path="res://styles/button_blue_styles_hover.tres" id="11_6qcwc"]
+[ext_resource type="StyleBox" uid="uid://bb2xqcqx2i3mc" path="res://styles/button_blue_style.tres" id="12_oncx7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjo4q"]
 bg_color = Color(0, 0.234667, 0.32, 0.807843)
@@ -30,7 +34,6 @@ texture = ExtResource("4_ws0ws")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="."]
-modulate = Color(0.945143, 0.819091, 7.70092e-07, 1)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -39,6 +42,10 @@ offset_top = 25.0
 offset_right = -24.0
 offset_bottom = 56.0
 grow_horizontal = 0
+theme_override_styles/focus = ExtResource("11_6qcwc")
+theme_override_styles/hover = ExtResource("11_6qcwc")
+theme_override_styles/pressed = ExtResource("12_oncx7")
+theme_override_styles/normal = ExtResource("12_oncx7")
 text = "Comenzar partida"
 
 [node name="ErrorLabel" type="Label" parent="."]
@@ -103,11 +110,19 @@ theme_override_constants/separation = 15
 [node name="deck button" type="Button" parent="player 1/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/focus = ExtResource("5_gabjx")
+theme_override_styles/hover = ExtResource("5_gabjx")
+theme_override_styles/pressed = ExtResource("6_lvui4")
+theme_override_styles/normal = ExtResource("6_lvui4")
 text = "Arma tu mazo"
 
 [node name="formation button" type="Button" parent="player 1/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/focus = ExtResource("5_gabjx")
+theme_override_styles/hover = ExtResource("5_gabjx")
+theme_override_styles/pressed = ExtResource("6_lvui4")
+theme_override_styles/normal = ExtResource("6_lvui4")
 text = "Elige tu formación
 "
 
@@ -170,14 +185,18 @@ offset_bottom = 89.0
 [node name="ConfirmButton" type="Button" parent="player 1/Control/Confirm"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/focus = ExtResource("11_6qcwc")
+theme_override_styles/hover = ExtResource("11_6qcwc")
+theme_override_styles/pressed = ExtResource("12_oncx7")
+theme_override_styles/normal = ExtResource("12_oncx7")
 text = "Confirmar"
 
 [node name="ErrorLabel" type="Label" parent="player 1/Control"]
-modulate = Color(0.921569, 0, 0.101961, 1)
 layout_mode = 2
-offset_top = 112.0
+offset_top = 135.0
 offset_right = 576.0
-offset_bottom = 135.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 horizontal_alignment = 1
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -216,11 +235,19 @@ theme_override_constants/separation = 15
 [node name="deck button" type="Button" parent="player 2/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/focus = ExtResource("5_gabjx")
+theme_override_styles/hover = ExtResource("5_gabjx")
+theme_override_styles/pressed = ExtResource("6_lvui4")
+theme_override_styles/normal = ExtResource("6_lvui4")
 text = "Arma tu mazo"
 
 [node name="formation button" type="Button" parent="player 2/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/focus = ExtResource("5_gabjx")
+theme_override_styles/hover = ExtResource("5_gabjx")
+theme_override_styles/pressed = ExtResource("6_lvui4")
+theme_override_styles/normal = ExtResource("6_lvui4")
 text = "Elige tu formación
 "
 
@@ -284,15 +311,19 @@ offset_bottom = 82.0
 [node name="ConfirmButton" type="Button" parent="player 2/Control2/Confirm"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/focus = ExtResource("11_6qcwc")
+theme_override_styles/hover = ExtResource("11_6qcwc")
+theme_override_styles/pressed = ExtResource("12_oncx7")
+theme_override_styles/normal = ExtResource("12_oncx7")
 text = "Confirmar"
 
 [node name="ErrorLabel" type="Label" parent="player 2/Control2"]
-modulate = Color(0.922094, 0, 0.103637, 1)
 layout_mode = 2
 offset_left = 7.0
-offset_top = 105.0
+offset_top = 128.0
 offset_right = 583.0
-offset_bottom = 128.0
+offset_bottom = 151.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 horizontal_alignment = 1
 
 [connection signal="button_up" from="Button" to="." method="_on_start_game"]

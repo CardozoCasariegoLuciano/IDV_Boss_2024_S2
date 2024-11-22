@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhql4t8810uip"]
+[gd_scene load_steps=6 format=3 uid="uid://dhql4t8810uip"]
 
 [ext_resource type="Script" path="res://Views/pre_game/formation_selector.gd" id="1_mrtbs"]
 [ext_resource type="Texture2D" uid="uid://cll1pi8k43bxt" path="res://assets/fondo/formation-selector.jpeg" id="2_r7cbf"]
+[ext_resource type="StyleBox" uid="uid://by2qbg25pw6k3" path="res://styles/button_blue_styles_hover.tres" id="3_760u7"]
+[ext_resource type="StyleBox" uid="uid://bb2xqcqx2i3mc" path="res://styles/button_blue_style.tres" id="4_lda75"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5652c"]
 font_size = 24
@@ -49,7 +51,11 @@ offset_right = 42.5
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "confirmar"
+theme_override_styles/focus = ExtResource("3_760u7")
+theme_override_styles/hover = ExtResource("3_760u7")
+theme_override_styles/pressed = ExtResource("4_lda75")
+theme_override_styles/normal = ExtResource("4_lda75")
+text = "Confirmar"
 
 [node name="Label" type="Label" parent="."]
 z_index = 5

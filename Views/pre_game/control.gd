@@ -3,7 +3,6 @@ extends Control
 var texture_paths: Array = PlayerSkins.texture_paths
 
 var current_index_p1: int = 0
-var current_index_p2: int = 0
 
 @export var textures: Array = []
 
@@ -25,10 +24,9 @@ func _ready():
 	p1_selection = textures[0]
 
 func _on_left_button_pressed():
-	if textures.size() > 0:
-		current_index_p1 = (current_index_p1 - 1 + textures.size()) % textures.size()
-		texture_rect.texture = textures[current_index_p1]
-		p1_selection = textures[current_index_p1]
+	current_index_p1 = (current_index_p1 - 1 + textures.size()) % textures.size()
+	texture_rect.texture = textures[current_index_p1]
+	p1_selection = textures[current_index_p1]
 
 func _on_right_button_pressed():
 	if textures.size() > 0:
@@ -38,22 +36,31 @@ func _on_right_button_pressed():
 
 
 func _on_button_pressed() -> void:
-	if (p1_selection == PlayerSkins.skin_player_2):
+	print($Confirm/ConfirmButton.text)
+	var format_string = "Jugador 1 p1_selecion: %s"
+
+	# Using the '%' operator, the placeholder is replaced with the desired value
+	var actual_string = format_string % p1_selection
+
+	print(actual_string)
+	print(PlayerSkins.skin_player_2)
+	if (p1_selection == PlayerSkins.skin_player_2 && PlayerSkins.skin_player_2 != null && $Confirm/ConfirmButton.text == "Confirmar"):
 		_show_error_message("Jugador 1 no puede seleccionar el mismo equipo que el Jugador 2.")
 		return 
 
-	PlayerSkins.skin_player_1 = p1_selection
+	
 	
 	if $Confirm/ConfirmButton.text == "Editar":
 		$Confirm/ConfirmButton.text = "Confirmar"
 		left_button.disabled = false
 		right_button.disabled = false
+		PlayerSkins.skin_player_1 = null
 	else:
 		_show_error_message("")
+		PlayerSkins.skin_player_1 = p1_selection
 		$Confirm/ConfirmButton.text = "Editar"
 		left_button.disabled = true
 		right_button.disabled = true
-		p1_selection = null
 
 
 func _show_error_message(message: String) -> void:
