@@ -36,19 +36,9 @@ func _on_right_button_pressed():
 
 
 func _on_button_pressed() -> void:
-	print($Confirm/ConfirmButton.text)
-	var format_string = "Jugador 1 p1_selecion: %s"
-
-	# Using the '%' operator, the placeholder is replaced with the desired value
-	var actual_string = format_string % p1_selection
-
-	print(actual_string)
-	print(PlayerSkins.skin_player_2)
 	if (p1_selection == PlayerSkins.skin_player_2 && PlayerSkins.skin_player_2 != null && $Confirm/ConfirmButton.text == "Confirmar"):
 		_show_error_message("Jugador 1 no puede seleccionar el mismo equipo que el Jugador 2.")
 		return 
-
-	
 	
 	if $Confirm/ConfirmButton.text == "Editar":
 		$Confirm/ConfirmButton.text = "Confirmar"
