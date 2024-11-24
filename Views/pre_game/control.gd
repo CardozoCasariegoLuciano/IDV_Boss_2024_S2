@@ -53,8 +53,6 @@ func _on_button_pressed() -> void:
 		$Confirm/ConfirmButton.text = "Editar"
 		left_button.disabled = true
 		right_button.disabled = true
-		p1_selection = null
-
 
 func _show_error_message(message: String) -> void:
 	var error_label = $ErrorLabel

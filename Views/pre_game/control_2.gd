@@ -54,7 +54,6 @@ func _on_confirm_button_pressed() -> void:
 		$Confirm/ConfirmButton.text = "Editar"
 		left_button.disabled = true
 		right_button.disabled = true
-		p2_selection = null
 
 # Función para mostrar un mensaje de error
 func _show_error_message(message: String) -> void:
