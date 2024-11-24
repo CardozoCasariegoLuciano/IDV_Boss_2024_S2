@@ -39,22 +39,21 @@ func _on_left_button_pressed_p2() -> void:
 
 
 func _on_confirm_button_pressed() -> void:
-	if (p2_selection == PlayerSkins.skin_player_1):
+	if (p2_selection == PlayerSkins.skin_player_1 && PlayerSkins.skin_player_1 != null && $Confirm/ConfirmButton.text == "Confirmar"):
 		_show_error_message("Jugador 2 no puede seleccionar el mismo equipo que el Jugador 1.")
-		return 
-	
-	PlayerSkins.skin_player_2 = p2_selection
+		return
 	
 	if $Confirm/ConfirmButton.text == "Editar":
 		$Confirm/ConfirmButton.text = "Confirmar"
 		left_button.disabled = false
 		right_button.disabled = false
+		PlayerSkins.skin_player_2 = null
 	else:
 		_show_error_message("")
+		PlayerSkins.skin_player_2 = p2_selection
 		$Confirm/ConfirmButton.text = "Editar"
 		left_button.disabled = true
 		right_button.disabled = true
-		p2_selection = null
 
 # Función para mostrar un mensaje de error
 func _show_error_message(message: String) -> void:
