@@ -3,6 +3,7 @@ extends Control
 @onready var title: Label = $Label
 @onready var options: Node2D = $options
 @onready var total_quantity: Label = $total_quantity
+@onready var error_mesage: Label = $error_mesage
 
 var player: int
 var total_cards: int
@@ -42,8 +43,11 @@ func update_quantity():
 	total_quantity.text = "Cartas totales: " + str(total_cards)
 	if(total_cards > Deck.MAX_DECK_SIZE or total_cards < Deck.MIN_DECK_SIZE):
 		total_quantity.modulate = Color.CHOCOLATE
+		error_mesage.visible = true
 	else:
 		total_quantity.modulate = Color.WHITE
+		error_mesage.visible = false
+
 
 func _on_set_default_deck() -> void:
 	var card_options: Array[CardData] = CardBank.card_scenes_bank 
