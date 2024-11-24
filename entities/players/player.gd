@@ -30,6 +30,7 @@ func _ready() -> void:
 	sprite_2d.scale = Vector2(scale_factor, scale_factor)
 		
 func execute_move(can_execute: bool):
+	self.linear_velocity = Vector2(0,0)
 	if(can_execute and !used_cards.is_empty()):
 		for card in used_cards:
 			card.apply_action()
@@ -49,7 +50,7 @@ func initial_properties():
 	scale = Vector2(1,1)
 	mass = 20
 	linear_damp = 1.0
-	angular_damp = 100.0
+	angular_damp = 900.0
 	modulate = Color(1,1,1,1)
 
 func clean_player(can_clean: bool) -> void:
