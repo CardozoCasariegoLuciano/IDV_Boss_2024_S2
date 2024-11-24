@@ -1,18 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcthvb3ax6c65"]
+[gd_scene load_steps=5 format=3 uid="uid://dcthvb3ax6c65"]
 
 [ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_tiu8e"]
 [ext_resource type="Script" path="res://entities/carts/powers/gigant/gigant_card.gd" id="2_djshs"]
 [ext_resource type="Texture2D" uid="uid://vh0ufmdu23og" path="res://assets/cards/final_assets/images.png" id="3_1stf7"]
-
-[sub_resource type="Resource" id="Resource_0jn6i"]
-metadata/__load_path__ = "res://assets/audio/ui/takeIt.mp3"
 
 [sub_resource type="Resource" id="Resource_l3xo5"]
 metadata/__load_path__ = "res://assets/audio/ui/cardPlayed.mp3"
 
 [node name="Card_Template" instance=ExtResource("1_tiu8e")]
 script = ExtResource("2_djshs")
-take_card_sfx = SubResource("Resource_0jn6i")
 card_played_sfx = SubResource("Resource_l3xo5")
 
 [node name="Energy" parent="Card" index="0"]
@@ -28,3 +24,22 @@ text = "Aumenta la masa del jugador, lo que le permite empujar a los demás juga
 position = Vector2(0, -90)
 scale = Vector2(1.21111, 1.21111)
 texture = ExtResource("3_1stf7")
+
+[node name="description" type="Label" parent="CanvasLayer/Panel" index="0"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -354.0
+offset_right = -39.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Carta Gigante
+
+Arrastra esta carta hasta un JUGADOR de tu equipo para poder aplicar la carta
+
+Si un jugador es gigante podra empujar a otros jugadores mas facil!
+"
+vertical_alignment = 1
+autowrap_mode = 3

@@ -1,18 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://caw0pdl6xb3ht"]
+[gd_scene load_steps=5 format=3 uid="uid://caw0pdl6xb3ht"]
 
 [ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_cc4bb"]
 [ext_resource type="Script" path="res://entities/carts/movements/move_card/move_card.gd" id="2_v3gpk"]
 [ext_resource type="Texture2D" uid="uid://ojabt8mm70fs" path="res://assets/cards/final_assets/run.png" id="3_lu4qk"]
-
-[sub_resource type="Resource" id="Resource_0jn6i"]
-metadata/__load_path__ = "res://assets/audio/ui/takeIt.mp3"
 
 [sub_resource type="Resource" id="Resource_l3xo5"]
 metadata/__load_path__ = "res://assets/audio/ui/cardPlayed.mp3"
 
 [node name="Card_Template" instance=ExtResource("1_cc4bb")]
 script = ExtResource("2_v3gpk")
-take_card_sfx = SubResource("Resource_0jn6i")
 card_played_sfx = SubResource("Resource_l3xo5")
 
 [node name="Energy" parent="Card" index="0"]
@@ -28,3 +24,22 @@ text = "Esta carta mueve un jugador por la cancha"
 position = Vector2(-16.6667, -86.6666)
 scale = Vector2(1.5641, 1.5641)
 texture = ExtResource("3_lu4qk")
+
+[node name="description" type="Label" parent="CanvasLayer/Panel" index="0"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -354.0
+offset_right = -39.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Carta Mover
+
+Arrastra esta carta hasta un JUGADOR de tu equipo para poder moverlo
+
+cuando veas la señal alrededor del jugador, haz click en cualquier parte de la cancha y sin soltarlo arrastra el mouse para elegir la dirección y la potencia del movimiento
+"
+vertical_alignment = 1
+autowrap_mode = 3

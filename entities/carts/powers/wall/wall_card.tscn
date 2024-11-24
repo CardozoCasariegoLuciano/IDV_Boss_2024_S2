@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dha53vtws8hfb"]
+[gd_scene load_steps=6 format=3 uid="uid://dha53vtws8hfb"]
 
 [ext_resource type="PackedScene" uid="uid://c81uyxatkkoh5" path="res://entities/carts/cart_template/card_template.tscn" id="1_bchkx"]
 [ext_resource type="Script" path="res://entities/carts/powers/wall/wall_card.gd" id="2_tu3k8"]
 [ext_resource type="PackedScene" uid="uid://b8xn6eeuvjgwr" path="res://entities/carts/powers/wall/wall.tscn" id="3_fkga8"]
 [ext_resource type="Texture2D" uid="uid://s45ckkm58fek" path="res://assets/cards/final_assets/8666641.png" id="4_4mgdp"]
-
-[sub_resource type="Resource" id="Resource_0jn6i"]
-metadata/__load_path__ = "res://assets/audio/ui/takeIt.mp3"
 
 [sub_resource type="Resource" id="Resource_l3xo5"]
 metadata/__load_path__ = "res://assets/audio/ui/cardPlayed.mp3"
@@ -14,7 +11,6 @@ metadata/__load_path__ = "res://assets/audio/ui/cardPlayed.mp3"
 [node name="Card_Template" instance=ExtResource("1_bchkx")]
 script = ExtResource("2_tu3k8")
 wall_scene = ExtResource("3_fkga8")
-take_card_sfx = SubResource("Resource_0jn6i")
 card_played_sfx = SubResource("Resource_l3xo5")
 
 [node name="Energy" parent="Card" index="0"]
@@ -32,3 +28,21 @@ text = "Esta carta crea un muro en la posición seleccionada de la cancha
 position = Vector2(0, -90)
 scale = Vector2(0.519531, 0.519531)
 texture = ExtResource("4_4mgdp")
+
+[node name="description" type="Label" parent="CanvasLayer/Panel" index="0"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -354.0
+offset_right = -39.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Carta Muro
+
+Arrastra esta carta hasta la CANCHA y se generara el muro
+
+tienes 4 segundos para rotarlo con la rueda del mouse antes de que quede estático "
+vertical_alignment = 1
+autowrap_mode = 3
