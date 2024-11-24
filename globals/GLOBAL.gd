@@ -4,8 +4,11 @@ signal clean_cards_effect
 signal on_reduce_energy
 signal try_to_use_card
 
-const GOALS_TO_WIN = 2
+const GOALS_TO_WIN = 1
+const GAME_TIME_LIMIT = 1 #minutes
 const INIT_ENERGY = 15
+
+var is_time_mode = true
 
 var current_player_turn = 1
 var current_player_energy := INIT_ENERGY
@@ -35,6 +38,7 @@ func set_player_energy():
 	on_reduce_energy.emit(INIT_ENERGY)
 
 func any_winner() -> bool:
+	if(is_time_mode): return false
 	return player_1_goals >= GOALS_TO_WIN or player_2_goals >= GOALS_TO_WIN
 	
 func reset_values():

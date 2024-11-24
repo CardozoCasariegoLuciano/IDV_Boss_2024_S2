@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5wrt8iit786d"]
+[gd_scene load_steps=11 format=3 uid="uid://5wrt8iit786d"]
 
 [ext_resource type="Script" path="res://Views/pre_game/pre_game.gd" id="1_yi5tk"]
 [ext_resource type="PackedScene" uid="uid://brpe030wttgwg" path="res://Views/pre_game/deck_selector.tscn" id="2_osjdq"]
@@ -11,6 +11,13 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjo4q"]
 bg_color = Color(0, 0.234667, 0.32, 0.807843)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2dtm"]
+bg_color = Color(0, 0.235294, 0.321569, 0.807843)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -61,7 +68,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "¡Prepara tu equipo!"
 
-[node name="menu" type="Panel" parent="."]
+[node name="menu_player_1" type="Panel" parent="."]
 clip_contents = true
 offset_left = 192.0
 offset_top = 118.0
@@ -69,49 +76,44 @@ offset_right = 381.0
 offset_bottom = 476.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rjo4q")
 
-[node name="menu2" type="Panel" parent="."]
-clip_contents = true
-offset_left = 763.0
-offset_top = 118.0
-offset_right = 952.0
-offset_bottom = 476.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_rjo4q")
-
-[node name="player 1" type="VBoxContainer" parent="."]
+[node name="player 1" type="VBoxContainer" parent="menu_player_1"]
 custom_minimum_size = Vector2(576, 500)
 layout_direction = 1
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -500.0
-offset_right = 576.0
+offset_left = -192.0
+offset_top = -328.0
+offset_right = 384.0
+offset_bottom = 172.0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="player 1"]
+[node name="Label" type="Label" parent="menu_player_1/player 1"]
 layout_mode = 2
 text = "Jugador 1"
 horizontal_alignment = 1
 
-[node name="separator" type="Label" parent="player 1"]
+[node name="separator" type="Label" parent="menu_player_1/player 1"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="player 1"]
+[node name="Buttons" type="VBoxContainer" parent="menu_player_1/player 1"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="deck button" type="Button" parent="player 1/Buttons"]
+[node name="deck button" type="Button" parent="menu_player_1/player 1/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Arma tu mazo"
 
-[node name="formation button" type="Button" parent="player 1/Buttons"]
+[node name="formation button" type="Button" parent="menu_player_1/player 1/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Elige tu formación
 "
 
-[node name="DT button" type="Button" parent="player 1/Buttons"]
+[node name="DT button" type="Button" parent="menu_player_1/player 1/Buttons"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -119,31 +121,31 @@ disabled = true
 text = "Elige tu DT
 "
 
-[node name="separator2" type="Label" parent="player 1"]
+[node name="separator2" type="Label" parent="menu_player_1/player 1"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="player 1"]
+[node name="Label2" type="Label" parent="menu_player_1/player 1"]
 layout_mode = 2
 text = "Elige tu equipo"
 horizontal_alignment = 1
 
-[node name="separator3" type="Label" parent="player 1"]
+[node name="separator3" type="Label" parent="menu_player_1/player 1"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="player 1"]
+[node name="Control" type="Control" parent="menu_player_1/player 1"]
 layout_mode = 2
 script = ExtResource("4_dujot")
 
-[node name="TextureRect" type="TextureRect" parent="player 1/Control"]
+[node name="TextureRect" type="TextureRect" parent="menu_player_1/player 1/Control"]
 layout_mode = 0
 offset_left = 268.0
 offset_right = 308.0
 offset_bottom = 40.0
 expand_mode = 1
 
-[node name="RightButton" type="Button" parent="player 1/Control/TextureRect"]
+[node name="RightButton" type="Button" parent="menu_player_1/player 1/Control/TextureRect"]
 layout_mode = 0
 offset_left = 49.0
 offset_top = -3.0
@@ -152,7 +154,7 @@ offset_bottom = 42.0
 icon = ExtResource("5_3h7e4")
 expand_icon = true
 
-[node name="LeftButton" type="Button" parent="player 1/Control/TextureRect"]
+[node name="LeftButton" type="Button" parent="menu_player_1/player 1/Control/TextureRect"]
 layout_mode = 0
 offset_left = -45.0
 offset_top = -3.0
@@ -161,18 +163,18 @@ offset_bottom = 42.0
 icon = ExtResource("6_c8s5w")
 expand_icon = true
 
-[node name="Confirm" type="VBoxContainer" parent="player 1/Control"]
+[node name="Confirm" type="VBoxContainer" parent="menu_player_1/player 1/Control"]
 layout_mode = 2
 offset_top = 58.0
 offset_right = 576.0
 offset_bottom = 89.0
 
-[node name="ConfirmButton" type="Button" parent="player 1/Control/Confirm"]
+[node name="ConfirmButton" type="Button" parent="menu_player_1/player 1/Control/Confirm"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Confirmar"
 
-[node name="ErrorLabel" type="Label" parent="player 1/Control"]
+[node name="ErrorLabel" type="Label" parent="menu_player_1/player 1/Control"]
 modulate = Color(0.921569, 0, 0.101961, 1)
 layout_mode = 2
 offset_top = 112.0
@@ -180,51 +182,54 @@ offset_right = 576.0
 offset_bottom = 135.0
 horizontal_alignment = 1
 
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(0, 148)
-points = PackedVector2Array(576, 0, 576, 500)
-width = 2.0
-default_color = Color(1, 1, 1, 0.270588)
+[node name="menu_player_2" type="Panel" parent="."]
+clip_contents = true
+offset_left = 763.0
+offset_top = 118.0
+offset_right = 952.0
+offset_bottom = 476.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rjo4q")
 
-[node name="player 2" type="VBoxContainer" parent="."]
+[node name="player 2" type="VBoxContainer" parent="menu_player_2"]
 custom_minimum_size = Vector2(576, 500)
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -581.0
-offset_top = -493.0
-offset_right = -5.0
-offset_bottom = 7.0
+offset_left = -381.0
+offset_top = -321.0
+offset_right = 195.0
+offset_bottom = 179.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="player 2"]
+[node name="Label" type="Label" parent="menu_player_2/player 2"]
 layout_mode = 2
 text = "Jugador 2"
 horizontal_alignment = 1
 
-[node name="separator" type="Label" parent="player 2"]
+[node name="separator" type="Label" parent="menu_player_2/player 2"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="player 2"]
+[node name="Buttons" type="VBoxContainer" parent="menu_player_2/player 2"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="deck button" type="Button" parent="player 2/Buttons"]
+[node name="deck button" type="Button" parent="menu_player_2/player 2/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Arma tu mazo"
 
-[node name="formation button" type="Button" parent="player 2/Buttons"]
+[node name="formation button" type="Button" parent="menu_player_2/player 2/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Elige tu formación
 "
 
-[node name="DT button" type="Button" parent="player 2/Buttons"]
+[node name="DT button" type="Button" parent="menu_player_2/player 2/Buttons"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -232,24 +237,24 @@ disabled = true
 text = "Elige tu DT
 "
 
-[node name="separator2" type="Label" parent="player 2"]
+[node name="separator2" type="Label" parent="menu_player_2/player 2"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="player 2"]
+[node name="Label2" type="Label" parent="menu_player_2/player 2"]
 layout_mode = 2
 text = "Elige tu equipo"
 horizontal_alignment = 1
 
-[node name="separator3" type="Label" parent="player 2"]
+[node name="separator3" type="Label" parent="menu_player_2/player 2"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="Control2" type="Control" parent="player 2"]
+[node name="Control2" type="Control" parent="menu_player_2/player 2"]
 layout_mode = 2
 script = ExtResource("7_inoag")
 
-[node name="TextureRect" type="TextureRect" parent="player 2/Control2"]
+[node name="TextureRect" type="TextureRect" parent="menu_player_2/player 2/Control2"]
 layout_mode = 0
 offset_left = 268.0
 offset_top = -7.0
@@ -257,7 +262,7 @@ offset_right = 308.0
 offset_bottom = 33.0
 expand_mode = 1
 
-[node name="RightButton" type="Button" parent="player 2/Control2/TextureRect"]
+[node name="RightButton" type="Button" parent="menu_player_2/player 2/Control2/TextureRect"]
 layout_mode = 0
 offset_left = 45.0
 offset_top = -2.0
@@ -266,7 +271,7 @@ offset_bottom = 43.0
 icon = ExtResource("5_3h7e4")
 expand_icon = true
 
-[node name="LeftButton" type="Button" parent="player 2/Control2/TextureRect"]
+[node name="LeftButton" type="Button" parent="menu_player_2/player 2/Control2/TextureRect"]
 layout_mode = 0
 offset_left = -41.0
 offset_top = -2.0
@@ -275,18 +280,18 @@ offset_bottom = 43.0
 icon = ExtResource("6_c8s5w")
 expand_icon = true
 
-[node name="Confirm" type="VBoxContainer" parent="player 2/Control2"]
+[node name="Confirm" type="VBoxContainer" parent="menu_player_2/player 2/Control2"]
 layout_mode = 2
 offset_top = 51.0
 offset_right = 576.0
 offset_bottom = 82.0
 
-[node name="ConfirmButton" type="Button" parent="player 2/Control2/Confirm"]
+[node name="ConfirmButton" type="Button" parent="menu_player_2/player 2/Control2/Confirm"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Confirmar"
 
-[node name="ErrorLabel" type="Label" parent="player 2/Control2"]
+[node name="ErrorLabel" type="Label" parent="menu_player_2/player 2/Control2"]
 modulate = Color(0.922094, 0, 0.103637, 1)
 layout_mode = 2
 offset_left = 7.0
@@ -295,14 +300,77 @@ offset_right = 583.0
 offset_bottom = 128.0
 horizontal_alignment = 1
 
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, 147.444)
+scale = Vector2(1, 0.722222)
+points = PackedVector2Array(576, 0, 576, 500)
+width = 2.0
+default_color = Color(1, 1, 1, 0.270588)
+
+[node name="game_mode" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -110.0
+offset_right = 166.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x2dtm")
+
+[node name="Label" type="Label" parent="game_mode"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = 8.0
+offset_right = 65.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Modo de victoria"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="game_mode"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.5
+offset_top = 4.0
+offset_right = 104.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="goals" type="Label" parent="game_mode/HBoxContainer"]
+layout_mode = 2
+text = "Por goles"
+
+[node name="CheckButton" type="CheckButton" parent="game_mode/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+button_pressed = true
+expand_icon = true
+
+[node name="time" type="Label" parent="game_mode/HBoxContainer"]
+layout_mode = 2
+text = "Por tiempo"
+
 [connection signal="button_up" from="Button" to="." method="_on_start_game"]
-[connection signal="button_up" from="player 1/Buttons/deck button" to="." method="_on_player_1_select_deck"]
-[connection signal="button_up" from="player 1/Buttons/formation button" to="." method="_on_player_1_select_formation"]
-[connection signal="pressed" from="player 1/Control/TextureRect/RightButton" to="player 1/Control" method="_on_right_button_pressed"]
-[connection signal="pressed" from="player 1/Control/TextureRect/LeftButton" to="player 1/Control" method="_on_left_button_pressed"]
-[connection signal="pressed" from="player 1/Control/Confirm/ConfirmButton" to="player 1/Control" method="_on_button_pressed"]
-[connection signal="button_up" from="player 2/Buttons/deck button" to="." method="_on_player_2_select_deck"]
-[connection signal="button_up" from="player 2/Buttons/formation button" to="." method="_on_player_2_select_formation"]
-[connection signal="pressed" from="player 2/Control2/TextureRect/RightButton" to="player 2/Control2" method="_on_right_button_pressed_p2"]
-[connection signal="pressed" from="player 2/Control2/TextureRect/LeftButton" to="player 2/Control2" method="_on_left_button_pressed_p2"]
-[connection signal="pressed" from="player 2/Control2/Confirm/ConfirmButton" to="player 2/Control2" method="_on_confirm_button_pressed"]
+[connection signal="button_up" from="menu_player_1/player 1/Buttons/deck button" to="." method="_on_player_1_select_deck"]
+[connection signal="button_up" from="menu_player_1/player 1/Buttons/formation button" to="." method="_on_player_1_select_formation"]
+[connection signal="pressed" from="menu_player_1/player 1/Control/TextureRect/RightButton" to="menu_player_1/player 1/Control" method="_on_right_button_pressed"]
+[connection signal="pressed" from="menu_player_1/player 1/Control/TextureRect/LeftButton" to="menu_player_1/player 1/Control" method="_on_left_button_pressed"]
+[connection signal="pressed" from="menu_player_1/player 1/Control/Confirm/ConfirmButton" to="menu_player_1/player 1/Control" method="_on_button_pressed"]
+[connection signal="button_up" from="menu_player_2/player 2/Buttons/deck button" to="." method="_on_player_2_select_deck"]
+[connection signal="button_up" from="menu_player_2/player 2/Buttons/formation button" to="." method="_on_player_2_select_formation"]
+[connection signal="pressed" from="menu_player_2/player 2/Control2/TextureRect/RightButton" to="menu_player_2/player 2/Control2" method="_on_right_button_pressed_p2"]
+[connection signal="pressed" from="menu_player_2/player 2/Control2/TextureRect/LeftButton" to="menu_player_2/player 2/Control2" method="_on_left_button_pressed_p2"]
+[connection signal="pressed" from="menu_player_2/player 2/Control2/Confirm/ConfirmButton" to="menu_player_2/player 2/Control2" method="_on_confirm_button_pressed"]

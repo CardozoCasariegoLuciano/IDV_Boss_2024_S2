@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://4gn2e1ru5o1x"]
+[gd_scene load_steps=25 format=3 uid="uid://4gn2e1ru5o1x"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://main/jugadores.gd" id="9_aknih"]
 [ext_resource type="Script" path="res://main/on_drop_button.gd" id="13_he3rg"]
 [ext_resource type="Script" path="res://main/help_panel.gd" id="13_vx5am"]
+[ext_resource type="Script" path="res://main/time_limit.gd" id="15_dqd0s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pneb"]
 size = Vector2(13, 202)
@@ -50,7 +51,9 @@ whistle_sound = ExtResource("5_kaams")
 croud_sound = ExtResource("4_cb0gf")
 finished_turn_sound = ExtResource("7_qlwp5")
 
-[node name="cancha" type="Node" parent="."]
+[node name="cancha" type="Node2D" parent="."]
+position = Vector2(61, 36)
+scale = Vector2(0.9, 0.9)
 script = ExtResource("7_5wxwe")
 
 [node name="ColorRect" type="ColorRect" parent="cancha"]
@@ -59,7 +62,6 @@ offset_top = 33.0
 offset_right = 1122.0
 offset_bottom = 553.0
 color = Color(0.24246, 0.54, 0.2268, 1)
-metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="cancha"]
 offset_left = 28.0
@@ -76,7 +78,6 @@ offset_top = -33.0
 offset_right = 1144.0
 offset_bottom = 618.0
 script = ExtResource("1_kwt4r")
-metadata/_edit_lock_ = true
 
 [node name="GoalSfx" type="AudioStreamPlayer" parent="cancha"]
 stream = ExtResource("6_w4uf2")
@@ -226,14 +227,26 @@ mouse_default_cursor_shape = 6
 text = "1
 "
 
+[node name="Time limit" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_right = 24.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "5:00
+"
+script = ExtResource("15_dqd0s")
+
 [node name="Goals" type="HBoxContainer" parent="HUD"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -21.0
-offset_top = -6.0
+offset_top = 14.0
 offset_right = 21.0
-offset_bottom = 34.0
+offset_bottom = 54.0
 grow_horizontal = 2
 mouse_filter = 2
 
@@ -411,6 +424,7 @@ autowrap_mode = 3
 metadata/_edit_lock_ = true
 
 [node name="MainSfx" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 bus = &"Sfx"
 
 [node name="CroudSfx" type="AudioStreamPlayer" parent="."]

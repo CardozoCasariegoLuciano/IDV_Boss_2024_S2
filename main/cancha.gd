@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 signal on_goal(player)
 
 @onready var goal_sfx: AudioStreamPlayer = $GoalSfx

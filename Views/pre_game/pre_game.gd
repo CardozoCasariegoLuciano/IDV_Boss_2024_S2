@@ -1,10 +1,12 @@
 extends CanvasLayer
 @export var deck_selector: PackedScene
 @export var formation_selector: PackedScene
+@onready var check_button: CheckButton = $game_mode/HBoxContainer/CheckButton
 
 
 func _on_start_game() -> void:
 	if (PlayerSkins.skin_player_1 != null && PlayerSkins.skin_player_2 != null):
+		Global.is_time_mode = check_button.button_pressed
 		get_tree().change_scene_to_file("res://main/main.tscn")
 	else:
 		_show_error_message("Ambos jugadores deben elegir equipo antes de comenzar")
