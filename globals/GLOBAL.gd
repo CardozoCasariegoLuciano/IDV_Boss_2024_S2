@@ -5,7 +5,7 @@ signal on_reduce_energy
 signal try_to_use_card
 
 const GOALS_TO_WIN = 1
-const GAME_TIME_LIMIT = 1 #minutes
+const GAME_TIME_LIMIT = 5 #minutes
 const INIT_ENERGY = 15
 
 var is_time_mode = true
