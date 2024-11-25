@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1fomcic12drp"]
+[gd_scene load_steps=7 format=3 uid="uid://b1fomcic12drp"]
 
 [ext_resource type="Script" path="res://Views/menu_config/menu_config.gd" id="1_65shi"]
 [ext_resource type="Texture2D" uid="uid://csc2awi2vtros" path="res://assets/fondo/pantalla_config.png" id="2_5okjb"]
 [ext_resource type="PackedScene" uid="uid://d3td04veithbo" path="res://Views/menu_config/volume_slider.tscn" id="2_xnr01"]
+[ext_resource type="StyleBox" uid="uid://by2qbg25pw6k3" path="res://styles/button_blue_styles_hover.tres" id="4_l6x4r"]
+[ext_resource type="StyleBox" uid="uid://bb2xqcqx2i3mc" path="res://styles/button_blue_style.tres" id="5_kfrq4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui7sg"]
 bg_color = Color(0, 0, 0, 1)
@@ -95,6 +97,10 @@ bus_name = "Master"
 
 [node name="Close" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/focus = ExtResource("4_l6x4r")
+theme_override_styles/hover = ExtResource("4_l6x4r")
+theme_override_styles/pressed = ExtResource("5_kfrq4")
+theme_override_styles/normal = ExtResource("5_kfrq4")
 text = "Aceptar"
 
 [connection signal="button_up" from="Control/VBoxContainer/Close" to="." method="_on_close_button_up"]

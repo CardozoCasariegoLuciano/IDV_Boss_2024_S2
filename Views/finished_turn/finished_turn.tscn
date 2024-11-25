@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://jkknwe4s7ha"]
+[gd_scene load_steps=5 format=3 uid="uid://jkknwe4s7ha"]
 
 [ext_resource type="Script" path="res://Views/finished_turn/finished_turn.gd" id="1_mmvgj"]
 [ext_resource type="Texture2D" uid="uid://b68ymaeytvdym" path="res://assets/fondo/waiting.jpeg" id="2_rp872"]
+[ext_resource type="StyleBox" uid="uid://by2qbg25pw6k3" path="res://styles/button_blue_styles_hover.tres" id="3_qq6kf"]
+[ext_resource type="StyleBox" uid="uid://bb2xqcqx2i3mc" path="res://styles/button_blue_style.tres" id="4_q06i6"]
 
 [node name="FinishedTurn" type="CanvasLayer"]
 layer = 10
@@ -46,6 +48,8 @@ vertical_alignment = 1
 
 [node name="next_player_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_styles/hover = ExtResource("3_qq6kf")
+theme_override_styles/normal = ExtResource("4_q06i6")
 text = "Estoy listo"
 
 [connection signal="pressed" from="VBoxContainer/next_player_button" to="." method="_on_next_player_button_pressed"]
