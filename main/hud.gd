@@ -28,8 +28,7 @@ func _ready() -> void:
 	discard_deck.text = str(Deck.get_current_player_DiscardDeck().size())
 	deck.text = str(Deck.get_current_player_Deck().size())
 
-
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if(Input.is_action_just_pressed("Open_config") and !is_config_open):
 		var config_view = preload("res://Views/menu_config/menu_config.tscn").instantiate()
 		config_view._on_close.connect(_on_close_config)

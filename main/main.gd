@@ -5,6 +5,7 @@ extends Node
 @onready var players_section: Node2D = $players_section
 @onready var cards_section: Node2D = $cards_section
 @onready var cancha: Node = $cancha
+@onready var time_limit: Label = $"HUD/Time limit"
 
 @onready var main_sfx: AudioStreamPlayer = $MainSfx
 @onready var croud_sfx: AudioStreamPlayer = $CroudSfx
@@ -17,6 +18,7 @@ func _ready() -> void:
 	_play_croud_sound()
 	start_game(false);
 	cancha.on_goal.connect(func(): start_game(true))
+	time_limit.connect("_on_game_timeout", game_end_by_time)
 
 func generate_ball():
 	var new_ball: Ball = ball.instantiate()
@@ -28,17 +30,18 @@ func _on_end_turn() -> void:
 	Global.next_player_turn()
 	next_player_turn()
 
+func game_end_by_time():
+	get_tree().call_deferred("change_scene_to_file","res://Views/win_screen/win_screen.tscn")
 
 func next_player_turn():
 	cards_section.clean_cards()
 	cards_section.generate_carts()
 
 func start_game(clean_old: bool):
-	_play_sound(whistle_sound)
 	if(Global.any_winner()):
 		get_tree().call_deferred("change_scene_to_file","res://Views/win_screen/win_screen.tscn")
 		return
-		
+	_play_sound(whistle_sound)
 	if(clean_old):
 		for value in players_section.get_players():
 			value.queue_free()
