@@ -202,7 +202,7 @@ theme_override_styles/focus = ExtResource("14_oswn4")
 theme_override_styles/hover = ExtResource("14_oswn4")
 theme_override_styles/pressed = ExtResource("15_jaoa1")
 theme_override_styles/normal = ExtResource("15_jaoa1")
-text = "Confirmar planificacion"
+text = "Confirmar planificación"
 
 [node name="Panel" type="Panel" parent="HUD/EndTurn_Button"]
 modulate = Color(1, 1, 1, 0)
