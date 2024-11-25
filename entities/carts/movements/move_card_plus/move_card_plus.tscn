@@ -6,7 +6,6 @@
 
 [node name="Card_Template" instance=ExtResource("1_o182l")]
 script = ExtResource("2_6p8f0")
-take_card_sfx = null
 card_played_sfx = null
 
 [node name="Energy" parent="Card" index="0"]
@@ -23,3 +22,22 @@ text = "Esta carta puede mover al jugador una mayor distancia"
 position = Vector2(0, -90)
 scale = Vector2(1.50962, 1.50962)
 texture = ExtResource("3_3xswk")
+
+[node name="description" type="Label" parent="CanvasLayer/Panel" index="0"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -354.0
+offset_right = -39.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Carta Mover Plus
+
+Arrastra esta carta hasta un JUGADOR de tu equipo para poder moverlo
+
+cuando veas la señal alrededor del jugador, haz click en cualquier parte de la cancha y sin soltarlo arrastra el mouse para elegir la dirección y la potencia del movimiento
+"
+vertical_alignment = 1
+autowrap_mode = 3
