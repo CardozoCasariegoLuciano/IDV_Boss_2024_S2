@@ -17,6 +17,10 @@
 [ext_resource type="Script" path="res://main/help_panel.gd" id="13_vx5am"]
 [ext_resource type="Script" path="res://main/time_limit.gd" id="15_dqd0s"]
 [ext_resource type="Script" path="res://main/guide_to_info.gd" id="16_gqsj5"]
+[ext_resource type="StyleBox" uid="uid://by2qbg25pw6k3" path="res://styles/button_blue_styles_hover.tres" id="14_oswn4"]
+[ext_resource type="StyleBox" uid="uid://bb2xqcqx2i3mc" path="res://styles/button_blue_style.tres" id="15_jaoa1"]
+[ext_resource type="StyleBox" uid="uid://1jmpjhepq6et" path="res://styles/button_green_styles_hover.tres" id="17_l7jhe"]
+[ext_resource type="StyleBox" uid="uid://d1n6cshtrvcay" path="res://styles/button_green_style.tres" id="18_ivxjb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pneb"]
 size = Vector2(13, 202)
@@ -202,6 +206,10 @@ offset_left = 943.0
 offset_top = 605.0
 offset_right = 1130.0
 offset_bottom = 636.0
+theme_override_styles/focus = ExtResource("14_oswn4")
+theme_override_styles/hover = ExtResource("14_oswn4")
+theme_override_styles/pressed = ExtResource("15_jaoa1")
+theme_override_styles/normal = ExtResource("15_jaoa1")
 text = "Confirmar planificación"
 
 [node name="Panel" type="Panel" parent="HUD/EndTurn_Button"]
@@ -343,10 +351,16 @@ offset_bottom = 64.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hshqm")
 
 [node name="info" type="Button" parent="HUD"]
+anchors_preset = -1
+anchor_left = -0.003
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 44.544
 offset_bottom = 47.0
+theme_override_styles/focus = ExtResource("17_l7jhe")
+theme_override_styles/hover = ExtResource("17_l7jhe")
+theme_override_styles/pressed = ExtResource("18_ivxjb")
+theme_override_styles/normal = ExtResource("18_ivxjb")
 text = "?"
 
 [node name="Panel" type="Panel" parent="HUD/info"]
