@@ -14,7 +14,7 @@ func _ready() -> void:
 		winer_laber.text = "Gano el jugador 2"
 		final_score.text = str(Global.player_2_goals) + " - " + str(Global.player_1_goals)
 	else:
-		winer_laber.text = "Empate!"
+		winer_laber.text = "¡Empate!"
 		final_score.text = str(Global.player_2_goals) + " - " + str(Global.player_1_goals)
 
 func _on_new_game() -> void:
