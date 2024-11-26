@@ -40,7 +40,7 @@ func _on_left_button_pressed_p2() -> void:
 
 func _on_confirm_button_pressed() -> void:
 	if (p2_selection == PlayerSkins.skin_player_1 && PlayerSkins.skin_player_1 != null && $Confirm/ConfirmButton.text == "Confirmar"):
-		_show_error_message("Jugador 2 no puede seleccionar el mismo equipo que el Jugador 1.")
+		_show_error_message("No se puede seleccionar el mismo equipo")
 		return
 	
 	if $Confirm/ConfirmButton.text == "Editar":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://4gn2e1ru5o1x"]
+[gd_scene load_steps=32 format=3 uid="uid://4gn2e1ru5o1x"]
 
 [ext_resource type="PackedScene" uid="uid://dbifrqao8wfwq" path="res://entities/pelota/pelota.tscn" id="1_4ipka"]
 [ext_resource type="Script" path="res://main/main.gd" id="1_hn30x"]
@@ -15,10 +15,10 @@
 [ext_resource type="Script" path="res://main/jugadores.gd" id="9_aknih"]
 [ext_resource type="Script" path="res://main/on_drop_button.gd" id="13_he3rg"]
 [ext_resource type="Script" path="res://main/help_panel.gd" id="13_vx5am"]
-[ext_resource type="Script" path="res://main/time_limit.gd" id="15_dqd0s"]
-[ext_resource type="Script" path="res://main/guide_to_info.gd" id="16_gqsj5"]
 [ext_resource type="StyleBox" uid="uid://by2qbg25pw6k3" path="res://styles/button_blue_styles_hover.tres" id="14_oswn4"]
+[ext_resource type="Script" path="res://main/time_limit.gd" id="15_dqd0s"]
 [ext_resource type="StyleBox" uid="uid://bb2xqcqx2i3mc" path="res://styles/button_blue_style.tres" id="15_jaoa1"]
+[ext_resource type="Script" path="res://main/guide_to_info.gd" id="16_gqsj5"]
 [ext_resource type="StyleBox" uid="uid://1jmpjhepq6et" path="res://styles/button_green_styles_hover.tres" id="17_l7jhe"]
 [ext_resource type="StyleBox" uid="uid://d1n6cshtrvcay" path="res://styles/button_green_style.tres" id="18_ivxjb"]
 
@@ -235,7 +235,7 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="HUD/Turns"]
 layout_mode = 2
-text = "jugador"
+text = "Jugador"
 
 [node name="Label2" type="Label" parent="HUD/Turns"]
 layout_mode = 2

@@ -61,6 +61,7 @@ offset_left = 981.0
 offset_top = 58.0
 offset_right = 1128.0
 offset_bottom = 118.0
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Label" type="Label" parent="."]
@@ -80,20 +81,20 @@ clip_contents = true
 offset_left = 192.0
 offset_top = 118.0
 offset_right = 381.0
-offset_bottom = 476.0
+offset_bottom = 532.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rjo4q")
 
 [node name="player 1" type="VBoxContainer" parent="menu_player_1"]
 custom_minimum_size = Vector2(576, 500)
 layout_direction = 1
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -328.0
-offset_right = 384.0
-offset_bottom = 172.0
+anchors_preset = -1
+anchor_top = 0.633
+anchor_bottom = 0.633
+offset_left = -190.0
+offset_top = -250.062
+offset_right = 386.0
+offset_bottom = 249.938
 grow_vertical = 0
 
 [node name="Label" type="Label" parent="menu_player_1/player 1"]
@@ -195,19 +196,20 @@ text = "Confirmar"
 
 [node name="ErrorLabel" type="Label" parent="menu_player_1/player 1/Control"]
 modulate = Color(0.921569, 0, 0.101961, 1)
-layout_mode = 2
-offset_top = 135.0
-offset_right = 576.0
-offset_bottom = 158.0
+offset_left = 192.0
+offset_top = 103.0
+offset_right = 375.0
+offset_bottom = 194.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="menu_player_2" type="Panel" parent="."]
 clip_contents = true
 offset_left = 763.0
 offset_top = 118.0
 offset_right = 952.0
-offset_bottom = 476.0
+offset_bottom = 532.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rjo4q")
 
 [node name="player 2" type="VBoxContainer" parent="menu_player_2"]
@@ -218,10 +220,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -381.0
-offset_top = -321.0
-offset_right = 195.0
-offset_bottom = 179.0
+offset_left = -379.0
+offset_top = -402.0
+offset_right = 197.0
+offset_bottom = 98.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -326,12 +328,13 @@ text = "Confirmar"
 [node name="ErrorLabel" type="Label" parent="menu_player_2/player 2/Control2"]
 modulate = Color(0.922094, 0, 0.103637, 1)
 layout_mode = 2
-offset_left = 7.0
-offset_top = 128.0
-offset_right = 583.0
-offset_bottom = 151.0
+offset_left = 195.0
+offset_top = 97.0
+offset_right = 375.0
+offset_bottom = 192.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2(0, 147.444)
@@ -394,7 +397,7 @@ expand_icon = true
 
 [node name="time" type="Label" parent="game_mode/HBoxContainer"]
 layout_mode = 2
-text = "Por tiempo"
+text = "Por tiempo (5 min)"
 
 [connection signal="button_up" from="Button" to="." method="_on_start_game"]
 [connection signal="button_up" from="menu_player_1/player 1/Buttons/deck button" to="." method="_on_player_1_select_deck"]
