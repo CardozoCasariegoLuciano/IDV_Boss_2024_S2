@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func init_timer():
 	timer = Timer.new()
-	timer.wait_time = 4 
+	timer.wait_time = 1
 	timer.one_shot = true
 	add_child(timer)
 	timer.connect("timeout", on_timer_timeout)

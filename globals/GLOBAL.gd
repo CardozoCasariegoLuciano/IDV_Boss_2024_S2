@@ -16,22 +16,34 @@ var player_1_goals = 0
 var player_2_goals = 0
 
 var is_waiting_action = false
+var rounds_count = 0
 
 func next_player_turn():
-	if(current_player_turn == 1): 
-		current_player_turn = 2
+	if(rounds_count != 1):
+		set_player_turn()
 		can_execute.emit(false)
 		show_end_turn_view()
-	elif(current_player_turn == 2):
-		current_player_turn = 1
+		rounds_count += 1
+	else:
 		can_execute.emit(true)
 	set_player_energy()
+
+func set_player_turn():
+	if(current_player_turn == 1):
+		current_player_turn = 2
+	else:
+		current_player_turn = 1
 
 func show_end_turn_view():
 	var popup_scene = preload("res://Views/finished_turn/finished_turn.tscn")
 	var popup_instance = popup_scene.instantiate()
 	add_child(popup_instance)
-	clean_cards_effect.emit(current_player_turn == 1)
+	if(rounds_count == 1):
+		clean_cards_effect.emit(true)
+		rounds_count = 0
+	else:
+		clean_cards_effect.emit(false)
+
 
 func set_player_energy():
 	current_player_energy = INIT_ENERGY

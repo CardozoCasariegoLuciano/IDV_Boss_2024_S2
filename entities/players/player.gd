@@ -5,7 +5,6 @@ class_name Player
 @onready var arrow_direction: Sprite2D = $player_direction
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-var enable_click := false
 var used_cards: Array[Card_template]
 
 var userOwner
@@ -30,7 +29,6 @@ func _ready() -> void:
 	sprite_2d.scale = Vector2(scale_factor, scale_factor)
 		
 func execute_move(can_execute: bool):
-	self.linear_velocity = Vector2(0,0)
 	if(can_execute and !used_cards.is_empty()):
 		for card in used_cards:
 			card.apply_action()
@@ -41,7 +39,6 @@ func execute_move(can_execute: bool):
 func _on_panel_on_cart_used(data: Card_template) -> void:
 	used_cards.append(data)
 	data.set_target(self)
-	enable_click = data.require_click
 
 func initial_properties():
 	contact_monitor = true
@@ -58,3 +55,4 @@ func clean_player(can_clean: bool) -> void:
 		for card in used_cards:
 			card.clean_target()
 		used_cards.clear()
+		linear_velocity = Vector2.ZERO

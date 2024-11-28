@@ -458,6 +458,32 @@ text = "Para descartar una carta y no tenerla en la proxima ronda click en la ca
 autowrap_mode = 3
 metadata/_edit_lock_ = true
 
+[node name="Turnos" type="Label" parent="HUD/Node/Control"]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 390.0
+offset_right = 300.0
+offset_bottom = 413.0
+text = "Turnos:"
+metadata/_edit_lock_ = true
+
+[node name="turnos_1" type="Label" parent="HUD/Node/Control"]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 420.0
+offset_right = 839.0
+offset_bottom = 443.0
+text = "Los turnos se ejecutan en el orden: "
+metadata/_edit_lock_ = true
+
+[node name="turnos_2" type="Label" parent="HUD/Node/Control"]
+offset_left = 253.0
+offset_top = 445.0
+offset_right = 654.0
+offset_bottom = 468.0
+text = " Jugador 1 --> jugador 2 --> jugador 2 --> jugador 1 ...."
+metadata/_edit_lock_ = true
+
 [node name="MainSfx" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 bus = &"Sfx"
