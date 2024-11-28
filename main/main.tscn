@@ -477,6 +477,7 @@ text = "Los turnos se ejecutan en el orden: "
 metadata/_edit_lock_ = true
 
 [node name="turnos_2" type="Label" parent="HUD/Node/Control"]
+layout_mode = 0
 offset_left = 253.0
 offset_top = 445.0
 offset_right = 654.0

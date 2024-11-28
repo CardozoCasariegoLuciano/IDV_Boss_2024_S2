@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5wrt8iit786d"]
+[gd_scene load_steps=16 format=3 uid="uid://5wrt8iit786d"]
 
 [ext_resource type="Script" path="res://Views/pre_game/pre_game.gd" id="1_yi5tk"]
 [ext_resource type="PackedScene" uid="uid://brpe030wttgwg" path="res://Views/pre_game/deck_selector.tscn" id="2_osjdq"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Views/pre_game/control_2.gd" id="7_inoag"]
 [ext_resource type="StyleBox" uid="uid://by2qbg25pw6k3" path="res://styles/button_blue_styles_hover.tres" id="11_6qcwc"]
 [ext_resource type="StyleBox" uid="uid://bb2xqcqx2i3mc" path="res://styles/button_blue_style.tres" id="12_oncx7"]
+[ext_resource type="Texture2D" uid="uid://c53vgljjiflo5" path="res://assets/fondo/Kick_the_cards_logo.png" id="13_msejo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjo4q"]
 bg_color = Color(0, 0.234667, 0.32, 0.807843)
@@ -196,6 +197,7 @@ text = "Confirmar"
 
 [node name="ErrorLabel" type="Label" parent="menu_player_1/player 1/Control"]
 modulate = Color(0.921569, 0, 0.101961, 1)
+layout_mode = 0
 offset_left = 192.0
 offset_top = 103.0
 offset_right = 375.0
@@ -398,6 +400,19 @@ expand_icon = true
 [node name="time" type="Label" parent="game_mode/HBoxContainer"]
 layout_mode = 2
 text = "Por tiempo (5 min)"
+
+[node name="Logo" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 367.0
+offset_top = 495.0
+offset_right = 609.0
+offset_bottom = 730.0
+grow_horizontal = 2
+texture = ExtResource("13_msejo")
+expand_mode = 1
+stretch_mode = 4
 
 [connection signal="button_up" from="Button" to="." method="_on_start_game"]
 [connection signal="button_up" from="menu_player_1/player 1/Buttons/deck button" to="." method="_on_player_1_select_deck"]

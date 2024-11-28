@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://08vgyv8fxof4"]
+[gd_scene load_steps=9 format=3 uid="uid://08vgyv8fxof4"]
 
 [ext_resource type="Script" path="res://Views/main_menu/main_menu.gd" id="1_p2c4j"]
 [ext_resource type="Texture2D" uid="uid://i6qfwa1enryq" path="res://assets/fondo/fondo_main_page.jpeg" id="2_c632s"]
+[ext_resource type="Texture2D" uid="uid://c53vgljjiflo5" path="res://assets/fondo/Kick_the_cards_logo.png" id="3_67rjr"]
 [ext_resource type="StyleBox" uid="uid://by2qbg25pw6k3" path="res://styles/button_blue_styles_hover.tres" id="3_hfclf"]
 [ext_resource type="StyleBox" uid="uid://bb2xqcqx2i3mc" path="res://styles/button_blue_style.tres" id="4_d5fvw"]
 [ext_resource type="StyleBox" uid="uid://1jmpjhepq6et" path="res://styles/button_green_styles_hover.tres" id="5_h2mr6"]
@@ -25,12 +26,31 @@ offset_bottom = 655.0
 texture = ExtResource("2_c632s")
 expand_mode = 1
 
+[node name="Logo" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 214.0
+grow_horizontal = 2
+texture = ExtResource("3_67rjr")
+expand_mode = 1
+stretch_mode = 3
+
 [node name="menu" type="Panel" parent="."]
 clip_contents = true
-offset_left = 851.0
-offset_top = 255.0
-offset_right = 1040.0
-offset_bottom = 415.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -80.0
+offset_right = 94.5
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2wcid")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menu"]
@@ -49,7 +69,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="menu/VBoxContainer"]
 layout_mode = 2
-text = "Kick de card"
+text = "Kick the cards"
 horizontal_alignment = 1
 
 [node name="space" type="Label" parent="menu/VBoxContainer"]
