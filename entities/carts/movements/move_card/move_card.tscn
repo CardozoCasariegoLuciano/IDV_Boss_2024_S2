@@ -25,21 +25,10 @@ position = Vector2(-16.6667, -86.6666)
 scale = Vector2(1.5641, 1.5641)
 texture = ExtResource("3_lu4qk")
 
-[node name="description" type="Label" parent="CanvasLayer/Panel" index="0"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -354.0
-offset_right = -39.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="description" parent="CanvasLayer/Panel" index="0"]
 text = "Carta Mover
 
 Arrastra esta carta hasta un JUGADOR de tu equipo para poder moverlo
 
 cuando veas la señal alrededor del jugador, haz click en cualquier parte de la cancha y sin soltarlo arrastra el mouse para elegir la dirección y la potencia del movimiento
 "
-vertical_alignment = 1
-autowrap_mode = 3

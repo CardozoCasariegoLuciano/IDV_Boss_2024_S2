@@ -29,20 +29,9 @@ position = Vector2(0, -90)
 scale = Vector2(0.519531, 0.519531)
 texture = ExtResource("4_4mgdp")
 
-[node name="description" type="Label" parent="CanvasLayer/Panel" index="0"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -354.0
-offset_right = -39.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="description" parent="CanvasLayer/Panel" index="0"]
 text = "Carta Muro
 
 Arrastra esta carta hasta la CANCHA y se generara el muro
 
 tienes 4 segundos para rotarlo con la rueda del mouse antes de que quede estático "
-vertical_alignment = 1
-autowrap_mode = 3
